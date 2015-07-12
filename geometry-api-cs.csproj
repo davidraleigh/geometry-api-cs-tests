@@ -30,8 +30,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.core">
+      <HintPath>packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter">
+      <HintPath>packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sharpen">
+      <HintPath>packages\Sharpen.1.0.0.3\lib\Sharpen.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,9 +63,50 @@
   <ItemGroup>
     <Compile Include="com\fasterxml\jackson\core\Base64Variant.cs" />
     <Compile Include="com\fasterxml\jackson\core\Base64Variants.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base64\TestBase64Codec.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base64\TestBase64Generation.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base64\TestBase64Parsing.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base64\TestJsonParserBinary.cs" />
     <Compile Include="com\fasterxml\jackson\core\BaseTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base\GeneratorBase.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base\ParserBase.cs" />
+    <Compile Include="com\fasterxml\jackson\core\base\ParserMinimalBase.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\BasicGeneratorFilteringTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\BasicParserFilteringTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\FilteringGeneratorDelegate.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\FilteringParserDelegate.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\JsonPointerBasedFilter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\JsonPointerGeneratorFilteringTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\JsonPointerParserFilteringTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\TokenFilter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\filter\TokenFilterContext.cs" />
     <Compile Include="com\fasterxml\jackson\core\FormatFeature.cs" />
     <Compile Include="com\fasterxml\jackson\core\FormatSchema.cs" />
+    <Compile Include="com\fasterxml\jackson\core\format\DataFormatDetector.cs" />
+    <Compile Include="com\fasterxml\jackson\core\format\DataFormatMatcher.cs" />
+    <Compile Include="com\fasterxml\jackson\core\format\InputAccessor.cs" />
+    <Compile Include="com\fasterxml\jackson\core\format\MatchStrength.cs" />
+    <Compile Include="com\fasterxml\jackson\core\format\TestJsonFormatDetection.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\CharacterEscapes.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\CharTypes.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\InputDecorator.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\IOContext.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\JsonStringEncoder.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\MergedStream.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\NumberInput.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\NumberOutput.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\OutputDecorator.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\SegmentedStringWriter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\SegmentedStringWriterTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\SerializedString.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\TestCharTypes.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\TestIOContext.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\TestJDKSerializable.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\TestJsonStringEncoder.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\TestMergedStream.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\UTF32Reader.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\UTF8Writer.cs" />
+    <Compile Include="com\fasterxml\jackson\core\io\UTF8WriterTest.cs" />
     <Compile Include="com\fasterxml\jackson\core\JsonEncoding.cs" />
     <Compile Include="com\fasterxml\jackson\core\JsonFactory.cs" />
     <Compile Include="com\fasterxml\jackson\core\JsonGenerationException.cs" />
@@ -59,6 +119,43 @@
     <Compile Include="com\fasterxml\jackson\core\JsonStreamContext.cs" />
     <Compile Include="com\fasterxml\jackson\core\JsonToken.cs" />
     <Compile Include="com\fasterxml\jackson\core\JsonTokenId.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\ByteSourceJsonBootstrapper.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\DupDetector.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\GeneratorBasicTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\GeneratorFailTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\JsonFactoryTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\JsonGeneratorImpl.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\JsonReadContext.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\JsonWriteContext.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\PackageVersion.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\ParserSequenceTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\ReaderBasedJsonParser.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\StringGenerationTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestCharEscaping.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestComments.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestCustomEscaping.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestDecorators.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestGeneratorDupHandling.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestGeneratorWithSerializedString.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestJsonGeneratorFeatures.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestJsonParser.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestLocation.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestNextXxx.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestNumericValues.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestParserDupHandling.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestParserErrorHandling.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestParserNonStandard.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestParserOverrides.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestParserSymbols.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestRootValues.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestUnicode.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestUtf8Generator.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestUtf8Parser.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestValueConversions.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\TestWithTonsaSymbols.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\UTF8JsonGenerator.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\UTF8StreamJsonParser.cs" />
+    <Compile Include="com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.cs" />
     <Compile Include="com\fasterxml\jackson\core\ObjectCodec.cs" />
     <Compile Include="com\fasterxml\jackson\core\PrettyPrinter.cs" />
     <Compile Include="com\fasterxml\jackson\core\SerializableString.cs" />
@@ -68,9 +165,35 @@
     <Compile Include="com\fasterxml\jackson\core\TestVersions.cs" />
     <Compile Include="com\fasterxml\jackson\core\TreeCodec.cs" />
     <Compile Include="com\fasterxml\jackson\core\TreeNode.cs" />
+    <Compile Include="com\fasterxml\jackson\core\type\ResolvedType.cs" />
+    <Compile Include="com\fasterxml\jackson\core\type\TypeReference.cs" />
+    <Compile Include="com\fasterxml\jackson\core\type\TypeReferenceTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\BufferRecycler.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\ByteArrayBuilder.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\ByteArrayBuilderTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\DefaultIndenter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\DefaultPrettyPrinter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\Instantiatable.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\InternCache.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\JsonGeneratorDelegate.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\JsonParserDelegate.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\JsonParserSequence.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\MinimalPrettyPrinter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestCharTypes.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestDefaultPrettyPrinter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestDelegates.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestNumberPrinting.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestSerializedString.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestTextBuffer.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TestVersionUtil.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\TextBuffer.cs" />
+    <Compile Include="com\fasterxml\jackson\core\util\VersionUtil.cs" />
     <Compile Include="com\fasterxml\jackson\core\Version.cs" />
     <Compile Include="com\fasterxml\jackson\core\Versioned.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
