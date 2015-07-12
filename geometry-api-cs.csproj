@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +42,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="com\fasterxml\jackson\core\Base64Variant.cs" />
+    <Compile Include="com\fasterxml\jackson\core\Base64Variants.cs" />
+    <Compile Include="com\fasterxml\jackson\core\BaseTest.cs" />
+    <Compile Include="com\fasterxml\jackson\core\FormatFeature.cs" />
+    <Compile Include="com\fasterxml\jackson\core\FormatSchema.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonEncoding.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonFactory.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonGenerationException.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonGenerator.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonLocation.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonParseException.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonParser.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonPointer.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonProcessingException.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonStreamContext.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonToken.cs" />
+    <Compile Include="com\fasterxml\jackson\core\JsonTokenId.cs" />
+    <Compile Include="com\fasterxml\jackson\core\ObjectCodec.cs" />
+    <Compile Include="com\fasterxml\jackson\core\PrettyPrinter.cs" />
+    <Compile Include="com\fasterxml\jackson\core\SerializableString.cs" />
+    <Compile Include="com\fasterxml\jackson\core\TestExceptions.cs" />
+    <Compile Include="com\fasterxml\jackson\core\TestJDKSerializability.cs" />
+    <Compile Include="com\fasterxml\jackson\core\TestJsonPointer.cs" />
+    <Compile Include="com\fasterxml\jackson\core\TestVersions.cs" />
+    <Compile Include="com\fasterxml\jackson\core\TreeCodec.cs" />
+    <Compile Include="com\fasterxml\jackson\core\TreeNode.cs" />
+    <Compile Include="com\fasterxml\jackson\core\Version.cs" />
+    <Compile Include="com\fasterxml\jackson\core\Versioned.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
