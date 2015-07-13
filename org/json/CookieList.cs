@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -44,15 +46,15 @@ namespace org.json
 		/// <returns>A JSONObject</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject ToJSONObject(string @string)
+		public static JSONObject ToJSONObject(string @string)
 		{
-			org.json.JSONObject jo = new org.json.JSONObject();
-			org.json.JSONTokener x = new org.json.JSONTokener(@string);
+			JSONObject jo = new JSONObject();
+			JSONTokener x = new JSONTokener(@string);
 			while (x.More())
 			{
-				string name = org.json.Cookie.Unescape(x.NextTo('='));
+				string name = Cookie.Unescape(x.NextTo('='));
 				x.Next('=');
-				jo.Put(name, org.json.Cookie.Unescape(x.NextTo(';')));
+				jo.Put(name, Cookie.Unescape(x.NextTo(';')));
 				x.Next();
 			}
 			return jo;
@@ -69,12 +71,12 @@ namespace org.json
 		/// <returns>A cookie list string</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(org.json.JSONObject jo)
+		public static string ToString(JSONObject jo)
 		{
 			bool b = false;
-			System.Collections.Generic.IEnumerator<string> keys = jo.Keys();
+			IEnumerator<string> keys = jo.Keys();
 			string @string;
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			StringBuilder sb = new StringBuilder();
 			while (keys.HasNext())
 			{
 				@string = keys.Next();
@@ -84,9 +86,9 @@ namespace org.json
 					{
 						sb.Append(';');
 					}
-					sb.Append(org.json.Cookie.Escape(@string));
+					sb.Append(Cookie.Escape(@string));
 					sb.Append("=");
-					sb.Append(org.json.Cookie.Escape(jo.GetString(@string)));
+					sb.Append(Cookie.Escape(jo.GetString(@string)));
 					b = true;
 				}
 			}

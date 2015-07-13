@@ -1,3 +1,4 @@
+using System.IO;
 using Sharpen;
 
 namespace org.json
@@ -54,18 +55,18 @@ namespace org.json
 		protected internal char mode;
 
 		/// <summary>The object/array stack.</summary>
-		private readonly org.json.JSONObject[] stack;
+		private readonly JSONObject[] stack;
 
 		/// <summary>The stack top index.</summary>
 		/// <remarks>The stack top index. A value of 0 indicates that the stack is empty.</remarks>
 		private int top;
 
 		/// <summary>The writer that will receive the output.</summary>
-		protected internal System.IO.TextWriter writer;
+		protected internal TextWriter writer;
 
 		/// <summary>Make a fresh JSONWriter.</summary>
 		/// <remarks>Make a fresh JSONWriter. It can be used to build one JSON text.</remarks>
-		public JSONWriter(System.IO.TextWriter w)
+		public JSONWriter(TextWriter w)
 		{
 			/*
 			Copyright (c) 2006 JSON.org
@@ -92,7 +93,7 @@ namespace org.json
 			*/
 			this.comma = false;
 			this.mode = 'i';
-			this.stack = new org.json.JSONObject[maxdepth];
+			this.stack = new JSONObject[maxdepth];
 			this.top = 0;
 			this.writer = w;
 		}
@@ -106,7 +107,7 @@ namespace org.json
 		{
 			if (@string == null)
 			{
-				throw new org.json.JSONException("Null pointer");
+				throw new JSONException("Null pointer");
 			}
 			if (this.mode == 'o' || this.mode == 'a')
 			{
@@ -118,9 +119,9 @@ namespace org.json
 					}
 					this.writer.Write(@string);
 				}
-				catch (System.IO.IOException e)
+				catch (IOException e)
 				{
-					throw new org.json.JSONException(e);
+					throw new JSONException(e);
 				}
 				if (this.mode == 'o')
 				{
@@ -129,7 +130,7 @@ namespace org.json
 				this.comma = true;
 				return this;
 			}
-			throw new org.json.JSONException("Value out of sequence.");
+			throw new JSONException("Value out of sequence.");
 		}
 
 		/// <summary>Begin appending a new array.</summary>
@@ -154,7 +155,7 @@ namespace org.json
 				this.comma = false;
 				return this;
 			}
-			throw new org.json.JSONException("Misplaced array.");
+			throw new JSONException("Misplaced array.");
 		}
 
 		/// <summary>End something.</summary>
@@ -167,7 +168,7 @@ namespace org.json
 		{
 			if (this.mode != mode)
 			{
-				throw new org.json.JSONException(mode == 'a' ? "Misplaced endArray." : "Misplaced endObject."
+				throw new JSONException(mode == 'a' ? "Misplaced endArray." : "Misplaced endObject."
 					);
 			}
 			this.Pop(mode);
@@ -175,9 +176,9 @@ namespace org.json
 			{
 				this.writer.Write(c);
 			}
-			catch (System.IO.IOException e)
+			catch (IOException e)
 			{
-				throw new org.json.JSONException(e);
+				throw new JSONException(e);
 			}
 			this.comma = true;
 			return this;
@@ -225,7 +226,7 @@ namespace org.json
 		{
 			if (@string == null)
 			{
-				throw new org.json.JSONException("Null key.");
+				throw new JSONException("Null key.");
 			}
 			if (this.mode == 'k')
 			{
@@ -236,18 +237,18 @@ namespace org.json
 					{
 						this.writer.Write(',');
 					}
-					this.writer.Write(org.json.JSONObject.Quote(@string));
+					this.writer.Write(JSONObject.Quote(@string));
 					this.writer.Write(':');
 					this.comma = false;
 					this.mode = 'o';
 					return this;
 				}
-				catch (System.IO.IOException e)
+				catch (IOException e)
 				{
-					throw new org.json.JSONException(e);
+					throw new JSONException(e);
 				}
 			}
-			throw new org.json.JSONException("Misplaced key.");
+			throw new JSONException("Misplaced key.");
 		}
 
 		/// <summary>Begin appending a new object.</summary>
@@ -272,11 +273,11 @@ namespace org.json
 			if (this.mode == 'o' || this.mode == 'a')
 			{
 				this.Append("{");
-				this.Push(new org.json.JSONObject());
+				this.Push(new JSONObject());
 				this.comma = false;
 				return this;
 			}
-			throw new org.json.JSONException("Misplaced object.");
+			throw new JSONException("Misplaced object.");
 		}
 
 		/// <summary>Pop an array or object scope.</summary>
@@ -287,12 +288,12 @@ namespace org.json
 		{
 			if (this.top <= 0)
 			{
-				throw new org.json.JSONException("Nesting error.");
+				throw new JSONException("Nesting error.");
 			}
 			char m = this.stack[this.top - 1] == null ? 'a' : 'k';
 			if (m != c)
 			{
-				throw new org.json.JSONException("Nesting error.");
+				throw new JSONException("Nesting error.");
 			}
 			this.top -= 1;
 			this.mode = this.top == 0 ? 'd' : this.stack[this.top - 1] == null ? 'a' : 'k';
@@ -302,11 +303,11 @@ namespace org.json
 		/// <param name="jo">The scope to open.</param>
 		/// <exception cref="JSONException">If nesting is too deep.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		private void Push(org.json.JSONObject jo)
+		private void Push(JSONObject jo)
 		{
 			if (this.top >= maxdepth)
 			{
-				throw new org.json.JSONException("Nesting too deep.");
+				throw new JSONException("Nesting too deep.");
 			}
 			this.stack[this.top] = jo;
 			this.mode = jo == null ? 'a' : 'k';
@@ -356,7 +357,7 @@ namespace org.json
 		/// <exception cref="org.json.JSONException"/>
 		public virtual org.json.JSONWriter Value(object @object)
 		{
-			return this.Append(org.json.JSONObject.ValueToString(@object));
+			return this.Append(JSONObject.ValueToString(@object));
 		}
 	}
 }

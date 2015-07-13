@@ -1,3 +1,4 @@
+using System;
 using Sharpen;
 
 namespace org.json
@@ -7,11 +8,11 @@ namespace org.json
 	/// <author>JSON.org</author>
 	/// <version>2014-05-03</version>
 	[System.Serializable]
-	public class JSONException : Sharpen.RuntimeException
+	public class JSONException : RuntimeException
 	{
 		private const long serialVersionUID = 0;
 
-		private System.Exception cause;
+		private Exception cause;
 
 		/// <summary>Constructs a JSONException with an explanatory message.</summary>
 		/// <param name="message">Detail about the reason for the exception.</param>
@@ -22,7 +23,7 @@ namespace org.json
 
 		/// <summary>Constructs a new JSONException with the specified cause.</summary>
 		/// <param name="cause">The cause.</param>
-		public JSONException(System.Exception cause)
+		public JSONException(Exception cause)
 			: base(cause.Message)
 		{
 			this.cause = cause;
@@ -36,7 +37,7 @@ namespace org.json
 		/// the cause of this exception or null if the cause is nonexistent
 		/// or unknown.
 		/// </returns>
-		public override System.Exception InnerException
+		public override Exception InnerException
 		{
 			get
 			{

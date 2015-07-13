@@ -1,4 +1,7 @@
+using System.IO;
+using System.Text;
 using Sharpen;
+using java.io;
 
 namespace org.json
 {
@@ -56,8 +59,7 @@ namespace org.json
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 			*/
-			this.reader = reader.MarkSupported() ? reader : new java.io.BufferedReader(reader
-				);
+			this.reader = reader.MarkSupported() ? reader : new BufferedReader(reader);
 			this.eof = false;
 			this.usePrevious = false;
 			this.previous = (char)0;
@@ -69,7 +71,7 @@ namespace org.json
 		/// <summary>Construct a JSONTokener from an InputStream.</summary>
 		/// <param name="inputStream">The source.</param>
 		/// <exception cref="org.json.JSONException"/>
-		public JSONTokener(Sharpen.InputStream inputStream)
+		public JSONTokener(InputStream inputStream)
 			: this(new System.IO.StreamReader(inputStream))
 		{
 		}
@@ -92,7 +94,7 @@ namespace org.json
 		{
 			if (this.usePrevious || this.index <= 0)
 			{
-				throw new org.json.JSONException("Stepping back two steps is not supported");
+				throw new JSONException("Stepping back two steps is not supported");
 			}
 			this.index -= 1;
 			this.character -= 1;
@@ -162,9 +164,9 @@ namespace org.json
 				{
 					c = this.reader.Read();
 				}
-				catch (System.IO.IOException exception)
+				catch (IOException exception)
 				{
-					throw new org.json.JSONException(exception);
+					throw new JSONException(exception);
 				}
 				if (c <= 0)
 				{
@@ -275,7 +277,7 @@ namespace org.json
 		public virtual string NextString(char quote)
 		{
 			char c;
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			StringBuilder sb = new StringBuilder();
 			for (; ; )
 			{
 				c = this.Next();
@@ -368,7 +370,7 @@ namespace org.json
 		/// <exception cref="org.json.JSONException"/>
 		public virtual string NextTo(char delimiter)
 		{
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			StringBuilder sb = new StringBuilder();
 			for (; ; )
 			{
 				char c = this.Next();
@@ -394,7 +396,7 @@ namespace org.json
 		public virtual string NextTo(string delimiters)
 		{
 			char c;
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			StringBuilder sb = new StringBuilder();
 			for (; ; )
 			{
 				c = this.Next();
@@ -433,13 +435,13 @@ namespace org.json
 				case '{':
 				{
 					this.Back();
-					return new org.json.JSONObject(this);
+					return new JSONObject(this);
 				}
 
 				case '[':
 				{
 					this.Back();
-					return new org.json.JSONArray(this);
+					return new JSONArray(this);
 				}
 			}
 			/*
@@ -450,7 +452,7 @@ namespace org.json
 			* Accumulate characters until we reach the end of the text or a
 			* formatting character.
 			*/
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			StringBuilder sb = new StringBuilder();
 			while (c >= ' ' && ",:]}/\\\"[{;=#".IndexOf(c) < 0)
 			{
 				sb.Append(c);
@@ -462,7 +464,7 @@ namespace org.json
 			{
 				throw this.SyntaxError("Missing value");
 			}
-			return org.json.JSONObject.StringToValue(@string);
+			return JSONObject.StringToValue(@string);
 		}
 
 		/// <summary>Skip characters until the next character is the requested character.</summary>
@@ -499,9 +501,9 @@ namespace org.json
 				}
 				while (c != to);
 			}
-			catch (System.IO.IOException exception)
+			catch (IOException exception)
 			{
-				throw new org.json.JSONException(exception);
+				throw new JSONException(exception);
 			}
 			this.Back();
 			return c;
@@ -510,9 +512,9 @@ namespace org.json
 		/// <summary>Make a JSONException to signal a syntax error.</summary>
 		/// <param name="message">The error message.</param>
 		/// <returns>A JSONException object, suitable for throwing</returns>
-		public virtual org.json.JSONException SyntaxError(string message)
+		public virtual JSONException SyntaxError(string message)
 		{
-			return new org.json.JSONException(message + this.ToString());
+			return new JSONException(message + this.ToString());
 		}
 
 		/// <summary>Make a printable string of this JSONTokener.</summary>

@@ -1,3 +1,4 @@
+using System.IO;
 using Sharpen;
 
 namespace org.json
@@ -34,12 +35,12 @@ namespace org.json
 	/// </remarks>
 	/// <author>JSON.org</author>
 	/// <version>2008-09-18</version>
-	public class JSONStringer : org.json.JSONWriter
+	public class JSONStringer : JSONWriter
 	{
 		/// <summary>Make a fresh JSONStringer.</summary>
 		/// <remarks>Make a fresh JSONStringer. It can be used to build one JSON text.</remarks>
 		public JSONStringer()
-			: base(new System.IO.StringWriter())
+			: base(new StringWriter())
 		{
 		}
 
