@@ -25,13 +25,13 @@ namespace org.json
 
 		private char previous;
 
-		private java.io.Reader reader;
+		private System.IO.StreamReader reader;
 
 		private bool usePrevious;
 
 		/// <summary>Construct a JSONTokener from a Reader.</summary>
 		/// <param name="reader">A reader.</param>
-		public JSONTokener(java.io.Reader reader)
+		public JSONTokener(System.IO.StreamReader reader)
 		{
 			/*
 			Copyright (c) 2002 JSON.org
@@ -56,7 +56,7 @@ namespace org.json
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 			*/
-			this.reader = reader.markSupported() ? reader : new java.io.BufferedReader(reader
+			this.reader = reader.MarkSupported() ? reader : new java.io.BufferedReader(reader
 				);
 			this.eof = false;
 			this.usePrevious = false;
@@ -69,15 +69,15 @@ namespace org.json
 		/// <summary>Construct a JSONTokener from an InputStream.</summary>
 		/// <param name="inputStream">The source.</param>
 		/// <exception cref="org.json.JSONException"/>
-		public JSONTokener(java.io.InputStream inputStream)
-			: this(new java.io.InputStreamReader(inputStream))
+		public JSONTokener(Sharpen.InputStream inputStream)
+			: this(new System.IO.StreamReader(inputStream))
 		{
 		}
 
 		/// <summary>Construct a JSONTokener from a string.</summary>
 		/// <param name="s">A source string.</param>
 		public JSONTokener(string s)
-			: this(new java.io.StringReader(s))
+			: this(new Sharpen.StringReader(s))
 		{
 		}
 
@@ -88,7 +88,7 @@ namespace org.json
 		/// the next number or identifier.
 		/// </remarks>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual void back()
+		public virtual void Back()
 		{
 			if (this.usePrevious || this.index <= 0)
 			{
@@ -106,7 +106,7 @@ namespace org.json
 		/// between 'a' and 'f'.
 		/// </param>
 		/// <returns>An int between 0 and 15, or -1 if c was not a hex digit.</returns>
-		public static int dehexchar(char c)
+		public static int Dehexchar(char c)
 		{
 			if (c >= '0' && c <= '9')
 			{
@@ -123,7 +123,7 @@ namespace org.json
 			return -1;
 		}
 
-		public virtual bool end()
+		public virtual bool End()
 		{
 			return this.eof && !this.usePrevious;
 		}
@@ -134,21 +134,21 @@ namespace org.json
 		/// </summary>
 		/// <returns>true if not yet at the end of the source.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual bool more()
+		public virtual bool More()
 		{
-			this.next();
-			if (this.end())
+			this.Next();
+			if (this.End())
 			{
 				return false;
 			}
-			this.back();
+			this.Back();
 			return true;
 		}
 
 		/// <summary>Get the next character in the source string.</summary>
 		/// <returns>The next character, or 0 if past the end of the source string.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual char next()
+		public virtual char Next()
 		{
 			int c;
 			if (this.usePrevious)
@@ -160,7 +160,7 @@ namespace org.json
 			{
 				try
 				{
-					c = this.reader.read();
+					c = this.reader.Read();
 				}
 				catch (System.IO.IOException exception)
 				{
@@ -203,12 +203,12 @@ namespace org.json
 		/// <returns>The character.</returns>
 		/// <exception cref="JSONException">if the character does not match.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual char next(char c)
+		public virtual char Next(char c)
 		{
-			char n = this.next();
+			char n = this.Next();
 			if (n != c)
 			{
-				throw this.syntaxError("Expected '" + c + "' and instead saw '" + n + "'");
+				throw this.SyntaxError("Expected '" + c + "' and instead saw '" + n + "'");
 			}
 			return n;
 		}
@@ -221,7 +221,7 @@ namespace org.json
 		/// n characters remaining in the source string.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string next(int n)
+		public virtual string Next(int n)
 		{
 			if (n == 0)
 			{
@@ -231,10 +231,10 @@ namespace org.json
 			int pos = 0;
 			while (pos < n)
 			{
-				chars[pos] = this.next();
-				if (this.end())
+				chars[pos] = this.Next();
+				if (this.End())
 				{
-					throw this.syntaxError("Substring bounds error");
+					throw this.SyntaxError("Substring bounds error");
 				}
 				pos += 1;
 			}
@@ -245,11 +245,11 @@ namespace org.json
 		/// <exception cref="JSONException"/>
 		/// <returns>A character, or 0 if there are no more characters.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual char nextClean()
+		public virtual char NextClean()
 		{
 			for (; ; )
 			{
-				char c = this.next();
+				char c = this.Next();
 				if (c == 0 || c > ' ')
 				{
 					return c;
@@ -272,25 +272,25 @@ namespace org.json
 		/// <returns>A String.</returns>
 		/// <exception cref="JSONException">Unterminated string.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string nextString(char quote)
+		public virtual string NextString(char quote)
 		{
 			char c;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
-				c = this.next();
+				c = this.Next();
 				switch (c)
 				{
 					case 0:
 					case '\n':
 					case '\r':
 					{
-						throw this.syntaxError("Unterminated string");
+						throw this.SyntaxError("Unterminated string");
 					}
 
 					case '\\':
 					{
-						c = this.next();
+						c = this.Next();
 						switch (c)
 						{
 							case 'b':
@@ -325,7 +325,7 @@ namespace org.json
 
 							case 'u':
 							{
-								sb.Append((char)System.Convert.ToInt32(this.next(4), 16));
+								sb.Append((char)System.Convert.ToInt32(this.Next(4), 16));
 								break;
 							}
 
@@ -340,7 +340,7 @@ namespace org.json
 
 							default:
 							{
-								throw this.syntaxError("Illegal escape.");
+								throw this.SyntaxError("Illegal escape.");
 							}
 						}
 						break;
@@ -366,19 +366,19 @@ namespace org.json
 		/// <param name="delimiter">A delimiter character.</param>
 		/// <returns>A string.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string nextTo(char delimiter)
+		public virtual string NextTo(char delimiter)
 		{
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
-				char c = this.next();
+				char c = this.Next();
 				if (c == delimiter || c == 0 || c == '\n' || c == '\r')
 				{
 					if (c != 0)
 					{
-						this.back();
+						this.Back();
 					}
-					return sb.ToString().Trim();
+					return Sharpen.Extensions.Trim(sb.ToString());
 				}
 				sb.Append(c);
 			}
@@ -391,20 +391,20 @@ namespace org.json
 		/// <param name="delimiters">A set of delimiter characters.</param>
 		/// <returns>A string, trimmed.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string nextTo(string delimiters)
+		public virtual string NextTo(string delimiters)
 		{
 			char c;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
-				c = this.next();
+				c = this.Next();
 				if (delimiters.IndexOf(c) >= 0 || c == 0 || c == '\n' || c == '\r')
 				{
 					if (c != 0)
 					{
-						this.back();
+						this.Back();
 					}
-					return sb.ToString().Trim();
+					return Sharpen.Extensions.Trim(sb.ToString());
 				}
 				sb.Append(c);
 			}
@@ -418,27 +418,27 @@ namespace org.json
 		/// <exception cref="JSONException">If syntax error.</exception>
 		/// <returns>An object.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual object nextValue()
+		public virtual object NextValue()
 		{
-			char c = this.nextClean();
+			char c = this.NextClean();
 			string @string;
 			switch (c)
 			{
 				case '"':
 				case '\'':
 				{
-					return this.nextString(c);
+					return this.NextString(c);
 				}
 
 				case '{':
 				{
-					this.back();
+					this.Back();
 					return new org.json.JSONObject(this);
 				}
 
 				case '[':
 				{
-					this.back();
+					this.Back();
 					return new org.json.JSONArray(this);
 				}
 			}
@@ -450,19 +450,19 @@ namespace org.json
 			* Accumulate characters until we reach the end of the text or a
 			* formatting character.
 			*/
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			while (c >= ' ' && ",:]}/\\\"[{;=#".IndexOf(c) < 0)
 			{
 				sb.Append(c);
-				c = this.next();
+				c = this.Next();
 			}
-			this.back();
-			@string = sb.ToString().Trim();
+			this.Back();
+			@string = Sharpen.Extensions.Trim(sb.ToString());
 			if (string.Empty.Equals(@string))
 			{
-				throw this.syntaxError("Missing value");
+				throw this.SyntaxError("Missing value");
 			}
-			return org.json.JSONObject.stringToValue(@string);
+			return org.json.JSONObject.StringToValue(@string);
 		}
 
 		/// <summary>Skip characters until the next character is the requested character.</summary>
@@ -476,7 +476,7 @@ namespace org.json
 		/// is not found.
 		/// </returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual char skipTo(char to)
+		public virtual char SkipTo(char to)
 		{
 			char c;
 			try
@@ -484,13 +484,13 @@ namespace org.json
 				long startIndex = this.index;
 				long startCharacter = this.character;
 				long startLine = this.line;
-				this.reader.mark(1000000);
+				this.reader.Mark(1000000);
 				do
 				{
-					c = this.next();
+					c = this.Next();
 					if (c == 0)
 					{
-						this.reader.reset();
+						this.reader.Reset();
 						this.index = startIndex;
 						this.character = startCharacter;
 						this.line = startLine;
@@ -503,14 +503,14 @@ namespace org.json
 			{
 				throw new org.json.JSONException(exception);
 			}
-			this.back();
+			this.Back();
 			return c;
 		}
 
 		/// <summary>Make a JSONException to signal a syntax error.</summary>
 		/// <param name="message">The error message.</param>
 		/// <returns>A JSONException object, suitable for throwing</returns>
-		public virtual org.json.JSONException syntaxError(string message)
+		public virtual org.json.JSONException SyntaxError(string message)
 		{
 			return new org.json.JSONException(message + this.ToString());
 		}

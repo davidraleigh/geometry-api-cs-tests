@@ -37,16 +37,16 @@ namespace org.json
 		/// <returns>JSONObject</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject toJSONObject(java.util.Properties properties)
+		public static org.json.JSONObject ToJSONObject(Sharpen.Properties properties)
 		{
 			org.json.JSONObject jo = new org.json.JSONObject();
-			if (properties != null && !properties.isEmpty())
+			if (properties != null && !properties.IsEmpty())
 			{
-				java.util.Enumeration<object> enumProperties = properties.propertyNames();
+				java.util.Enumeration<object> enumProperties = properties.PropertyNames();
 				while (enumProperties.MoveNext())
 				{
 					string name = (string)enumProperties.Current;
-					jo.put(name, properties.getProperty(name));
+					jo.Put(name, properties.GetProperty(name));
 				}
 			}
 			return jo;
@@ -57,16 +57,16 @@ namespace org.json
 		/// <returns>java.util.Properties</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static java.util.Properties toProperties(org.json.JSONObject jo)
+		public static Sharpen.Properties ToProperties(org.json.JSONObject jo)
 		{
-			java.util.Properties properties = new java.util.Properties();
+			Sharpen.Properties properties = new Sharpen.Properties();
 			if (jo != null)
 			{
-				System.Collections.Generic.IEnumerator<string> keys = jo.keys();
-				while (keys.MoveNext())
+				System.Collections.Generic.IEnumerator<string> keys = jo.Keys();
+				while (keys.HasNext())
 				{
-					string name = keys.Current;
-					properties[name] = jo.getString(name);
+					string name = keys.Next();
+					properties[name] = jo.GetString(name);
 				}
 			}
 			return properties;

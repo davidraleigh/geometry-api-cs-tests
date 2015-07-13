@@ -49,7 +49,7 @@ namespace org.json
 	public class JSONArray : System.Collections.Generic.IEnumerable<object>
 	{
 		/// <summary>The arrayList where the JSONArray's properties are kept.</summary>
-		private readonly System.Collections.Generic.List<object> myArrayList;
+		private readonly Sharpen.AList<object> myArrayList;
 
 		/// <summary>Construct an empty JSONArray.</summary>
 		public JSONArray()
@@ -77,7 +77,7 @@ namespace org.json
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 			*/
-			this.myArrayList = new System.Collections.Generic.List<object>();
+			this.myArrayList = new Sharpen.AList<object>();
 		}
 
 		/// <summary>Construct a JSONArray from a JSONTokener.</summary>
@@ -87,34 +87,34 @@ namespace org.json
 		public JSONArray(org.json.JSONTokener x)
 			: this()
 		{
-			if (x.nextClean() != '[')
+			if (x.NextClean() != '[')
 			{
-				throw x.syntaxError("A JSONArray text must start with '['");
+				throw x.SyntaxError("A JSONArray text must start with '['");
 			}
-			if (x.nextClean() != ']')
+			if (x.NextClean() != ']')
 			{
-				x.back();
+				x.Back();
 				for (; ; )
 				{
-					if (x.nextClean() == ',')
+					if (x.NextClean() == ',')
 					{
-						x.back();
-						this.myArrayList.add(org.json.JSONObject.NULL);
+						x.Back();
+						this.myArrayList.Add(org.json.JSONObject.NULL);
 					}
 					else
 					{
-						x.back();
-						this.myArrayList.add(x.nextValue());
+						x.Back();
+						this.myArrayList.Add(x.NextValue());
 					}
-					switch (x.nextClean())
+					switch (x.NextClean())
 					{
 						case ',':
 						{
-							if (x.nextClean() == ']')
+							if (x.NextClean() == ']')
 							{
 								return;
 							}
-							x.back();
+							x.Back();
 							break;
 						}
 
@@ -125,7 +125,7 @@ namespace org.json
 
 						default:
 						{
-							throw x.syntaxError("Expected a ',' or ']'");
+							throw x.SyntaxError("Expected a ',' or ']'");
 						}
 					}
 				}
@@ -149,13 +149,13 @@ namespace org.json
 		/// <param name="collection">A Collection.</param>
 		public JSONArray(System.Collections.Generic.ICollection<object> collection)
 		{
-			this.myArrayList = new System.Collections.Generic.List<object>();
+			this.myArrayList = new Sharpen.AList<object>();
 			if (collection != null)
 			{
 				System.Collections.Generic.IEnumerator<object> iter = collection.GetEnumerator();
-				while (iter.MoveNext())
+				while (iter.HasNext())
 				{
-					this.myArrayList.add(org.json.JSONObject.wrap(iter.Current));
+					this.myArrayList.Add(org.json.JSONObject.Wrap(iter.Next()));
 				}
 			}
 		}
@@ -166,12 +166,12 @@ namespace org.json
 		public JSONArray(object array)
 			: this()
 		{
-			if (Sharpen.Runtime.getClassForObject(array).isArray())
+			if (Sharpen.Runtime.GetClassForObject(array).IsArray())
 			{
-				int length = java.lang.reflect.Array.getLength(array);
+				int length = java.lang.reflect.Array.GetLength(array);
 				for (int i = 0; i < length; i += 1)
 				{
-					this.put(org.json.JSONObject.wrap(java.lang.reflect.Array.get(array, i)));
+					this.Put(org.json.JSONObject.Wrap(java.lang.reflect.Array.Get(array, i)));
 				}
 			}
 			else
@@ -191,9 +191,9 @@ namespace org.json
 		/// <returns>An object value.</returns>
 		/// <exception cref="JSONException">If there is no value for the index.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual object get(int index)
+		public virtual object Get(int index)
 		{
-			object @object = this.opt(index);
+			object @object = this.Opt(index);
 			if (@object == null)
 			{
 				throw new org.json.JSONException("JSONArray[" + index + "] not found.");
@@ -213,17 +213,17 @@ namespace org.json
 		/// convertible to boolean.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual bool getBoolean(int index)
+		public virtual bool GetBoolean(int index)
 		{
-			object @object = this.get(index);
-			if (@object.Equals(false) || (@object is string && Sharpen.Runtime.equalsIgnoreCase
+			object @object = this.Get(index);
+			if (@object.Equals(false) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase
 				(((string)@object), "false")))
 			{
 				return false;
 			}
 			else
 			{
-				if (@object.Equals(true) || (@object is string && Sharpen.Runtime.equalsIgnoreCase
+				if (@object.Equals(true) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase
 					(((string)@object), "true")))
 				{
 					return true;
@@ -240,13 +240,13 @@ namespace org.json
 		/// to a number.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual double getDouble(int index)
+		public virtual double GetDouble(int index)
 		{
-			object @object = this.get(index);
+			object @object = this.Get(index);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.parseDouble
-					((string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.Parse((
+					string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -260,9 +260,9 @@ namespace org.json
 		/// <exception cref="JSONException">If the key is not found or if the value is not a number.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual int getInt(int index)
+		public virtual int GetInt(int index)
 		{
-			object @object = this.get(index);
+			object @object = this.Get(index);
 			try
 			{
 				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt32
@@ -282,9 +282,9 @@ namespace org.json
 		/// JSONArray
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray getJSONArray(int index)
+		public virtual org.json.JSONArray GetJSONArray(int index)
 		{
-			object @object = this.get(index);
+			object @object = this.Get(index);
 			if (@object is org.json.JSONArray)
 			{
 				return (org.json.JSONArray)@object;
@@ -300,9 +300,9 @@ namespace org.json
 		/// JSONObject
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONObject getJSONObject(int index)
+		public virtual org.json.JSONObject GetJSONObject(int index)
 		{
-			object @object = this.get(index);
+			object @object = this.Get(index);
 			if (@object is org.json.JSONObject)
 			{
 				return (org.json.JSONObject)@object;
@@ -318,13 +318,13 @@ namespace org.json
 		/// to a number.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual long getLong(int index)
+		public virtual long GetLong(int index)
 		{
-			object @object = this.get(index);
+			object @object = this.Get(index);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : long.Parse((string
-					)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt64
+					((string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -337,9 +337,9 @@ namespace org.json
 		/// <returns>A string value.</returns>
 		/// <exception cref="JSONException">If there is no string value for the index.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string getString(int index)
+		public virtual string GetString(int index)
 		{
-			object @object = this.get(index);
+			object @object = this.Get(index);
 			if (@object is string)
 			{
 				return (string)@object;
@@ -350,9 +350,9 @@ namespace org.json
 		/// <summary>Determine if the value is null.</summary>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>true if the value at the index is null, or if there is no value.</returns>
-		public virtual bool isNull(int index)
+		public virtual bool IsNull(int index)
 		{
-			return org.json.JSONObject.NULL.Equals(this.opt(index));
+			return org.json.JSONObject.NULL.Equals(this.Opt(index));
 		}
 
 		/// <summary>Make a string from the contents of this JSONArray.</summary>
@@ -365,24 +365,24 @@ namespace org.json
 		/// <returns>a string.</returns>
 		/// <exception cref="JSONException">If the array contains an invalid number.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string join(string separator)
+		public virtual string Join(string separator)
 		{
-			int len = this.length();
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			int len = this.Length();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (int i = 0; i < len; i += 1)
 			{
 				if (i > 0)
 				{
 					sb.Append(separator);
 				}
-				sb.Append(org.json.JSONObject.valueToString(this.myArrayList[i]));
+				sb.Append(org.json.JSONObject.ValueToString(this.myArrayList[i]));
 			}
 			return sb.ToString();
 		}
 
 		/// <summary>Get the number of elements in the JSONArray, included nulls.</summary>
 		/// <returns>The length (or size).</returns>
-		public virtual int length()
+		public virtual int Length()
 		{
 			return this.myArrayList.Count;
 		}
@@ -390,9 +390,9 @@ namespace org.json
 		/// <summary>Get the optional object value associated with an index.</summary>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>An object value, or null if there is no object at that index.</returns>
-		public virtual object opt(int index)
+		public virtual object Opt(int index)
 		{
-			return (index < 0 || index >= this.length()) ? null : this.myArrayList[index];
+			return (index < 0 || index >= this.Length()) ? null : this.myArrayList[index];
 		}
 
 		/// <summary>Get the optional boolean value associated with an index.</summary>
@@ -403,9 +403,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>The truth.</returns>
-		public virtual bool optBoolean(int index)
+		public virtual bool OptBoolean(int index)
 		{
-			return this.optBoolean(index, false);
+			return this.OptBoolean(index, false);
 		}
 
 		/// <summary>Get the optional boolean value associated with an index.</summary>
@@ -417,11 +417,11 @@ namespace org.json
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <param name="defaultValue">A boolean default.</param>
 		/// <returns>The truth.</returns>
-		public virtual bool optBoolean(int index, bool defaultValue)
+		public virtual bool OptBoolean(int index, bool defaultValue)
 		{
 			try
 			{
-				return this.getBoolean(index);
+				return this.GetBoolean(index);
 			}
 			catch (System.Exception)
 			{
@@ -437,9 +437,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>The value.</returns>
-		public virtual double optDouble(int index)
+		public virtual double OptDouble(int index)
 		{
-			return this.optDouble(index, double.NaN);
+			return this.OptDouble(index, double.NaN);
 		}
 
 		/// <summary>Get the optional double value associated with an index.</summary>
@@ -451,11 +451,11 @@ namespace org.json
 		/// <param name="index">subscript</param>
 		/// <param name="defaultValue">The default value.</param>
 		/// <returns>The value.</returns>
-		public virtual double optDouble(int index, double defaultValue)
+		public virtual double OptDouble(int index, double defaultValue)
 		{
 			try
 			{
-				return this.getDouble(index);
+				return this.GetDouble(index);
 			}
 			catch (System.Exception)
 			{
@@ -471,9 +471,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>The value.</returns>
-		public virtual int optInt(int index)
+		public virtual int OptInt(int index)
 		{
-			return this.optInt(index, 0);
+			return this.OptInt(index, 0);
 		}
 
 		/// <summary>Get the optional int value associated with an index.</summary>
@@ -485,11 +485,11 @@ namespace org.json
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <param name="defaultValue">The default value.</param>
 		/// <returns>The value.</returns>
-		public virtual int optInt(int index, int defaultValue)
+		public virtual int OptInt(int index, int defaultValue)
 		{
 			try
 			{
-				return this.getInt(index);
+				return this.GetInt(index);
 			}
 			catch (System.Exception)
 			{
@@ -503,9 +503,9 @@ namespace org.json
 		/// A JSONArray value, or null if the index has no value, or if the
 		/// value is not a JSONArray.
 		/// </returns>
-		public virtual org.json.JSONArray optJSONArray(int index)
+		public virtual org.json.JSONArray OptJSONArray(int index)
 		{
-			object o = this.opt(index);
+			object o = this.Opt(index);
 			return o is org.json.JSONArray ? (org.json.JSONArray)o : null;
 		}
 
@@ -517,9 +517,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>A JSONObject value.</returns>
-		public virtual org.json.JSONObject optJSONObject(int index)
+		public virtual org.json.JSONObject OptJSONObject(int index)
 		{
-			object o = this.opt(index);
+			object o = this.Opt(index);
 			return o is org.json.JSONObject ? (org.json.JSONObject)o : null;
 		}
 
@@ -531,9 +531,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>The value.</returns>
-		public virtual long optLong(int index)
+		public virtual long OptLong(int index)
 		{
-			return this.optLong(index, 0);
+			return this.OptLong(index, 0);
 		}
 
 		/// <summary>Get the optional long value associated with an index.</summary>
@@ -545,11 +545,11 @@ namespace org.json
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <param name="defaultValue">The default value.</param>
 		/// <returns>The value.</returns>
-		public virtual long optLong(int index, long defaultValue)
+		public virtual long OptLong(int index, long defaultValue)
 		{
 			try
 			{
-				return this.getLong(index);
+				return this.GetLong(index);
 			}
 			catch (System.Exception)
 			{
@@ -565,9 +565,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>A String value.</returns>
-		public virtual string optString(int index)
+		public virtual string OptString(int index)
 		{
-			return this.optString(index, string.Empty);
+			return this.OptString(index, string.Empty);
 		}
 
 		/// <summary>Get the optional string associated with an index.</summary>
@@ -578,9 +578,9 @@ namespace org.json
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <param name="defaultValue">The default value.</param>
 		/// <returns>A String value.</returns>
-		public virtual string optString(int index, string defaultValue)
+		public virtual string OptString(int index, string defaultValue)
 		{
-			object @object = this.opt(index);
+			object @object = this.Opt(index);
 			return org.json.JSONObject.NULL.Equals(@object) ? defaultValue : @object.ToString
 				();
 		}
@@ -589,9 +589,9 @@ namespace org.json
 		/// <remarks>Append a boolean value. This increases the array's length by one.</remarks>
 		/// <param name="value">A boolean value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray put(bool value)
+		public virtual org.json.JSONArray Put(bool value)
 		{
-			this.put(value ? true : false);
+			this.Put(value ? true : false);
 			return this;
 		}
 
@@ -601,10 +601,10 @@ namespace org.json
 		/// </summary>
 		/// <param name="value">A Collection value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray put(System.Collections.Generic.ICollection<object
+		public virtual org.json.JSONArray Put(System.Collections.Generic.ICollection<object
 			> value)
 		{
-			this.put(new org.json.JSONArray(value));
+			this.Put(new org.json.JSONArray(value));
 			return this;
 		}
 
@@ -614,11 +614,11 @@ namespace org.json
 		/// <exception cref="JSONException">if the value is not finite.</exception>
 		/// <returns>this.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(double value)
+		public virtual org.json.JSONArray Put(double value)
 		{
 			double d = value;
-			org.json.JSONObject.testValidity(d);
-			this.put(d);
+			org.json.JSONObject.TestValidity(d);
+			this.Put(d);
 			return this;
 		}
 
@@ -626,9 +626,9 @@ namespace org.json
 		/// <remarks>Append an int value. This increases the array's length by one.</remarks>
 		/// <param name="value">An int value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray put(int value)
+		public virtual org.json.JSONArray Put(int value)
 		{
-			this.put(value);
+			this.Put(value);
 			return this;
 		}
 
@@ -636,9 +636,9 @@ namespace org.json
 		/// <remarks>Append an long value. This increases the array's length by one.</remarks>
 		/// <param name="value">A long value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray put(long value)
+		public virtual org.json.JSONArray Put(long value)
 		{
-			this.put(value);
+			this.Put(value);
 			return this;
 		}
 
@@ -648,10 +648,10 @@ namespace org.json
 		/// </summary>
 		/// <param name="value">A Map value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray put(System.Collections.Generic.IDictionary<string
+		public virtual org.json.JSONArray Put(System.Collections.Generic.IDictionary<string
 			, object> value)
 		{
-			this.put(new org.json.JSONObject(value));
+			this.Put(new org.json.JSONObject(value));
 			return this;
 		}
 
@@ -663,9 +663,9 @@ namespace org.json
 		/// JSONObject.NULL object.
 		/// </param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray put(object value)
+		public virtual org.json.JSONArray Put(object value)
 		{
-			this.myArrayList.add(value);
+			this.myArrayList.Add(value);
 			return this;
 		}
 
@@ -680,9 +680,9 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the index is negative.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, bool value)
+		public virtual org.json.JSONArray Put(int index, bool value)
 		{
-			this.put(index, value ? true : false);
+			this.Put(index, value ? true : false);
 			return this;
 		}
 
@@ -696,10 +696,10 @@ namespace org.json
 		/// <exception cref="JSONException">If the index is negative or if the value is not finite.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, System.Collections.Generic.ICollection
+		public virtual org.json.JSONArray Put(int index, System.Collections.Generic.ICollection
 			<object> value)
 		{
-			this.put(index, new org.json.JSONArray(value));
+			this.Put(index, new org.json.JSONArray(value));
 			return this;
 		}
 
@@ -715,9 +715,9 @@ namespace org.json
 		/// <exception cref="JSONException">If the index is negative or if the value is not finite.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, double value)
+		public virtual org.json.JSONArray Put(int index, double value)
 		{
-			this.put(index, value);
+			this.Put(index, value);
 			return this;
 		}
 
@@ -732,9 +732,9 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the index is negative.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, int value)
+		public virtual org.json.JSONArray Put(int index, int value)
 		{
-			this.put(index, value);
+			this.Put(index, value);
 			return this;
 		}
 
@@ -749,9 +749,9 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the index is negative.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, long value)
+		public virtual org.json.JSONArray Put(int index, long value)
 		{
-			this.put(index, value);
+			this.Put(index, value);
 			return this;
 		}
 
@@ -767,10 +767,10 @@ namespace org.json
 		/// number.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, System.Collections.Generic.IDictionary
+		public virtual org.json.JSONArray Put(int index, System.Collections.Generic.IDictionary
 			<string, object> value)
 		{
-			this.put(index, new org.json.JSONObject(value));
+			this.Put(index, new org.json.JSONObject(value));
 			return this;
 		}
 
@@ -792,24 +792,24 @@ namespace org.json
 		/// number.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray put(int index, object value)
+		public virtual org.json.JSONArray Put(int index, object value)
 		{
-			org.json.JSONObject.testValidity(value);
+			org.json.JSONObject.TestValidity(value);
 			if (index < 0)
 			{
 				throw new org.json.JSONException("JSONArray[" + index + "] not found.");
 			}
-			if (index < this.length())
+			if (index < this.Length())
 			{
-				this.myArrayList.set(index, value);
+				this.myArrayList.Set(index, value);
 			}
 			else
 			{
-				while (index != this.length())
+				while (index != this.Length())
 				{
-					this.put(org.json.JSONObject.NULL);
+					this.Put(org.json.JSONObject.NULL);
 				}
-				this.put(value);
+				this.Put(value);
 			}
 			return this;
 		}
@@ -820,9 +820,9 @@ namespace org.json
 		/// The value that was associated with the index, or null if there
 		/// was no value.
 		/// </returns>
-		public virtual object remove(int index)
+		public virtual object Remove(int index)
 		{
-			return index >= 0 && index < this.length() ? this.myArrayList.remove(index) : null;
+			return index >= 0 && index < this.Length() ? this.myArrayList.Remove(index) : null;
 		}
 
 		/// <summary>Determine if two JSONArrays are similar.</summary>
@@ -832,24 +832,24 @@ namespace org.json
 		/// </remarks>
 		/// <param name="other">The other JSONArray</param>
 		/// <returns>true if they are equal</returns>
-		public virtual bool similar(object other)
+		public virtual bool Similar(object other)
 		{
 			if (!(other is org.json.JSONArray))
 			{
 				return false;
 			}
-			int len = this.length();
-			if (len != ((org.json.JSONArray)other).length())
+			int len = this.Length();
+			if (len != ((org.json.JSONArray)other).Length())
 			{
 				return false;
 			}
 			for (int i = 0; i < len; i += 1)
 			{
-				object valueThis = this.get(i);
-				object valueOther = ((org.json.JSONArray)other).get(i);
+				object valueThis = this.Get(i);
+				object valueOther = ((org.json.JSONArray)other).Get(i);
 				if (valueThis is org.json.JSONObject)
 				{
-					if (!((org.json.JSONObject)valueThis).similar(valueOther))
+					if (!((org.json.JSONObject)valueThis).Similar(valueOther))
 					{
 						return false;
 					}
@@ -858,7 +858,7 @@ namespace org.json
 				{
 					if (valueThis is org.json.JSONArray)
 					{
-						if (!((org.json.JSONArray)valueThis).similar(valueOther))
+						if (!((org.json.JSONArray)valueThis).Similar(valueOther))
 						{
 							return false;
 						}
@@ -889,16 +889,16 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException">If any of the names are null.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONObject toJSONObject(org.json.JSONArray names)
+		public virtual org.json.JSONObject ToJSONObject(org.json.JSONArray names)
 		{
-			if (names == null || names.length() == 0 || this.length() == 0)
+			if (names == null || names.Length() == 0 || this.Length() == 0)
 			{
 				return null;
 			}
 			org.json.JSONObject jo = new org.json.JSONObject();
-			for (int i = 0; i < names.length(); i += 1)
+			for (int i = 0; i < names.Length(); i += 1)
 			{
-				jo.put(names.getString(i), this.opt(i));
+				jo.Put(names.GetString(i), this.Opt(i));
 			}
 			return jo;
 		}
@@ -920,7 +920,7 @@ namespace org.json
 		{
 			try
 			{
-				return this.toString(0);
+				return this.ToString(0);
 			}
 			catch (System.Exception)
 			{
@@ -943,12 +943,12 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string toString(int indentFactor)
+		public virtual string ToString(int indentFactor)
 		{
 			System.IO.StringWriter sw = new System.IO.StringWriter();
-			lock (sw.getBuffer())
+			lock (sw.GetBuffer())
 			{
-				return this.write(sw, indentFactor, 0).ToString();
+				return this.Write(sw, indentFactor, 0).ToString();
 			}
 		}
 
@@ -962,9 +962,9 @@ namespace org.json
 		/// <returns>The writer.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual System.IO.TextWriter write(System.IO.TextWriter writer)
+		public virtual System.IO.TextWriter Write(System.IO.TextWriter writer)
 		{
-			return this.write(writer, 0, 0);
+			return this.Write(writer, 0, 0);
 		}
 
 		/// <summary>Write the contents of the JSONArray as JSON text to a writer.</summary>
@@ -980,17 +980,17 @@ namespace org.json
 		/// <returns>The writer.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		internal virtual System.IO.TextWriter write(System.IO.TextWriter writer, int indentFactor
+		internal virtual System.IO.TextWriter Write(System.IO.TextWriter writer, int indentFactor
 			, int indent)
 		{
 			try
 			{
 				bool commanate = false;
-				int length = this.length();
-				writer.write('[');
+				int length = this.Length();
+				writer.Write('[');
 				if (length == 1)
 				{
-					org.json.JSONObject.writeValue(writer, this.myArrayList[0], indentFactor, indent);
+					org.json.JSONObject.WriteValue(writer, this.myArrayList[0], indentFactor, indent);
 				}
 				else
 				{
@@ -1001,25 +1001,25 @@ namespace org.json
 						{
 							if (commanate)
 							{
-								writer.write(',');
+								writer.Write(',');
 							}
 							if (indentFactor > 0)
 							{
-								writer.write('\n');
+								writer.Write('\n');
 							}
-							org.json.JSONObject.indent(writer, newindent);
-							org.json.JSONObject.writeValue(writer, this.myArrayList[i], indentFactor, newindent
+							org.json.JSONObject.Indent(writer, newindent);
+							org.json.JSONObject.WriteValue(writer, this.myArrayList[i], indentFactor, newindent
 								);
 							commanate = true;
 						}
 						if (indentFactor > 0)
 						{
-							writer.write('\n');
+							writer.Write('\n');
 						}
-						org.json.JSONObject.indent(writer, indent);
+						org.json.JSONObject.Indent(writer, indent);
 					}
 				}
-				writer.write(']');
+				writer.Write(']');
 				return writer;
 			}
 			catch (System.IO.IOException e)

@@ -71,9 +71,9 @@ namespace org.json
 		/// </summary>
 		/// <param name="string">The string to be escaped.</param>
 		/// <returns>The escaped string.</returns>
-		public static string escape(string @string)
+		public static string Escape(string @string)
 		{
-			java.lang.StringBuilder sb = new java.lang.StringBuilder(@string.Length);
+			System.Text.StringBuilder sb = new System.Text.StringBuilder(@string.Length);
 			for (int i = 0; i < length; i++)
 			{
 				char c = @string[i];
@@ -127,7 +127,7 @@ namespace org.json
 		/// <param name="string">A string.</param>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static void noSpace(string @string)
+		public static void NoSpace(string @string)
 		{
 			int i;
 			int length = @string.Length;
@@ -151,7 +151,7 @@ namespace org.json
 		/// <returns>true if the close tag is processed.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		private static bool parse(org.json.XMLTokener x, org.json.JSONObject context, string
+		private static bool Parse(org.json.XMLTokener x, org.json.JSONObject context, string
 			 name)
 		{
 			char c;
@@ -169,47 +169,47 @@ namespace org.json
 			//      <>
 			//      <=
 			//      <<
-			token = x.nextToken();
+			token = x.NextToken();
 			// <!
 			if (token == BANG)
 			{
-				c = x.next();
+				c = x.Next();
 				if (c == '-')
 				{
-					if (x.next() == '-')
+					if (x.Next() == '-')
 					{
-						x.skipPast("-->");
+						x.SkipPast("-->");
 						return false;
 					}
-					x.back();
+					x.Back();
 				}
 				else
 				{
 					if (c == '[')
 					{
-						token = x.nextToken();
+						token = x.NextToken();
 						if ("CDATA".Equals(token))
 						{
-							if (x.next() == '[')
+							if (x.Next() == '[')
 							{
-								@string = x.nextCDATA();
+								@string = x.NextCDATA();
 								if (@string.Length > 0)
 								{
-									context.accumulate("content", @string);
+									context.Accumulate("content", @string);
 								}
 								return false;
 							}
 						}
-						throw x.syntaxError("Expected 'CDATA['");
+						throw x.SyntaxError("Expected 'CDATA['");
 					}
 				}
 				i = 1;
 				do
 				{
-					token = x.nextMeta();
+					token = x.NextMeta();
 					if (token == null)
 					{
-						throw x.syntaxError("Missing '>' after '<!'.");
+						throw x.SyntaxError("Missing '>' after '<!'.");
 					}
 					else
 					{
@@ -234,7 +234,7 @@ namespace org.json
 				if (token == QUEST)
 				{
 					// <?
-					x.skipPast("?>");
+					x.SkipPast("?>");
 					return false;
 				}
 				else
@@ -242,18 +242,18 @@ namespace org.json
 					if (token == SLASH)
 					{
 						// Close tag </
-						token = x.nextToken();
+						token = x.NextToken();
 						if (name == null)
 						{
-							throw x.syntaxError("Mismatched close tag " + token);
+							throw x.SyntaxError("Mismatched close tag " + token);
 						}
 						if (!token.Equals(name))
 						{
-							throw x.syntaxError("Mismatched " + name + " and " + token);
+							throw x.SyntaxError("Mismatched " + name + " and " + token);
 						}
-						if (x.nextToken() != GT)
+						if (x.NextToken() != GT)
 						{
-							throw x.syntaxError("Misshaped close tag");
+							throw x.SyntaxError("Misshaped close tag");
 						}
 						return true;
 					}
@@ -261,7 +261,7 @@ namespace org.json
 					{
 						if (token is char)
 						{
-							throw x.syntaxError("Misshaped tag");
+							throw x.SyntaxError("Misshaped tag");
 						}
 						else
 						{
@@ -273,26 +273,26 @@ namespace org.json
 							{
 								if (token == null)
 								{
-									token = x.nextToken();
+									token = x.NextToken();
 								}
 								// attribute = value
 								if (token is string)
 								{
 									@string = (string)token;
-									token = x.nextToken();
+									token = x.NextToken();
 									if (token == EQ)
 									{
-										token = x.nextToken();
+										token = x.NextToken();
 										if (!(token is string))
 										{
-											throw x.syntaxError("Missing value");
+											throw x.SyntaxError("Missing value");
 										}
-										jsonobject.accumulate(@string, org.json.XML.stringToValue((string)token));
+										jsonobject.Accumulate(@string, org.json.XML.StringToValue((string)token));
 										token = null;
 									}
 									else
 									{
-										jsonobject.accumulate(@string, string.Empty);
+										jsonobject.Accumulate(@string, string.Empty);
 									}
 								}
 								else
@@ -300,17 +300,17 @@ namespace org.json
 									// Empty tag <.../>
 									if (token == SLASH)
 									{
-										if (x.nextToken() != GT)
+										if (x.NextToken() != GT)
 										{
-											throw x.syntaxError("Misshaped tag");
+											throw x.SyntaxError("Misshaped tag");
 										}
-										if (jsonobject.length() > 0)
+										if (jsonobject.Length() > 0)
 										{
-											context.accumulate(tagName, jsonobject);
+											context.Accumulate(tagName, jsonobject);
 										}
 										else
 										{
-											context.accumulate(tagName, string.Empty);
+											context.Accumulate(tagName, string.Empty);
 										}
 										return false;
 									}
@@ -321,12 +321,12 @@ namespace org.json
 										{
 											for (; ; )
 											{
-												token = x.nextContent();
+												token = x.NextContent();
 												if (token == null)
 												{
 													if (tagName != null)
 													{
-														throw x.syntaxError("Unclosed tag " + tagName);
+														throw x.SyntaxError("Unclosed tag " + tagName);
 													}
 													return false;
 												}
@@ -337,7 +337,7 @@ namespace org.json
 														@string = (string)token;
 														if (@string.Length > 0)
 														{
-															jsonobject.accumulate("content", org.json.XML.stringToValue(@string));
+															jsonobject.Accumulate("content", org.json.XML.StringToValue(@string));
 														}
 													}
 													else
@@ -345,21 +345,21 @@ namespace org.json
 														// Nested element
 														if (token == LT)
 														{
-															if (parse(x, jsonobject, tagName))
+															if (Parse(x, jsonobject, tagName))
 															{
-																if (jsonobject.length() == 0)
+																if (jsonobject.Length() == 0)
 																{
-																	context.accumulate(tagName, string.Empty);
+																	context.Accumulate(tagName, string.Empty);
 																}
 																else
 																{
-																	if (jsonobject.length() == 1 && jsonobject.opt("content") != null)
+																	if (jsonobject.Length() == 1 && jsonobject.Opt("content") != null)
 																	{
-																		context.accumulate(tagName, jsonobject.opt("content"));
+																		context.Accumulate(tagName, jsonobject.Opt("content"));
 																	}
 																	else
 																	{
-																		context.accumulate(tagName, jsonobject);
+																		context.Accumulate(tagName, jsonobject);
 																	}
 																}
 																return false;
@@ -371,7 +371,7 @@ namespace org.json
 										}
 										else
 										{
-											throw x.syntaxError("Misshaped tag");
+											throw x.SyntaxError("Misshaped tag");
 										}
 									}
 								}
@@ -392,17 +392,17 @@ namespace org.json
 		/// </remarks>
 		/// <param name="string">A String.</param>
 		/// <returns>A simple JSON value.</returns>
-		public static object stringToValue(string @string)
+		public static object StringToValue(string @string)
 		{
-			if (Sharpen.Runtime.equalsIgnoreCase("true", @string))
+			if (Sharpen.Runtime.EqualsIgnoreCase("true", @string))
 			{
 				return true;
 			}
-			if (Sharpen.Runtime.equalsIgnoreCase("false", @string))
+			if (Sharpen.Runtime.EqualsIgnoreCase("false", @string))
 			{
 				return false;
 			}
-			if (Sharpen.Runtime.equalsIgnoreCase("null", @string))
+			if (Sharpen.Runtime.EqualsIgnoreCase("null", @string))
 			{
 				return org.json.JSONObject.NULL;
 			}
@@ -456,13 +456,13 @@ namespace org.json
 		/// <returns>A JSONObject containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject toJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
 			org.json.JSONObject jo = new org.json.JSONObject();
 			org.json.XMLTokener x = new org.json.XMLTokener(@string);
-			while (x.more() && x.skipPast("<"))
+			while (x.More() && x.SkipPast("<"))
 			{
-				parse(x, jo, null);
+				Parse(x, jo, null);
 			}
 			return jo;
 		}
@@ -472,9 +472,9 @@ namespace org.json
 		/// <returns>A string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string toString(object @object)
+		public static string ToString(object @object)
 		{
-			return toString(@object, null);
+			return ToString(@object, null);
 		}
 
 		/// <summary>Convert a JSONObject into a well-formed, element-normal XML string.</summary>
@@ -483,9 +483,9 @@ namespace org.json
 		/// <returns>A string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string toString(object @object, string tagName)
+		public static string ToString(object @object, string tagName)
 		{
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			int i;
 			org.json.JSONArray ja;
 			org.json.JSONObject jo;
@@ -505,11 +505,11 @@ namespace org.json
 				}
 				// Loop thru the keys.
 				jo = (org.json.JSONObject)@object;
-				keys = jo.keys();
-				while (keys.MoveNext())
+				keys = jo.Keys();
+				while (keys.HasNext())
 				{
-					key = keys.Current;
-					value = jo.opt(key);
+					key = keys.Next();
+					value = jo.Opt(key);
 					if (value == null)
 					{
 						value = string.Empty;
@@ -521,19 +521,19 @@ namespace org.json
 						if (value is org.json.JSONArray)
 						{
 							ja = (org.json.JSONArray)value;
-							length = ja.length();
+							length = ja.Length();
 							for (i = 0; i < length; i += 1)
 							{
 								if (i > 0)
 								{
 									sb.Append('\n');
 								}
-								sb.Append(escape(ja.get(i).ToString()));
+								sb.Append(Escape(ja.Get(i).ToString()));
 							}
 						}
 						else
 						{
-							sb.Append(escape(value.ToString()));
+							sb.Append(Escape(value.ToString()));
 						}
 					}
 					else
@@ -542,23 +542,23 @@ namespace org.json
 						if (value is org.json.JSONArray)
 						{
 							ja = (org.json.JSONArray)value;
-							length = ja.length();
+							length = ja.Length();
 							for (i = 0; i < length; i += 1)
 							{
-								value = ja.get(i);
+								value = ja.Get(i);
 								if (value is org.json.JSONArray)
 								{
 									sb.Append('<');
 									sb.Append(key);
 									sb.Append('>');
-									sb.Append(toString(value));
+									sb.Append(ToString(value));
 									sb.Append("</");
 									sb.Append(key);
 									sb.Append('>');
 								}
 								else
 								{
-									sb.Append(toString(value, key));
+									sb.Append(ToString(value, key));
 								}
 							}
 						}
@@ -573,7 +573,7 @@ namespace org.json
 							else
 							{
 								// Emit a new tag <k>
-								sb.Append(toString(value, key));
+								sb.Append(ToString(value, key));
 							}
 						}
 					}
@@ -591,23 +591,23 @@ namespace org.json
 			{
 				// XML does not have good support for arrays. If an array appears in a place
 				// where XML is lacking, synthesize an <array> element.
-				if (Sharpen.Runtime.getClassForObject(@object).isArray())
+				if (Sharpen.Runtime.GetClassForObject(@object).IsArray())
 				{
 					@object = new org.json.JSONArray(@object);
 				}
 				if (@object is org.json.JSONArray)
 				{
 					ja = (org.json.JSONArray)@object;
-					length = ja.length();
+					length = ja.Length();
 					for (i = 0; i < length; i += 1)
 					{
-						sb.Append(toString(ja.opt(i), tagName == null ? "array" : tagName));
+						sb.Append(ToString(ja.Opt(i), tagName == null ? "array" : tagName));
 					}
 					return sb.ToString();
 				}
 				else
 				{
-					@string = (@object == null) ? "null" : escape(@object.ToString());
+					@string = (@object == null) ? "null" : Escape(@object.ToString());
 					return (tagName == null) ? "\"" + @string + "\"" : (@string.Length == 0) ? "<" + 
 						tagName + "/>" : "<" + tagName + ">" + @string + "</" + tagName + ">";
 				}

@@ -44,7 +44,7 @@ namespace org.json
 		/// <returns>A JSONArray if the value is the outermost tag, otherwise null.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		private static object parse(org.json.XMLTokener x, bool arrayForm, org.json.JSONArray
+		private static object Parse(org.json.XMLTokener x, bool arrayForm, org.json.JSONArray
 			 ja)
 		{
 			string attribute;
@@ -62,28 +62,28 @@ namespace org.json
 			//      <?   ...  ?>
 			while (true)
 			{
-				if (!x.more())
+				if (!x.More())
 				{
-					throw x.syntaxError("Bad XML");
+					throw x.SyntaxError("Bad XML");
 				}
-				token = x.nextContent();
+				token = x.NextContent();
 				if (token == org.json.XML.LT)
 				{
-					token = x.nextToken();
+					token = x.NextToken();
 					if (token is char)
 					{
 						if (token == org.json.XML.SLASH)
 						{
 							// Close tag </
-							token = x.nextToken();
+							token = x.NextToken();
 							if (!(token is string))
 							{
 								throw new org.json.JSONException("Expected a closing name instead of '" + token +
 									 "'.");
 							}
-							if (x.nextToken() != org.json.XML.GT)
+							if (x.NextToken() != org.json.XML.GT)
 							{
-								throw x.syntaxError("Misshaped close tag");
+								throw x.SyntaxError("Misshaped close tag");
 							}
 							return token;
 						}
@@ -92,33 +92,33 @@ namespace org.json
 							if (token == org.json.XML.BANG)
 							{
 								// <!
-								c = x.next();
+								c = x.Next();
 								if (c == '-')
 								{
-									if (x.next() == '-')
+									if (x.Next() == '-')
 									{
-										x.skipPast("-->");
+										x.SkipPast("-->");
 									}
 									else
 									{
-										x.back();
+										x.Back();
 									}
 								}
 								else
 								{
 									if (c == '[')
 									{
-										token = x.nextToken();
-										if (token.Equals("CDATA") && x.next() == '[')
+										token = x.NextToken();
+										if (token.Equals("CDATA") && x.Next() == '[')
 										{
 											if (ja != null)
 											{
-												ja.put(x.nextCDATA());
+												ja.Put(x.NextCDATA());
 											}
 										}
 										else
 										{
-											throw x.syntaxError("Expected 'CDATA['");
+											throw x.SyntaxError("Expected 'CDATA['");
 										}
 									}
 									else
@@ -126,10 +126,10 @@ namespace org.json
 										i = 1;
 										do
 										{
-											token = x.nextMeta();
+											token = x.NextMeta();
 											if (token == null)
 											{
-												throw x.syntaxError("Missing '>' after '<!'.");
+												throw x.SyntaxError("Missing '>' after '<!'.");
 											}
 											else
 											{
@@ -155,11 +155,11 @@ namespace org.json
 								if (token == org.json.XML.QUEST)
 								{
 									// <?
-									x.skipPast("?>");
+									x.SkipPast("?>");
 								}
 								else
 								{
-									throw x.syntaxError("Misshaped tag");
+									throw x.SyntaxError("Misshaped tag");
 								}
 							}
 						}
@@ -169,25 +169,25 @@ namespace org.json
 						// Open tag <
 						if (!(token is string))
 						{
-							throw x.syntaxError("Bad tagName '" + token + "'.");
+							throw x.SyntaxError("Bad tagName '" + token + "'.");
 						}
 						tagName = (string)token;
 						newja = new org.json.JSONArray();
 						newjo = new org.json.JSONObject();
 						if (arrayForm)
 						{
-							newja.put(tagName);
+							newja.Put(tagName);
 							if (ja != null)
 							{
-								ja.put(newja);
+								ja.Put(newja);
 							}
 						}
 						else
 						{
-							newjo.put("tagName", tagName);
+							newjo.Put("tagName", tagName);
 							if (ja != null)
 							{
-								ja.put(newjo);
+								ja.Put(newjo);
 							}
 						}
 						token = null;
@@ -195,11 +195,11 @@ namespace org.json
 						{
 							if (token == null)
 							{
-								token = x.nextToken();
+								token = x.NextToken();
 							}
 							if (token == null)
 							{
-								throw x.syntaxError("Misshaped tag");
+								throw x.SyntaxError("Misshaped tag");
 							}
 							if (!(token is string))
 							{
@@ -209,34 +209,34 @@ namespace org.json
 							attribute = (string)token;
 							if (!arrayForm && ("tagName".Equals(attribute) || "childNode".Equals(attribute)))
 							{
-								throw x.syntaxError("Reserved attribute.");
+								throw x.SyntaxError("Reserved attribute.");
 							}
-							token = x.nextToken();
+							token = x.NextToken();
 							if (token == org.json.XML.EQ)
 							{
-								token = x.nextToken();
+								token = x.NextToken();
 								if (!(token is string))
 								{
-									throw x.syntaxError("Missing value");
+									throw x.SyntaxError("Missing value");
 								}
-								newjo.accumulate(attribute, org.json.XML.stringToValue((string)token));
+								newjo.Accumulate(attribute, org.json.XML.StringToValue((string)token));
 								token = null;
 							}
 							else
 							{
-								newjo.accumulate(attribute, string.Empty);
+								newjo.Accumulate(attribute, string.Empty);
 							}
 						}
-						if (arrayForm && newjo.length() > 0)
+						if (arrayForm && newjo.Length() > 0)
 						{
-							newja.put(newjo);
+							newja.Put(newjo);
 						}
 						// Empty tag <.../>
 						if (token == org.json.XML.SLASH)
 						{
-							if (x.nextToken() != org.json.XML.GT)
+							if (x.NextToken() != org.json.XML.GT)
 							{
-								throw x.syntaxError("Misshaped tag");
+								throw x.SyntaxError("Misshaped tag");
 							}
 							if (ja == null)
 							{
@@ -255,19 +255,19 @@ namespace org.json
 							// Content, between <...> and </...>
 							if (token != org.json.XML.GT)
 							{
-								throw x.syntaxError("Misshaped tag");
+								throw x.SyntaxError("Misshaped tag");
 							}
-							closeTag = (string)parse(x, arrayForm, newja);
+							closeTag = (string)Parse(x, arrayForm, newja);
 							if (closeTag != null)
 							{
 								if (!closeTag.Equals(tagName))
 								{
-									throw x.syntaxError("Mismatched '" + tagName + "' and '" + closeTag + "'");
+									throw x.SyntaxError("Mismatched '" + tagName + "' and '" + closeTag + "'");
 								}
 								tagName = null;
-								if (!arrayForm && newja.length() > 0)
+								if (!arrayForm && newja.Length() > 0)
 								{
-									newjo.put("childNodes", newja);
+									newjo.Put("childNodes", newja);
 								}
 								if (ja == null)
 								{
@@ -288,7 +288,7 @@ namespace org.json
 				{
 					if (ja != null)
 					{
-						ja.put(token is string ? org.json.XML.stringToValue((string)token) : token);
+						ja.Put(token is string ? org.json.XML.StringToValue((string)token) : token);
 					}
 				}
 			}
@@ -311,9 +311,9 @@ namespace org.json
 		/// <returns>A JSONArray containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONArray toJSONArray(string @string)
+		public static org.json.JSONArray ToJSONArray(string @string)
 		{
-			return toJSONArray(new org.json.XMLTokener(@string));
+			return ToJSONArray(new org.json.XMLTokener(@string));
 		}
 
 		/// <summary>
@@ -333,9 +333,9 @@ namespace org.json
 		/// <returns>A JSONArray containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONArray toJSONArray(org.json.XMLTokener x)
+		public static org.json.JSONArray ToJSONArray(org.json.XMLTokener x)
 		{
-			return (org.json.JSONArray)parse(x, true, null);
+			return (org.json.JSONArray)Parse(x, true, null);
 		}
 
 		/// <summary>
@@ -355,9 +355,9 @@ namespace org.json
 		/// <returns>A JSONObject containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject toJSONObject(org.json.XMLTokener x)
+		public static org.json.JSONObject ToJSONObject(org.json.XMLTokener x)
 		{
-			return (org.json.JSONObject)parse(x, false, null);
+			return (org.json.JSONObject)Parse(x, false, null);
 		}
 
 		/// <summary>
@@ -377,9 +377,9 @@ namespace org.json
 		/// <returns>A JSONObject containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject toJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
-			return toJSONObject(new org.json.XMLTokener(@string));
+			return ToJSONObject(new org.json.XMLTokener(@string));
 		}
 
 		/// <summary>Reverse the JSONML transformation, making an XML text from a JSONArray.</summary>
@@ -387,7 +387,7 @@ namespace org.json
 		/// <returns>An XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string toString(org.json.JSONArray ja)
+		public static string ToString(org.json.JSONArray ja)
 		{
 			int i;
 			org.json.JSONObject jo;
@@ -395,34 +395,34 @@ namespace org.json
 			System.Collections.Generic.IEnumerator<string> keys;
 			int length;
 			object @object;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			string tagName;
 			string value;
 			// Emit <tagName
-			tagName = ja.getString(0);
-			org.json.XML.noSpace(tagName);
-			tagName = org.json.XML.escape(tagName);
+			tagName = ja.GetString(0);
+			org.json.XML.NoSpace(tagName);
+			tagName = org.json.XML.Escape(tagName);
 			sb.Append('<');
 			sb.Append(tagName);
-			@object = ja.opt(1);
+			@object = ja.Opt(1);
 			if (@object is org.json.JSONObject)
 			{
 				i = 2;
 				jo = (org.json.JSONObject)@object;
 				// Emit the attributes
-				keys = jo.keys();
-				while (keys.MoveNext())
+				keys = jo.Keys();
+				while (keys.HasNext())
 				{
-					key = keys.Current;
-					org.json.XML.noSpace(key);
-					value = jo.optString(key);
+					key = keys.Next();
+					org.json.XML.NoSpace(key);
+					value = jo.OptString(key);
 					if (value != null)
 					{
 						sb.Append(' ');
-						sb.Append(org.json.XML.escape(key));
+						sb.Append(org.json.XML.Escape(key));
 						sb.Append('=');
 						sb.Append('"');
-						sb.Append(org.json.XML.escape(value));
+						sb.Append(org.json.XML.Escape(value));
 						sb.Append('"');
 					}
 				}
@@ -432,7 +432,7 @@ namespace org.json
 				i = 1;
 			}
 			// Emit content in body
-			length = ja.length();
+			length = ja.Length();
 			if (i >= length)
 			{
 				sb.Append('/');
@@ -443,25 +443,25 @@ namespace org.json
 				sb.Append('>');
 				do
 				{
-					@object = ja.get(i);
+					@object = ja.Get(i);
 					i += 1;
 					if (@object != null)
 					{
 						if (@object is string)
 						{
-							sb.Append(org.json.XML.escape(@object.ToString()));
+							sb.Append(org.json.XML.Escape(@object.ToString()));
 						}
 						else
 						{
 							if (@object is org.json.JSONObject)
 							{
-								sb.Append(toString((org.json.JSONObject)@object));
+								sb.Append(ToString((org.json.JSONObject)@object));
 							}
 							else
 							{
 								if (@object is org.json.JSONArray)
 								{
-									sb.Append(toString((org.json.JSONArray)@object));
+									sb.Append(ToString((org.json.JSONArray)@object));
 								}
 								else
 								{
@@ -492,9 +492,9 @@ namespace org.json
 		/// <returns>An XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string toString(org.json.JSONObject jo)
+		public static string ToString(org.json.JSONObject jo)
 		{
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			int i;
 			org.json.JSONArray ja;
 			string key;
@@ -504,37 +504,37 @@ namespace org.json
 			string tagName;
 			string value;
 			//Emit <tagName
-			tagName = jo.optString("tagName");
+			tagName = jo.OptString("tagName");
 			if (tagName == null)
 			{
-				return org.json.XML.escape(jo.ToString());
+				return org.json.XML.Escape(jo.ToString());
 			}
-			org.json.XML.noSpace(tagName);
-			tagName = org.json.XML.escape(tagName);
+			org.json.XML.NoSpace(tagName);
+			tagName = org.json.XML.Escape(tagName);
 			sb.Append('<');
 			sb.Append(tagName);
 			//Emit the attributes
-			keys = jo.keys();
-			while (keys.MoveNext())
+			keys = jo.Keys();
+			while (keys.HasNext())
 			{
-				key = keys.Current;
+				key = keys.Next();
 				if (!"tagName".Equals(key) && !"childNodes".Equals(key))
 				{
-					org.json.XML.noSpace(key);
-					value = jo.optString(key);
+					org.json.XML.NoSpace(key);
+					value = jo.OptString(key);
 					if (value != null)
 					{
 						sb.Append(' ');
-						sb.Append(org.json.XML.escape(key));
+						sb.Append(org.json.XML.Escape(key));
 						sb.Append('=');
 						sb.Append('"');
-						sb.Append(org.json.XML.escape(value));
+						sb.Append(org.json.XML.Escape(value));
 						sb.Append('"');
 					}
 				}
 			}
 			//Emit content in body
-			ja = jo.optJSONArray("childNodes");
+			ja = jo.OptJSONArray("childNodes");
 			if (ja == null)
 			{
 				sb.Append('/');
@@ -543,27 +543,27 @@ namespace org.json
 			else
 			{
 				sb.Append('>');
-				length = ja.length();
+				length = ja.Length();
 				for (i = 0; i < length; i += 1)
 				{
-					@object = ja.get(i);
+					@object = ja.Get(i);
 					if (@object != null)
 					{
 						if (@object is string)
 						{
-							sb.Append(org.json.XML.escape(@object.ToString()));
+							sb.Append(org.json.XML.Escape(@object.ToString()));
 						}
 						else
 						{
 							if (@object is org.json.JSONObject)
 							{
-								sb.Append(toString((org.json.JSONObject)@object));
+								sb.Append(ToString((org.json.JSONObject)@object));
 							}
 							else
 							{
 								if (@object is org.json.JSONArray)
 								{
-									sb.Append(toString((org.json.JSONArray)@object));
+									sb.Append(ToString((org.json.JSONArray)@object));
 								}
 								else
 								{

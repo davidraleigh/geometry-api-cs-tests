@@ -69,34 +69,34 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject toJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
 			org.json.JSONObject jo = new org.json.JSONObject();
 			org.json.HTTPTokener x = new org.json.HTTPTokener(@string);
 			string token;
-			token = x.nextToken();
+			token = x.NextToken();
 			if (token.ToUpper().StartsWith("HTTP"))
 			{
 				// Response
-				jo.put("HTTP-Version", token);
-				jo.put("Status-Code", x.nextToken());
-				jo.put("Reason-Phrase", x.nextTo('\0'));
-				x.next();
+				jo.Put("HTTP-Version", token);
+				jo.Put("Status-Code", x.NextToken());
+				jo.Put("Reason-Phrase", x.NextTo('\0'));
+				x.Next();
 			}
 			else
 			{
 				// Request
-				jo.put("Method", token);
-				jo.put("Request-URI", x.nextToken());
-				jo.put("HTTP-Version", x.nextToken());
+				jo.Put("Method", token);
+				jo.Put("Request-URI", x.NextToken());
+				jo.Put("HTTP-Version", x.NextToken());
 			}
 			// Fields
-			while (x.more())
+			while (x.More())
 			{
-				string name = x.nextTo(':');
-				x.next(':');
-				jo.put(name, x.nextTo('\0'));
-				x.next();
+				string name = x.NextTo(':');
+				x.Next(':');
+				jo.Put(name, x.NextTo('\0'));
+				x.Next();
 			}
 			return jo;
 		}
@@ -125,30 +125,30 @@ namespace org.json
 		/// information.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public static string toString(org.json.JSONObject jo)
+		public static string ToString(org.json.JSONObject jo)
 		{
-			System.Collections.Generic.IEnumerator<string> keys = jo.keys();
+			System.Collections.Generic.IEnumerator<string> keys = jo.Keys();
 			string @string;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
-			if (jo.has("Status-Code") && jo.has("Reason-Phrase"))
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			if (jo.Has("Status-Code") && jo.Has("Reason-Phrase"))
 			{
-				sb.Append(jo.getString("HTTP-Version"));
+				sb.Append(jo.GetString("HTTP-Version"));
 				sb.Append(' ');
-				sb.Append(jo.getString("Status-Code"));
+				sb.Append(jo.GetString("Status-Code"));
 				sb.Append(' ');
-				sb.Append(jo.getString("Reason-Phrase"));
+				sb.Append(jo.GetString("Reason-Phrase"));
 			}
 			else
 			{
-				if (jo.has("Method") && jo.has("Request-URI"))
+				if (jo.Has("Method") && jo.Has("Request-URI"))
 				{
-					sb.Append(jo.getString("Method"));
+					sb.Append(jo.GetString("Method"));
 					sb.Append(' ');
 					sb.Append('"');
-					sb.Append(jo.getString("Request-URI"));
+					sb.Append(jo.GetString("Request-URI"));
 					sb.Append('"');
 					sb.Append(' ');
-					sb.Append(jo.getString("HTTP-Version"));
+					sb.Append(jo.GetString("HTTP-Version"));
 				}
 				else
 				{
@@ -156,16 +156,16 @@ namespace org.json
 				}
 			}
 			sb.Append(CRLF);
-			while (keys.MoveNext())
+			while (keys.HasNext())
 			{
-				@string = keys.Current;
+				@string = keys.Next();
 				if (!"HTTP-Version".Equals(@string) && !"Status-Code".Equals(@string) && !"Reason-Phrase"
 					.Equals(@string) && !"Method".Equals(@string) && !"Request-URI".Equals(@string) 
-					&& !jo.isNull(@string))
+					&& !jo.IsNull(@string))
 				{
 					sb.Append(@string);
 					sb.Append(": ");
-					sb.Append(jo.getString(@string));
+					sb.Append(jo.GetString(@string));
 					sb.Append(CRLF);
 				}
 			}

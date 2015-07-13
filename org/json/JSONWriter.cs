@@ -102,7 +102,7 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException">If the value is out of sequence.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		private org.json.JSONWriter append(string @string)
+		private org.json.JSONWriter Append(string @string)
 		{
 			if (@string == null)
 			{
@@ -114,9 +114,9 @@ namespace org.json
 				{
 					if (this.comma && this.mode == 'a')
 					{
-						this.writer.write(',');
+						this.writer.Write(',');
 					}
-					this.writer.write(@string);
+					this.writer.Write(@string);
 				}
 				catch (System.IO.IOException e)
 				{
@@ -145,12 +145,12 @@ namespace org.json
 		/// outermost array or object).
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter array()
+		public virtual org.json.JSONWriter Array()
 		{
 			if (this.mode == 'i' || this.mode == 'o' || this.mode == 'a')
 			{
-				this.push(null);
-				this.append("[");
+				this.Push(null);
+				this.Append("[");
 				this.comma = false;
 				return this;
 			}
@@ -163,17 +163,17 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException">If unbalanced.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		private org.json.JSONWriter end(char mode, char c)
+		private org.json.JSONWriter End(char mode, char c)
 		{
 			if (this.mode != mode)
 			{
 				throw new org.json.JSONException(mode == 'a' ? "Misplaced endArray." : "Misplaced endObject."
 					);
 			}
-			this.pop(mode);
+			this.Pop(mode);
 			try
 			{
-				this.writer.write(c);
+				this.writer.Write(c);
 			}
 			catch (System.IO.IOException e)
 			{
@@ -191,9 +191,9 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException">If incorrectly nested.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter endArray()
+		public virtual org.json.JSONWriter EndArray()
 		{
-			return this.end('a', ']');
+			return this.End('a', ']');
 		}
 
 		/// <summary>End an object.</summary>
@@ -204,9 +204,9 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException">If incorrectly nested.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter endObject()
+		public virtual org.json.JSONWriter EndObject()
 		{
-			return this.end('k', '}');
+			return this.End('k', '}');
 		}
 
 		/// <summary>Append a key.</summary>
@@ -221,7 +221,7 @@ namespace org.json
 		/// do not belong in arrays or if the key is null.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter key(string @string)
+		public virtual org.json.JSONWriter Key(string @string)
 		{
 			if (@string == null)
 			{
@@ -231,13 +231,13 @@ namespace org.json
 			{
 				try
 				{
-					this.stack[this.top - 1].putOnce(@string, true);
+					this.stack[this.top - 1].PutOnce(@string, true);
 					if (this.comma)
 					{
-						this.writer.write(',');
+						this.writer.Write(',');
 					}
-					this.writer.write(org.json.JSONObject.quote(@string));
-					this.writer.write(':');
+					this.writer.Write(org.json.JSONObject.Quote(@string));
+					this.writer.Write(':');
 					this.comma = false;
 					this.mode = 'o';
 					return this;
@@ -263,7 +263,7 @@ namespace org.json
 		/// outermost array or object).
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter @object()
+		public virtual org.json.JSONWriter Object()
 		{
 			if (this.mode == 'i')
 			{
@@ -271,8 +271,8 @@ namespace org.json
 			}
 			if (this.mode == 'o' || this.mode == 'a')
 			{
-				this.append("{");
-				this.push(new org.json.JSONObject());
+				this.Append("{");
+				this.Push(new org.json.JSONObject());
 				this.comma = false;
 				return this;
 			}
@@ -283,7 +283,7 @@ namespace org.json
 		/// <param name="c">The scope to close.</param>
 		/// <exception cref="JSONException">If nesting is wrong.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		private void pop(char c)
+		private void Pop(char c)
 		{
 			if (this.top <= 0)
 			{
@@ -302,7 +302,7 @@ namespace org.json
 		/// <param name="jo">The scope to open.</param>
 		/// <exception cref="JSONException">If nesting is too deep.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		private void push(org.json.JSONObject jo)
+		private void Push(org.json.JSONObject jo)
 		{
 			if (this.top >= maxdepth)
 			{
@@ -321,9 +321,9 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter value(bool b)
+		public virtual org.json.JSONWriter Value(bool b)
 		{
-			return this.append(b ? "true" : "false");
+			return this.Append(b ? "true" : "false");
 		}
 
 		/// <summary>Append a double value.</summary>
@@ -331,9 +331,9 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException">If the number is not finite.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter value(double d)
+		public virtual org.json.JSONWriter Value(double d)
 		{
-			return this.value(d);
+			return this.Value(d);
 		}
 
 		/// <summary>Append a long value.</summary>
@@ -341,9 +341,9 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter value(long l)
+		public virtual org.json.JSONWriter Value(long l)
 		{
-			return this.append(System.Convert.ToString(l));
+			return this.Append(System.Convert.ToString(l));
 		}
 
 		/// <summary>Append an object value.</summary>
@@ -354,9 +354,9 @@ namespace org.json
 		/// <returns>this</returns>
 		/// <exception cref="JSONException">If the value is out of sequence.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONWriter value(object @object)
+		public virtual org.json.JSONWriter Value(object @object)
 		{
-			return this.append(org.json.JSONObject.valueToString(@object));
+			return this.Append(org.json.JSONObject.ValueToString(@object));
 		}
 	}
 }

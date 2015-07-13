@@ -50,21 +50,21 @@ namespace org.json
 		/// </remarks>
 		/// <param name="string">The source string.</param>
 		/// <returns>The escaped result.</returns>
-		public static string escape(string @string)
+		public static string Escape(string @string)
 		{
 			char c;
-			string s = @string.Trim();
+			string s = Sharpen.Extensions.Trim(@string);
 			int length = s.Length;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder(length);
+			System.Text.StringBuilder sb = new System.Text.StringBuilder(length);
 			for (int i = 0; i < length; i += 1)
 			{
 				c = s[i];
 				if (c < ' ' || c == '+' || c == '%' || c == '=' || c == ';')
 				{
 					sb.Append('%');
-					sb.Append(char.forDigit((char)(((char)(((uchar)c) >> 4)) & unchecked((int)(0x0f))
+					sb.Append(char.ForDigit((char)(((char)(((uchar)c) >> 4)) & unchecked((int)(0x0f))
 						), 16));
-					sb.Append(char.forDigit((char)(c & unchecked((int)(0x0f))), 16));
+					sb.Append(char.ForDigit((char)(c & unchecked((int)(0x0f))), 16));
 				}
 				else
 				{
@@ -93,20 +93,20 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject toJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
 			string name;
 			org.json.JSONObject jo = new org.json.JSONObject();
 			object value;
 			org.json.JSONTokener x = new org.json.JSONTokener(@string);
-			jo.put("name", x.nextTo('='));
-			x.next('=');
-			jo.put("value", x.nextTo(';'));
-			x.next();
-			while (x.more())
+			jo.Put("name", x.NextTo('='));
+			x.Next('=');
+			jo.Put("value", x.NextTo(';'));
+			x.Next();
+			while (x.More())
 			{
-				name = unescape(x.nextTo("=;"));
-				if (x.next() != '=')
+				name = Unescape(x.NextTo("=;"));
+				if (x.Next() != '=')
 				{
 					if (name.Equals("secure"))
 					{
@@ -114,15 +114,15 @@ namespace org.json
 					}
 					else
 					{
-						throw x.syntaxError("Missing '=' in cookie parameter.");
+						throw x.SyntaxError("Missing '=' in cookie parameter.");
 					}
 				}
 				else
 				{
-					value = unescape(x.nextTo(';'));
-					x.next();
+					value = Unescape(x.NextTo(';'));
+					x.Next();
 				}
-				jo.put(name, value);
+				jo.Put(name, value);
 			}
 			return jo;
 		}
@@ -139,28 +139,28 @@ namespace org.json
 		/// <returns>A cookie specification string</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string toString(org.json.JSONObject jo)
+		public static string ToString(org.json.JSONObject jo)
 		{
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
-			sb.Append(escape(jo.getString("name")));
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			sb.Append(Escape(jo.GetString("name")));
 			sb.Append("=");
-			sb.Append(escape(jo.getString("value")));
-			if (jo.has("expires"))
+			sb.Append(Escape(jo.GetString("value")));
+			if (jo.Has("expires"))
 			{
 				sb.Append(";expires=");
-				sb.Append(jo.getString("expires"));
+				sb.Append(jo.GetString("expires"));
 			}
-			if (jo.has("domain"))
+			if (jo.Has("domain"))
 			{
 				sb.Append(";domain=");
-				sb.Append(escape(jo.getString("domain")));
+				sb.Append(Escape(jo.GetString("domain")));
 			}
-			if (jo.has("path"))
+			if (jo.Has("path"))
 			{
 				sb.Append(";path=");
-				sb.Append(escape(jo.getString("path")));
+				sb.Append(Escape(jo.GetString("path")));
 			}
-			if (jo.optBoolean("secure"))
+			if (jo.OptBoolean("secure"))
 			{
 				sb.Append(";secure");
 			}
@@ -177,10 +177,10 @@ namespace org.json
 		/// <code>%</code><i>hh</i> sequences.
 		/// </param>
 		/// <returns>The unescaped string.</returns>
-		public static string unescape(string @string)
+		public static string Unescape(string @string)
 		{
 			int length = @string.Length;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder(length);
+			System.Text.StringBuilder sb = new System.Text.StringBuilder(length);
 			for (int i = 0; i < length; ++i)
 			{
 				char c = @string[i];
@@ -192,8 +192,8 @@ namespace org.json
 				{
 					if (c == '%' && i + 2 < length)
 					{
-						int d = org.json.JSONTokener.dehexchar(@string[i + 1]);
-						int e = org.json.JSONTokener.dehexchar(@string[i + 2]);
+						int d = org.json.JSONTokener.Dehexchar(@string[i + 1]);
+						int e = org.json.JSONTokener.Dehexchar(@string[i + 2]);
 						if (d >= 0 && e >= 0)
 						{
 							c = (char)(d * 16 + e);

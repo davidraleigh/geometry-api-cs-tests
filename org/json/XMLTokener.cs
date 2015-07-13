@@ -61,17 +61,17 @@ namespace org.json
 		/// <returns>The string up to the <code>]]&gt;</code>.</returns>
 		/// <exception cref="JSONException">If the <code>]]&gt;</code> is not found.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string nextCDATA()
+		public virtual string NextCDATA()
 		{
 			char c;
 			int i;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
-				c = next();
-				if (end())
+				c = Next();
+				if (End())
 				{
-					throw syntaxError("Unclosed CDATA");
+					throw SyntaxError("Unclosed CDATA");
 				}
 				sb.Append(c);
 				i = sb.Length - 3;
@@ -95,13 +95,13 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual object nextContent()
+		public virtual object NextContent()
 		{
 			char c;
-			java.lang.StringBuilder sb;
+			System.Text.StringBuilder sb;
 			do
 			{
-				c = next();
+				c = Next();
 			}
 			while (char.IsWhiteSpace(c));
 			if (c == 0)
@@ -112,23 +112,23 @@ namespace org.json
 			{
 				return org.json.XML.LT;
 			}
-			sb = new java.lang.StringBuilder();
+			sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
 				if (c == '<' || c == 0)
 				{
-					back();
-					return sb.ToString().Trim();
+					Back();
+					return Sharpen.Extensions.Trim(sb.ToString());
 				}
 				if (c == '&')
 				{
-					sb.Append(nextEntity(c));
+					sb.Append(NextEntity(c));
 				}
 				else
 				{
 					sb.Append(c);
 				}
-				c = next();
+				c = Next();
 			}
 		}
 
@@ -141,15 +141,15 @@ namespace org.json
 		/// <returns>A Character or an entity String if the entity is not recognized.</returns>
 		/// <exception cref="JSONException">If missing ';' in XML entity.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual object nextEntity(char ampersand)
+		public virtual object NextEntity(char ampersand)
 		{
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
-				char c = next();
-				if (char.isLetterOrDigit(c) || c == '#')
+				char c = Next();
+				if (char.IsLetterOrDigit(c) || c == '#')
 				{
-					sb.Append(char.toLowerCase(c));
+					sb.Append(System.Char.ToLower(c));
 				}
 				else
 				{
@@ -159,7 +159,7 @@ namespace org.json
 					}
 					else
 					{
-						throw syntaxError("Missing ';' in XML entity: &" + sb);
+						throw SyntaxError("Missing ';' in XML entity: &" + sb);
 					}
 				}
 			}
@@ -183,20 +183,20 @@ namespace org.json
 		/// is badly structured.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual object nextMeta()
+		public virtual object NextMeta()
 		{
 			char c;
 			char q;
 			do
 			{
-				c = next();
+				c = Next();
 			}
 			while (char.IsWhiteSpace(c));
 			switch (c)
 			{
 				case 0:
 				{
-					throw syntaxError("Misshaped meta tag");
+					throw SyntaxError("Misshaped meta tag");
 				}
 
 				case '<':
@@ -235,10 +235,10 @@ namespace org.json
 					q = c;
 					for (; ; )
 					{
-						c = next();
+						c = Next();
 						if (c == 0)
 						{
-							throw syntaxError("Unterminated string");
+							throw SyntaxError("Unterminated string");
 						}
 						if (c == q)
 						{
@@ -252,7 +252,7 @@ namespace org.json
 				{
 					for (; ; )
 					{
-						c = next();
+						c = Next();
 						if (char.IsWhiteSpace(c))
 						{
 							return true;
@@ -269,7 +269,7 @@ namespace org.json
 							case '"':
 							case '\'':
 							{
-								back();
+								Back();
 								return true;
 							}
 						}
@@ -289,26 +289,26 @@ namespace org.json
 		/// <returns>a String or a Character.</returns>
 		/// <exception cref="JSONException">If the XML is not well formed.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual object nextToken()
+		public virtual object NextToken()
 		{
 			char c;
 			char q;
-			java.lang.StringBuilder sb;
+			System.Text.StringBuilder sb;
 			do
 			{
-				c = next();
+				c = Next();
 			}
 			while (char.IsWhiteSpace(c));
 			switch (c)
 			{
 				case 0:
 				{
-					throw syntaxError("Misshaped element");
+					throw SyntaxError("Misshaped element");
 				}
 
 				case '<':
 				{
-					throw syntaxError("Misplaced '<'");
+					throw SyntaxError("Misplaced '<'");
 				}
 
 				case '>':
@@ -341,13 +341,13 @@ namespace org.json
 				{
 					// Quoted string
 					q = c;
-					sb = new java.lang.StringBuilder();
+					sb = new System.Text.StringBuilder();
 					for (; ; )
 					{
-						c = next();
+						c = Next();
 						if (c == 0)
 						{
-							throw syntaxError("Unterminated string");
+							throw SyntaxError("Unterminated string");
 						}
 						if (c == q)
 						{
@@ -355,7 +355,7 @@ namespace org.json
 						}
 						if (c == '&')
 						{
-							sb.Append(nextEntity(c));
+							sb.Append(NextEntity(c));
 						}
 						else
 						{
@@ -368,11 +368,11 @@ namespace org.json
 				default:
 				{
 					// Name
-					sb = new java.lang.StringBuilder();
+					sb = new System.Text.StringBuilder();
 					for (; ; )
 					{
 						sb.Append(c);
-						c = next();
+						c = Next();
 						if (char.IsWhiteSpace(c))
 						{
 							return sb.ToString();
@@ -392,7 +392,7 @@ namespace org.json
 							case '[':
 							case ']':
 							{
-								back();
+								Back();
 								return sb.ToString();
 							}
 
@@ -400,7 +400,7 @@ namespace org.json
 							case '"':
 							case '\'':
 							{
-								throw syntaxError("Bad character in a name");
+								throw SyntaxError("Bad character in a name");
 							}
 						}
 					}
@@ -417,7 +417,7 @@ namespace org.json
 		/// <param name="to">A string to skip past.</param>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual bool skipPast(string to)
+		public virtual bool SkipPast(string to)
 		{
 			bool b;
 			char c;
@@ -432,7 +432,7 @@ namespace org.json
 			*/
 			for (i = 0; i < length; i += 1)
 			{
-				c = next();
+				c = Next();
 				if (c == 0)
 				{
 					return false;
@@ -464,7 +464,7 @@ namespace org.json
 					return true;
 				}
 				/* Get the next character. If there isn't one, then defeat is ours. */
-				c = next();
+				c = Next();
 				if (c == 0)
 				{
 					return false;

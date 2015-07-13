@@ -23,6 +23,6 @@ namespace org.json
 		/// serialization.
 		/// </summary>
 		/// <returns>A strictly syntactically correct JSON text.</returns>
-		string toJSONString();
+		string ToJSONString();
 	}
 }

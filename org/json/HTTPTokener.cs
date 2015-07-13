@@ -45,14 +45,14 @@ namespace org.json
 		/// <exception cref="JSONException"/>
 		/// <returns>A String.</returns>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual string nextToken()
+		public virtual string NextToken()
 		{
 			char c;
 			char q;
-			java.lang.StringBuilder sb = new java.lang.StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			do
 			{
-				c = next();
+				c = Next();
 			}
 			while (char.IsWhiteSpace(c));
 			if (c == '"' || c == '\'')
@@ -60,10 +60,10 @@ namespace org.json
 				q = c;
 				for (; ; )
 				{
-					c = next();
+					c = Next();
 					if (c < ' ')
 					{
-						throw syntaxError("Unterminated string.");
+						throw SyntaxError("Unterminated string.");
 					}
 					if (c == q)
 					{
@@ -79,7 +79,7 @@ namespace org.json
 					return sb.ToString();
 				}
 				sb.Append(c);
-				c = next();
+				c = Next();
 			}
 		}
 	}
