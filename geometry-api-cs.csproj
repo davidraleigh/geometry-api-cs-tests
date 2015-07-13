@@ -258,7 +258,6 @@
     <Compile Include="com\esri\core\geometry\Proximity2DResultComparator.cs" />
     <Compile Include="com\esri\core\geometry\QuadTree.cs" />
     <Compile Include="com\esri\core\geometry\QuadTreeImpl.cs" />
-    <Compile Include="com\esri\core\geometry\RandomCoordinateGenerator.cs" />
     <Compile Include="com\esri\core\geometry\RasterizedGeometry2D.cs" />
     <Compile Include="com\esri\core\geometry\RasterizedGeometry2DImpl.cs" />
     <Compile Include="com\esri\core\geometry\RelationalOperations.cs" />
