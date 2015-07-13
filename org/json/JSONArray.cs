@@ -49,7 +49,7 @@ namespace org.json
 	public class JSONArray : System.Collections.Generic.IEnumerable<object>
 	{
 		/// <summary>The arrayList where the JSONArray's properties are kept.</summary>
-		private readonly Sharpen.AList<object> myArrayList;
+		private readonly System.Collections.ArrayList<object> myArrayList;
 
 		/// <summary>Construct an empty JSONArray.</summary>
 		public JSONArray()
@@ -77,7 +77,7 @@ namespace org.json
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 			*/
-			this.myArrayList = new Sharpen.AList<object>();
+			this.myArrayList = new System.Collections.ArrayList<object>();
 		}
 
 		/// <summary>Construct a JSONArray from a JSONTokener.</summary>
@@ -149,7 +149,7 @@ namespace org.json
 		/// <param name="collection">A Collection.</param>
 		public JSONArray(System.Collections.Generic.ICollection<object> collection)
 		{
-			this.myArrayList = new Sharpen.AList<object>();
+			this.myArrayList = new System.Collections.ArrayList<object>();
 			if (collection != null)
 			{
 				System.Collections.Generic.IEnumerator<object> iter = collection.GetEnumerator();
