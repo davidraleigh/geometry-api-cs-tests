@@ -106,9 +106,7 @@
     <Compile Include="com\esri\core\geometry\InternalUtils.cs" />
     <Compile Include="com\esri\core\geometry\Interop.cs" />
     <Compile Include="com\esri\core\geometry\IntervalTreeImpl.cs" />
-    <Compile Include="com\esri\core\geometry\JSONArrayEnumerator.cs" />
     <Compile Include="com\esri\core\geometry\JsonCursor.cs" />
-    <Compile Include="com\esri\core\geometry\JSONObjectEnumerator.cs" />
     <Compile Include="com\esri\core\geometry\JsonStringWriter.cs" />
     <Compile Include="com\esri\core\geometry\JsonWriter.cs" />
     <Compile Include="com\esri\core\geometry\Line.cs" />
@@ -188,7 +186,6 @@
     <Compile Include="com\esri\core\geometry\OperatorImportFromESRIShapeCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromESRIShapeLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromGeoJson.cs" />
-    <Compile Include="com\esri\core\geometry\OperatorImportFromGeoJsonLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkb.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkbLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkt.cs" />
@@ -294,22 +291,6 @@
     <Compile Include="com\esri\core\geometry\WktExportFlags.cs" />
     <Compile Include="com\esri\core\geometry\WktImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\WktParser.cs" />
-    <Compile Include="org\json\CDL.cs" />
-    <Compile Include="org\json\Cookie.cs" />
-    <Compile Include="org\json\CookieList.cs" />
-    <Compile Include="org\json\HTTP.cs" />
-    <Compile Include="org\json\HTTPTokener.cs" />
-    <Compile Include="org\json\JSONArray.cs" />
-    <Compile Include="org\json\JSONException.cs" />
-    <Compile Include="org\json\JSONML.cs" />
-    <Compile Include="org\json\JSONObject.cs" />
-    <Compile Include="org\json\JSONString.cs" />
-    <Compile Include="org\json\JSONStringer.cs" />
-    <Compile Include="org\json\JSONTokener.cs" />
-    <Compile Include="org\json\JSONWriter.cs" />
-    <Compile Include="org\json\Property.cs" />
-    <Compile Include="org\json\XML.cs" />
-    <Compile Include="org\json\XMLTokener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
