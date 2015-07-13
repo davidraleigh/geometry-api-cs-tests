@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Sharpen;
-using java.util;
 
 namespace org.json
 {
@@ -39,12 +37,12 @@ namespace org.json
 		/// <returns>JSONObject</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject ToJSONObject(Properties properties)
+		public static org.json.JSONObject ToJSONObject(Sharpen.Properties properties)
 		{
-			JSONObject jo = new JSONObject();
+			org.json.JSONObject jo = new org.json.JSONObject();
 			if (properties != null && !properties.IsEmpty())
 			{
-				Enumeration<object> enumProperties = properties.PropertyNames();
+				java.util.Enumeration<object> enumProperties = properties.PropertyNames();
 				while (enumProperties.MoveNext())
 				{
 					string name = (string)enumProperties.Current;
@@ -59,12 +57,12 @@ namespace org.json
 		/// <returns>java.util.Properties</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static Properties ToProperties(JSONObject jo)
+		public static Sharpen.Properties ToProperties(org.json.JSONObject jo)
 		{
-			Properties properties = new Properties();
+			Sharpen.Properties properties = new Sharpen.Properties();
 			if (jo != null)
 			{
-				IEnumerator<string> keys = jo.Keys();
+				System.Collections.Generic.IEnumerator<string> keys = jo.Keys();
 				while (keys.HasNext())
 				{
 					string name = keys.Next();

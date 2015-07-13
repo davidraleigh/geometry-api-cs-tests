@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -46,14 +44,15 @@ namespace org.json
 		/// <returns>A JSONArray if the value is the outermost tag, otherwise null.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		private static object Parse(XMLTokener x, bool arrayForm, JSONArray ja)
+		private static object Parse(org.json.XMLTokener x, bool arrayForm, org.json.JSONArray
+			 ja)
 		{
 			string attribute;
 			char c;
 			string closeTag = null;
 			int i;
-			JSONArray newja = null;
-			JSONObject newjo = null;
+			org.json.JSONArray newja = null;
+			org.json.JSONObject newjo = null;
 			object token;
 			string tagName = null;
 			// Test for and skip past these forms:
@@ -68,20 +67,21 @@ namespace org.json
 					throw x.SyntaxError("Bad XML");
 				}
 				token = x.NextContent();
-				if (token == XML.LT)
+				if (token == org.json.XML.LT)
 				{
 					token = x.NextToken();
 					if (token is char)
 					{
-						if (token == XML.SLASH)
+						if (token == org.json.XML.SLASH)
 						{
 							// Close tag </
 							token = x.NextToken();
 							if (!(token is string))
 							{
-								throw new JSONException("Expected a closing name instead of '" + token + "'.");
+								throw new org.json.JSONException("Expected a closing name instead of '" + token +
+									 "'.");
 							}
-							if (x.NextToken() != XML.GT)
+							if (x.NextToken() != org.json.XML.GT)
 							{
 								throw x.SyntaxError("Misshaped close tag");
 							}
@@ -89,7 +89,7 @@ namespace org.json
 						}
 						else
 						{
-							if (token == XML.BANG)
+							if (token == org.json.XML.BANG)
 							{
 								// <!
 								c = x.Next();
@@ -133,13 +133,13 @@ namespace org.json
 											}
 											else
 											{
-												if (token == XML.LT)
+												if (token == org.json.XML.LT)
 												{
 													i += 1;
 												}
 												else
 												{
-													if (token == XML.GT)
+													if (token == org.json.XML.GT)
 													{
 														i -= 1;
 													}
@@ -152,7 +152,7 @@ namespace org.json
 							}
 							else
 							{
-								if (token == XML.QUEST)
+								if (token == org.json.XML.QUEST)
 								{
 									// <?
 									x.SkipPast("?>");
@@ -172,8 +172,8 @@ namespace org.json
 							throw x.SyntaxError("Bad tagName '" + token + "'.");
 						}
 						tagName = (string)token;
-						newja = new JSONArray();
-						newjo = new JSONObject();
+						newja = new org.json.JSONArray();
+						newjo = new org.json.JSONObject();
 						if (arrayForm)
 						{
 							newja.Put(tagName);
@@ -212,14 +212,14 @@ namespace org.json
 								throw x.SyntaxError("Reserved attribute.");
 							}
 							token = x.NextToken();
-							if (token == XML.EQ)
+							if (token == org.json.XML.EQ)
 							{
 								token = x.NextToken();
 								if (!(token is string))
 								{
 									throw x.SyntaxError("Missing value");
 								}
-								newjo.Accumulate(attribute, XML.StringToValue((string)token));
+								newjo.Accumulate(attribute, org.json.XML.StringToValue((string)token));
 								token = null;
 							}
 							else
@@ -232,9 +232,9 @@ namespace org.json
 							newja.Put(newjo);
 						}
 						// Empty tag <.../>
-						if (token == XML.SLASH)
+						if (token == org.json.XML.SLASH)
 						{
-							if (x.NextToken() != XML.GT)
+							if (x.NextToken() != org.json.XML.GT)
 							{
 								throw x.SyntaxError("Misshaped tag");
 							}
@@ -253,7 +253,7 @@ namespace org.json
 						else
 						{
 							// Content, between <...> and </...>
-							if (token != XML.GT)
+							if (token != org.json.XML.GT)
 							{
 								throw x.SyntaxError("Misshaped tag");
 							}
@@ -288,7 +288,7 @@ namespace org.json
 				{
 					if (ja != null)
 					{
-						ja.Put(token is string ? XML.StringToValue((string)token) : token);
+						ja.Put(token is string ? org.json.XML.StringToValue((string)token) : token);
 					}
 				}
 			}
@@ -311,9 +311,9 @@ namespace org.json
 		/// <returns>A JSONArray containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray ToJSONArray(string @string)
+		public static org.json.JSONArray ToJSONArray(string @string)
 		{
-			return ToJSONArray(new XMLTokener(@string));
+			return ToJSONArray(new org.json.XMLTokener(@string));
 		}
 
 		/// <summary>
@@ -333,9 +333,9 @@ namespace org.json
 		/// <returns>A JSONArray containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray ToJSONArray(XMLTokener x)
+		public static org.json.JSONArray ToJSONArray(org.json.XMLTokener x)
 		{
-			return (JSONArray)Parse(x, true, null);
+			return (org.json.JSONArray)Parse(x, true, null);
 		}
 
 		/// <summary>
@@ -355,9 +355,9 @@ namespace org.json
 		/// <returns>A JSONObject containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject ToJSONObject(XMLTokener x)
+		public static org.json.JSONObject ToJSONObject(org.json.XMLTokener x)
 		{
-			return (JSONObject)Parse(x, false, null);
+			return (org.json.JSONObject)Parse(x, false, null);
 		}
 
 		/// <summary>
@@ -377,9 +377,9 @@ namespace org.json
 		/// <returns>A JSONObject containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject ToJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
-			return ToJSONObject(new XMLTokener(@string));
+			return ToJSONObject(new org.json.XMLTokener(@string));
 		}
 
 		/// <summary>Reverse the JSONML transformation, making an XML text from a JSONArray.</summary>
@@ -387,42 +387,42 @@ namespace org.json
 		/// <returns>An XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(JSONArray ja)
+		public static string ToString(org.json.JSONArray ja)
 		{
 			int i;
-			JSONObject jo;
+			org.json.JSONObject jo;
 			string key;
-			IEnumerator<string> keys;
+			System.Collections.Generic.IEnumerator<string> keys;
 			int length;
 			object @object;
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			string tagName;
 			string value;
 			// Emit <tagName
 			tagName = ja.GetString(0);
-			XML.NoSpace(tagName);
-			tagName = XML.Escape(tagName);
+			org.json.XML.NoSpace(tagName);
+			tagName = org.json.XML.Escape(tagName);
 			sb.Append('<');
 			sb.Append(tagName);
 			@object = ja.Opt(1);
-			if (@object is JSONObject)
+			if (@object is org.json.JSONObject)
 			{
 				i = 2;
-				jo = (JSONObject)@object;
+				jo = (org.json.JSONObject)@object;
 				// Emit the attributes
 				keys = jo.Keys();
 				while (keys.HasNext())
 				{
 					key = keys.Next();
-					XML.NoSpace(key);
+					org.json.XML.NoSpace(key);
 					value = jo.OptString(key);
 					if (value != null)
 					{
 						sb.Append(' ');
-						sb.Append(XML.Escape(key));
+						sb.Append(org.json.XML.Escape(key));
 						sb.Append('=');
 						sb.Append('"');
-						sb.Append(XML.Escape(value));
+						sb.Append(org.json.XML.Escape(value));
 						sb.Append('"');
 					}
 				}
@@ -449,19 +449,19 @@ namespace org.json
 					{
 						if (@object is string)
 						{
-							sb.Append(XML.Escape(@object.ToString()));
+							sb.Append(org.json.XML.Escape(@object.ToString()));
 						}
 						else
 						{
-							if (@object is JSONObject)
+							if (@object is org.json.JSONObject)
 							{
-								sb.Append(ToString((JSONObject)@object));
+								sb.Append(ToString((org.json.JSONObject)@object));
 							}
 							else
 							{
-								if (@object is JSONArray)
+								if (@object is org.json.JSONArray)
 								{
-									sb.Append(ToString((JSONArray)@object));
+									sb.Append(ToString((org.json.JSONArray)@object));
 								}
 								else
 								{
@@ -492,13 +492,13 @@ namespace org.json
 		/// <returns>An XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(JSONObject jo)
+		public static string ToString(org.json.JSONObject jo)
 		{
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			int i;
-			JSONArray ja;
+			org.json.JSONArray ja;
 			string key;
-			IEnumerator<string> keys;
+			System.Collections.Generic.IEnumerator<string> keys;
 			int length;
 			object @object;
 			string tagName;
@@ -507,10 +507,10 @@ namespace org.json
 			tagName = jo.OptString("tagName");
 			if (tagName == null)
 			{
-				return XML.Escape(jo.ToString());
+				return org.json.XML.Escape(jo.ToString());
 			}
-			XML.NoSpace(tagName);
-			tagName = XML.Escape(tagName);
+			org.json.XML.NoSpace(tagName);
+			tagName = org.json.XML.Escape(tagName);
 			sb.Append('<');
 			sb.Append(tagName);
 			//Emit the attributes
@@ -520,15 +520,15 @@ namespace org.json
 				key = keys.Next();
 				if (!"tagName".Equals(key) && !"childNodes".Equals(key))
 				{
-					XML.NoSpace(key);
+					org.json.XML.NoSpace(key);
 					value = jo.OptString(key);
 					if (value != null)
 					{
 						sb.Append(' ');
-						sb.Append(XML.Escape(key));
+						sb.Append(org.json.XML.Escape(key));
 						sb.Append('=');
 						sb.Append('"');
-						sb.Append(XML.Escape(value));
+						sb.Append(org.json.XML.Escape(value));
 						sb.Append('"');
 					}
 				}
@@ -551,19 +551,19 @@ namespace org.json
 					{
 						if (@object is string)
 						{
-							sb.Append(XML.Escape(@object.ToString()));
+							sb.Append(org.json.XML.Escape(@object.ToString()));
 						}
 						else
 						{
-							if (@object is JSONObject)
+							if (@object is org.json.JSONObject)
 							{
-								sb.Append(ToString((JSONObject)@object));
+								sb.Append(ToString((org.json.JSONObject)@object));
 							}
 							else
 							{
-								if (@object is JSONArray)
+								if (@object is org.json.JSONArray)
 								{
-									sb.Append(ToString((JSONArray)@object));
+									sb.Append(ToString((org.json.JSONArray)@object));
 								}
 								else
 								{

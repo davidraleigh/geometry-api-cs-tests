@@ -1,4 +1,3 @@
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -60,11 +59,11 @@ namespace org.json
 		/// <returns>The value string, or null if empty.</returns>
 		/// <exception cref="JSONException">if the quoted string is badly formed.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		private static string GetValue(JSONTokener x)
+		private static string GetValue(org.json.JSONTokener x)
 		{
 			char c;
 			char q;
-			StringBuilder sb;
+			System.Text.StringBuilder sb;
 			do
 			{
 				c = x.Next();
@@ -81,7 +80,7 @@ namespace org.json
 				case '\'':
 				{
 					q = c;
-					sb = new StringBuilder();
+					sb = new System.Text.StringBuilder();
 					for (; ; )
 					{
 						c = x.Next();
@@ -117,9 +116,9 @@ namespace org.json
 		/// <returns>A JSONArray of strings.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray RowToJSONArray(JSONTokener x)
+		public static org.json.JSONArray RowToJSONArray(org.json.JSONTokener x)
 		{
-			JSONArray ja = new JSONArray();
+			org.json.JSONArray ja = new org.json.JSONArray();
 			for (; ; )
 			{
 				string value = GetValue(x);
@@ -161,9 +160,10 @@ namespace org.json
 		/// <returns>A JSONObject combining the names and values.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject RowToJSONObject(JSONArray names, JSONTokener x)
+		public static org.json.JSONObject RowToJSONObject(org.json.JSONArray names, org.json.JSONTokener
+			 x)
 		{
-			JSONArray ja = RowToJSONArray(x);
+			org.json.JSONArray ja = RowToJSONArray(x);
 			return ja != null ? ja.ToJSONObject(names) : null;
 		}
 
@@ -175,9 +175,9 @@ namespace org.json
 		/// </remarks>
 		/// <param name="ja">A JSONArray of strings.</param>
 		/// <returns>A string ending in NEWLINE.</returns>
-		public static string RowToString(JSONArray ja)
+		public static string RowToString(org.json.JSONArray ja)
 		{
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (int i = 0; i < ja.Length(); i += 1)
 			{
 				if (i > 0)
@@ -221,9 +221,9 @@ namespace org.json
 		/// <returns>A JSONArray of JSONObjects.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray ToJSONArray(string @string)
+		public static org.json.JSONArray ToJSONArray(string @string)
 		{
-			return ToJSONArray(new JSONTokener(@string));
+			return ToJSONArray(new org.json.JSONTokener(@string));
 		}
 
 		/// <summary>
@@ -234,7 +234,7 @@ namespace org.json
 		/// <returns>A JSONArray of JSONObjects.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray ToJSONArray(JSONTokener x)
+		public static org.json.JSONArray ToJSONArray(org.json.JSONTokener x)
 		{
 			return ToJSONArray(RowToJSONArray(x), x);
 		}
@@ -248,9 +248,10 @@ namespace org.json
 		/// <returns>A JSONArray of JSONObjects.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray ToJSONArray(JSONArray names, string @string)
+		public static org.json.JSONArray ToJSONArray(org.json.JSONArray names, string @string
+			)
 		{
-			return ToJSONArray(names, new JSONTokener(@string));
+			return ToJSONArray(names, new org.json.JSONTokener(@string));
 		}
 
 		/// <summary>
@@ -262,16 +263,17 @@ namespace org.json
 		/// <returns>A JSONArray of JSONObjects.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONArray ToJSONArray(JSONArray names, JSONTokener x)
+		public static org.json.JSONArray ToJSONArray(org.json.JSONArray names, org.json.JSONTokener
+			 x)
 		{
 			if (names == null || names.Length() == 0)
 			{
 				return null;
 			}
-			JSONArray ja = new JSONArray();
+			org.json.JSONArray ja = new org.json.JSONArray();
 			for (; ; )
 			{
-				JSONObject jo = RowToJSONObject(names, x);
+				org.json.JSONObject jo = RowToJSONObject(names, x);
 				if (jo == null)
 				{
 					break;
@@ -295,12 +297,12 @@ namespace org.json
 		/// <returns>A comma delimited text.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(JSONArray ja)
+		public static string ToString(org.json.JSONArray ja)
 		{
-			JSONObject jo = ja.OptJSONObject(0);
+			org.json.JSONObject jo = ja.OptJSONObject(0);
 			if (jo != null)
 			{
-				JSONArray names = jo.Names();
+				org.json.JSONArray names = jo.Names();
 				if (names != null)
 				{
 					return RowToString(names) + ToString(names, ja);
@@ -323,16 +325,16 @@ namespace org.json
 		/// <returns>A comma delimited text.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(JSONArray names, JSONArray ja)
+		public static string ToString(org.json.JSONArray names, org.json.JSONArray ja)
 		{
 			if (names == null || names.Length() == 0)
 			{
 				return null;
 			}
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (int i = 0; i < ja.Length(); i += 1)
 			{
-				JSONObject jo = ja.OptJSONObject(i);
+				org.json.JSONObject jo = ja.OptJSONObject(i);
 				if (jo != null)
 				{
 					sb.Append(RowToString(jo.ToJSONArray(names)));

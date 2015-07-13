@@ -1,4 +1,3 @@
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -9,7 +8,7 @@ namespace org.json
 	/// </summary>
 	/// <author>JSON.org</author>
 	/// <version>2014-05-03</version>
-	public class HTTPTokener : JSONTokener
+	public class HTTPTokener : org.json.JSONTokener
 	{
 		/// <summary>Construct an HTTPTokener from a string.</summary>
 		/// <param name="string">A source string.</param>
@@ -50,7 +49,7 @@ namespace org.json
 		{
 			char c;
 			char q;
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			do
 			{
 				c = Next();

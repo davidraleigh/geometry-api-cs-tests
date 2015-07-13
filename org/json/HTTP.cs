@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -71,10 +69,10 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject ToJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
-			JSONObject jo = new JSONObject();
-			HTTPTokener x = new HTTPTokener(@string);
+			org.json.JSONObject jo = new org.json.JSONObject();
+			org.json.HTTPTokener x = new org.json.HTTPTokener(@string);
 			string token;
 			token = x.NextToken();
 			if (token.ToUpper().StartsWith("HTTP"))
@@ -127,11 +125,11 @@ namespace org.json
 		/// information.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(JSONObject jo)
+		public static string ToString(org.json.JSONObject jo)
 		{
-			IEnumerator<string> keys = jo.Keys();
+			System.Collections.Generic.IEnumerator<string> keys = jo.Keys();
 			string @string;
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			if (jo.Has("Status-Code") && jo.Has("Reason-Phrase"))
 			{
 				sb.Append(jo.GetString("HTTP-Version"));
@@ -154,7 +152,7 @@ namespace org.json
 				}
 				else
 				{
-					throw new JSONException("Not enough material for an HTTP header.");
+					throw new org.json.JSONException("Not enough material for an HTTP header.");
 				}
 			}
 			sb.Append(CRLF);

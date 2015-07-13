@@ -1,4 +1,3 @@
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -56,7 +55,7 @@ namespace org.json
 			char c;
 			string s = Sharpen.Extensions.Trim(@string);
 			int length = s.Length;
-			StringBuilder sb = new StringBuilder(length);
+			System.Text.StringBuilder sb = new System.Text.StringBuilder(length);
 			for (int i = 0; i < length; i += 1)
 			{
 				c = s[i];
@@ -94,12 +93,12 @@ namespace org.json
 		/// </returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject ToJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
 			string name;
-			JSONObject jo = new JSONObject();
+			org.json.JSONObject jo = new org.json.JSONObject();
 			object value;
-			JSONTokener x = new JSONTokener(@string);
+			org.json.JSONTokener x = new org.json.JSONTokener(@string);
 			jo.Put("name", x.NextTo('='));
 			x.Next('=');
 			jo.Put("value", x.NextTo(';'));
@@ -140,9 +139,9 @@ namespace org.json
 		/// <returns>A cookie specification string</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static string ToString(JSONObject jo)
+		public static string ToString(org.json.JSONObject jo)
 		{
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			sb.Append(Escape(jo.GetString("name")));
 			sb.Append("=");
 			sb.Append(Escape(jo.GetString("value")));
@@ -181,7 +180,7 @@ namespace org.json
 		public static string Unescape(string @string)
 		{
 			int length = @string.Length;
-			StringBuilder sb = new StringBuilder(length);
+			System.Text.StringBuilder sb = new System.Text.StringBuilder(length);
 			for (int i = 0; i < length; ++i)
 			{
 				char c = @string[i];
@@ -193,8 +192,8 @@ namespace org.json
 				{
 					if (c == '%' && i + 2 < length)
 					{
-						int d = JSONTokener.Dehexchar(@string[i + 1]);
-						int e = JSONTokener.Dehexchar(@string[i + 2]);
+						int d = org.json.JSONTokener.Dehexchar(@string[i + 1]);
+						int e = org.json.JSONTokener.Dehexchar(@string[i + 2]);
 						if (d >= 0 && e >= 0)
 						{
 							c = (char)(d * 16 + e);

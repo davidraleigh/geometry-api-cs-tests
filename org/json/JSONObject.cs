@@ -1,13 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Reflection;
 using Sharpen;
-using java.lang;
-using java.lang.reflect;
-using java.util;
 
 namespace org.json
 {
@@ -124,7 +115,7 @@ namespace org.json
 		}
 
 		/// <summary>The map where the JSONObject's properties are kept.</summary>
-		private readonly IDictionary<string, object> map;
+		private readonly System.Collections.Generic.IDictionary<string, object> map;
 
 		/// <summary>
 		/// It is sometimes more convenient and less ambiguous to have a
@@ -136,12 +127,12 @@ namespace org.json
 		/// <code>JSONObject.NULL.equals(null)</code> returns <code>true</code>.
 		/// <code>JSONObject.NULL.toString()</code> returns <code>"null"</code>.
 		/// </remarks>
-		public static readonly object NULL = new JSONObject.Null();
+		public static readonly object NULL = new org.json.JSONObject.Null();
 
 		/// <summary>Construct an empty JSONObject.</summary>
 		public JSONObject()
 		{
-			this.map = new Dictionary<string, object>();
+			this.map = new System.Collections.Generic.Dictionary<string, object>();
 		}
 
 		/// <summary>Construct a JSONObject from a subset of another JSONObject.</summary>
@@ -158,7 +149,7 @@ namespace org.json
 		/// If a value is a non-finite number or if a name is
 		/// duplicated.
 		/// </exception>
-		public JSONObject(JSONObject jo, string[] names)
+		public JSONObject(org.json.JSONObject jo, string[] names)
 			: this()
 		{
 			for (int i = 0; i < names.Length; i += 1)
@@ -167,7 +158,7 @@ namespace org.json
 				{
 					this.PutOnce(names[i], jo.Opt(names[i]));
 				}
-				catch (Exception)
+				catch (System.Exception)
 				{
 				}
 			}
@@ -180,7 +171,7 @@ namespace org.json
 		/// duplicated key.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public JSONObject(JSONTokener x)
+		public JSONObject(org.json.JSONTokener x)
 			: this()
 		{
 			char c;
@@ -251,15 +242,16 @@ namespace org.json
 		/// the JSONObject.
 		/// </param>
 		/// <exception cref="JSONException"/>
-		public JSONObject(IDictionary<string, object> map)
+		public JSONObject(System.Collections.Generic.IDictionary<string, object> map)
 		{
-			this.map = new Dictionary<string, object>();
+			this.map = new System.Collections.Generic.Dictionary<string, object>();
 			if (map != null)
 			{
-				IEnumerator<KeyValuePair<string, object>> i = map.GetEnumerator();
+				System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string
+					, object>> i = map.GetEnumerator();
 				while (i.HasNext())
 				{
-					KeyValuePair<string, object> entry = i.Next();
+					System.Collections.Generic.KeyValuePair<string, object> entry = i.Next();
 					object value = entry.Value;
 					if (value != null)
 					{
@@ -317,7 +309,7 @@ namespace org.json
 		public JSONObject(object @object, string[] names)
 			: this()
 		{
-			Type c = @object.GetType();
+			System.Type c = @object.GetType();
 			for (int i = 0; i < names.Length; i += 1)
 			{
 				string name = names[i];
@@ -325,7 +317,7 @@ namespace org.json
 				{
 					this.PutOpt(name, c.GetField(name).GetValue(@object));
 				}
-				catch (Exception)
+				catch (System.Exception)
 				{
 				}
 			}
@@ -348,7 +340,7 @@ namespace org.json
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
 		public JSONObject(string source)
-			: this(new JSONTokener(source))
+			: this(new org.json.JSONTokener(source))
 		{
 		}
 
@@ -357,13 +349,13 @@ namespace org.json
 		/// <param name="locale">The Locale to load the ResourceBundle for.</param>
 		/// <exception cref="JSONException">If any JSONExceptions are detected.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public JSONObject(string baseName, CultureInfo locale)
+		public JSONObject(string baseName, System.Globalization.CultureInfo locale)
 			: this()
 		{
-			ResourceBundle bundle = ResourceBundle.GetBundle(baseName, locale, java.lang.Thread
-				.CurrentThread().GetContextClassLoader());
+			java.util.ResourceBundle bundle = java.util.ResourceBundle.GetBundle(baseName, locale
+				, java.lang.Thread.CurrentThread().GetContextClassLoader());
 			// Iterate through the keys in the bundle.
-			Enumeration<string> keys = bundle.GetKeys();
+			java.util.Enumeration<string> keys = bundle.GetKeys();
 			while (keys.MoveNext())
 			{
 				object key = keys.Current;
@@ -374,14 +366,14 @@ namespace org.json
 					// the deepest nested JSONObject.
 					string[] path = ((string)key).Split("\\.");
 					int last = path.Length - 1;
-					JSONObject target = this;
+					org.json.JSONObject target = this;
 					for (int i = 0; i < last; i += 1)
 					{
 						string segment = path[i];
-						JSONObject nextTarget = target.OptJSONObject(segment);
+						org.json.JSONObject nextTarget = target.OptJSONObject(segment);
 						if (nextTarget == null)
 						{
-							nextTarget = new JSONObject();
+							nextTarget = new org.json.JSONObject();
 							target.Put(segment, nextTarget);
 						}
 						target = nextTarget;
@@ -408,23 +400,24 @@ namespace org.json
 		/// <exception cref="JSONException">If the value is an invalid number or if the key is null.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Accumulate(string key, object value)
+		public virtual org.json.JSONObject Accumulate(string key, object value)
 		{
 			TestValidity(value);
 			object @object = this.Opt(key);
 			if (@object == null)
 			{
-				this.Put(key, value is JSONArray ? new JSONArray().Put(value) : value);
+				this.Put(key, value is org.json.JSONArray ? new org.json.JSONArray().Put(value) : 
+					value);
 			}
 			else
 			{
-				if (@object is JSONArray)
+				if (@object is org.json.JSONArray)
 				{
-					((JSONArray)@object).Put(value);
+					((org.json.JSONArray)@object).Put(value);
 				}
 				else
 				{
-					this.Put(key, new JSONArray().Put(@object).Put(value));
+					this.Put(key, new org.json.JSONArray().Put(@object).Put(value));
 				}
 			}
 			return this;
@@ -445,23 +438,23 @@ namespace org.json
 		/// the key is not a JSONArray.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Append(string key, object value)
+		public virtual org.json.JSONObject Append(string key, object value)
 		{
 			TestValidity(value);
 			object @object = this.Opt(key);
 			if (@object == null)
 			{
-				this.Put(key, new JSONArray().Put(value));
+				this.Put(key, new org.json.JSONArray().Put(value));
 			}
 			else
 			{
-				if (@object is JSONArray)
+				if (@object is org.json.JSONArray)
 				{
-					this.Put(key, ((JSONArray)@object).Put(value));
+					this.Put(key, ((org.json.JSONArray)@object).Put(value));
 				}
 				else
 				{
-					throw new JSONException("JSONObject[" + key + "] is not a JSONArray.");
+					throw new org.json.JSONException("JSONObject[" + key + "] is not a JSONArray.");
 				}
 			}
 			return this;
@@ -506,12 +499,12 @@ namespace org.json
 		{
 			if (key == null)
 			{
-				throw new JSONException("Null key.");
+				throw new org.json.JSONException("Null key.");
 			}
 			object @object = this.Opt(key);
 			if (@object == null)
 			{
-				throw new JSONException("JSONObject[" + Quote(key) + "] not found.");
+				throw new org.json.JSONException("JSONObject[" + Quote(key) + "] not found.");
 			}
 			return @object;
 		}
@@ -540,7 +533,8 @@ namespace org.json
 					return true;
 				}
 			}
-			throw new JSONException("JSONObject[" + Quote(key) + "] is not a Boolean.");
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a Boolean."
+				);
 		}
 
 		/// <summary>Get the double value associated with a key.</summary>
@@ -556,11 +550,13 @@ namespace org.json
 			object @object = this.Get(key);
 			try
 			{
-				return @object is Number ? ((Number)@object) : double.Parse((string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.Parse((
+					string)@object);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
-				throw new JSONException("JSONObject[" + Quote(key) + "] is not a number.");
+				throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a number."
+					);
 			}
 		}
 
@@ -577,12 +573,12 @@ namespace org.json
 			object @object = this.Get(key);
 			try
 			{
-				return @object is Number ? ((Number)@object) : System.Convert.ToInt32((string)@object
-					);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt32
+					((string)@object);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
-				throw new JSONException("JSONObject[" + Quote(key) + "] is not an int.");
+				throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not an int.");
 			}
 		}
 
@@ -592,14 +588,15 @@ namespace org.json
 		/// <exception cref="JSONException">if the key is not found or if the value is not a JSONArray.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONArray GetJSONArray(string key)
+		public virtual org.json.JSONArray GetJSONArray(string key)
 		{
 			object @object = this.Get(key);
-			if (@object is JSONArray)
+			if (@object is org.json.JSONArray)
 			{
-				return (JSONArray)@object;
+				return (org.json.JSONArray)@object;
 			}
-			throw new JSONException("JSONObject[" + Quote(key) + "] is not a JSONArray.");
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a JSONArray."
+				);
 		}
 
 		/// <summary>Get the JSONObject value associated with a key.</summary>
@@ -608,14 +605,15 @@ namespace org.json
 		/// <exception cref="JSONException">if the key is not found or if the value is not a JSONObject.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject GetJSONObject(string key)
+		public virtual org.json.JSONObject GetJSONObject(string key)
 		{
 			object @object = this.Get(key);
-			if (@object is JSONObject)
+			if (@object is org.json.JSONObject)
 			{
-				return (JSONObject)@object;
+				return (org.json.JSONObject)@object;
 			}
-			throw new JSONException("JSONObject[" + Quote(key) + "] is not a JSONObject.");
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a JSONObject."
+				);
 		}
 
 		/// <summary>Get the long value associated with a key.</summary>
@@ -631,25 +629,25 @@ namespace org.json
 			object @object = this.Get(key);
 			try
 			{
-				return @object is Number ? ((Number)@object) : System.Convert.ToInt64((string)@object
-					);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt64
+					((string)@object);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
-				throw new JSONException("JSONObject[" + Quote(key) + "] is not a long.");
+				throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a long.");
 			}
 		}
 
 		/// <summary>Get an array of field names from a JSONObject.</summary>
 		/// <returns>An array of field names, or null if there are no names.</returns>
-		public static string[] GetNames(JSONObject jo)
+		public static string[] GetNames(org.json.JSONObject jo)
 		{
 			int length = jo.Length();
 			if (length == 0)
 			{
 				return null;
 			}
-			IEnumerator<string> iterator = jo.Keys();
+			System.Collections.Generic.IEnumerator<string> iterator = jo.Keys();
 			string[] names = new string[length];
 			int i = 0;
 			while (iterator.HasNext())
@@ -668,8 +666,8 @@ namespace org.json
 			{
 				return null;
 			}
-			Type klass = @object.GetType();
-			FieldInfo[] fields = klass.GetFields();
+			System.Type klass = @object.GetType();
+			System.Reflection.FieldInfo[] fields = klass.GetFields();
 			int length = fields.Length;
 			if (length == 0)
 			{
@@ -695,7 +693,7 @@ namespace org.json
 			{
 				return (string)@object;
 			}
-			throw new JSONException("JSONObject[" + Quote(key) + "] not a string.");
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] not a string.");
 		}
 
 		/// <summary>Determine if the JSONObject contains a specific key.</summary>
@@ -719,7 +717,7 @@ namespace org.json
 		/// Integer, Long, Double, or Float.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Increment(string key)
+		public virtual org.json.JSONObject Increment(string key)
 		{
 			object value = this.Opt(key);
 			if (value == null)
@@ -752,7 +750,7 @@ namespace org.json
 							}
 							else
 							{
-								throw new JSONException("Unable to increment [" + Quote(key) + "].");
+								throw new org.json.JSONException("Unable to increment [" + Quote(key) + "].");
 							}
 						}
 					}
@@ -772,19 +770,19 @@ namespace org.json
 		/// </returns>
 		public virtual bool IsNull(string key)
 		{
-			return JSONObject.NULL.Equals(this.Opt(key));
+			return org.json.JSONObject.NULL.Equals(this.Opt(key));
 		}
 
 		/// <summary>Get an enumeration of the keys of the JSONObject.</summary>
 		/// <returns>An iterator of the keys.</returns>
-		public virtual IEnumerator<string> Keys()
+		public virtual System.Collections.Generic.IEnumerator<string> Keys()
 		{
 			return this.KeySet().GetEnumerator();
 		}
 
 		/// <summary>Get a set of keys of the JSONObject.</summary>
 		/// <returns>A keySet.</returns>
-		public virtual ICollection<string> KeySet()
+		public virtual System.Collections.Generic.ICollection<string> KeySet()
 		{
 			return this.map.Keys;
 		}
@@ -804,10 +802,10 @@ namespace org.json
 		/// A JSONArray containing the key strings, or null if the JSONObject
 		/// is empty.
 		/// </returns>
-		public virtual JSONArray Names()
+		public virtual org.json.JSONArray Names()
 		{
-			JSONArray ja = new JSONArray();
-			IEnumerator<string> keys = this.Keys();
+			org.json.JSONArray ja = new org.json.JSONArray();
+			System.Collections.Generic.IEnumerator<string> keys = this.Keys();
 			while (keys.HasNext())
 			{
 				ja.Put(keys.Next());
@@ -820,11 +818,11 @@ namespace org.json
 		/// <returns>A String.</returns>
 		/// <exception cref="JSONException">If n is a non-finite number.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public static string NumberToString(Number number)
+		public static string NumberToString(java.lang.Number number)
 		{
 			if (number == null)
 			{
-				throw new JSONException("Null pointer");
+				throw new org.json.JSONException("Null pointer");
 			}
 			TestValidity(number);
 			// Shave off trailing zeros and decimal point, if possible.
@@ -879,7 +877,7 @@ namespace org.json
 			{
 				return this.GetBoolean(key);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				return defaultValue;
 			}
@@ -919,7 +917,7 @@ namespace org.json
 			{
 				return this.GetDouble(key);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				return defaultValue;
 			}
@@ -959,7 +957,7 @@ namespace org.json
 			{
 				return this.GetInt(key);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				return defaultValue;
 			}
@@ -972,10 +970,10 @@ namespace org.json
 		/// </remarks>
 		/// <param name="key">A key string.</param>
 		/// <returns>A JSONArray which is the value.</returns>
-		public virtual JSONArray OptJSONArray(string key)
+		public virtual org.json.JSONArray OptJSONArray(string key)
 		{
 			object o = this.Opt(key);
-			return o is JSONArray ? (JSONArray)o : null;
+			return o is org.json.JSONArray ? (org.json.JSONArray)o : null;
 		}
 
 		/// <summary>Get an optional JSONObject associated with a key.</summary>
@@ -985,10 +983,10 @@ namespace org.json
 		/// </remarks>
 		/// <param name="key">A key string.</param>
 		/// <returns>A JSONObject which is the value.</returns>
-		public virtual JSONObject OptJSONObject(string key)
+		public virtual org.json.JSONObject OptJSONObject(string key)
 		{
 			object @object = this.Opt(key);
-			return @object is JSONObject ? (JSONObject)@object : null;
+			return @object is org.json.JSONObject ? (org.json.JSONObject)@object : null;
 		}
 
 		/// <summary>
@@ -1025,7 +1023,7 @@ namespace org.json
 			{
 				return this.GetLong(key);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				return defaultValue;
 			}
@@ -1060,17 +1058,17 @@ namespace org.json
 
 		private void PopulateMap(object bean)
 		{
-			Type klass = bean.GetType();
+			System.Type klass = bean.GetType();
 			// If klass is a System class then set includeSuperClass to false.
 			bool includeSuperClass = klass.GetClassLoader() != null;
-			MethodInfo[] methods = includeSuperClass ? klass.GetMethods() : Sharpen.Runtime.GetDeclaredMethods
-				(klass);
+			System.Reflection.MethodInfo[] methods = includeSuperClass ? klass.GetMethods() : 
+				Sharpen.Runtime.GetDeclaredMethods(klass);
 			for (int i = 0; i < methods.Length; i += 1)
 			{
 				try
 				{
-					MethodInfo method = methods[i];
-					if (Modifier.IsPublic(method.GetModifiers()))
+					System.Reflection.MethodInfo method = methods[i];
+					if (java.lang.reflect.Modifier.IsPublic(method.GetModifiers()))
 					{
 						string name = method.Name;
 						string key = string.Empty;
@@ -1115,7 +1113,7 @@ namespace org.json
 						}
 					}
 				}
-				catch (Exception)
+				catch (System.Exception)
 				{
 				}
 			}
@@ -1127,7 +1125,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the key is null.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, bool value)
+		public virtual org.json.JSONObject Put(string key, bool value)
 		{
 			this.Put(key, value ? true : false);
 			return this;
@@ -1142,9 +1140,10 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, ICollection<object> value)
+		public virtual org.json.JSONObject Put(string key, System.Collections.Generic.ICollection
+			<object> value)
 		{
-			this.Put(key, new JSONArray(value));
+			this.Put(key, new org.json.JSONArray(value));
 			return this;
 		}
 
@@ -1154,7 +1153,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the key is null or if the number is invalid.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, double value)
+		public virtual org.json.JSONObject Put(string key, double value)
 		{
 			this.Put(key, value);
 			return this;
@@ -1166,7 +1165,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the key is null.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, int value)
+		public virtual org.json.JSONObject Put(string key, int value)
 		{
 			this.Put(key, value);
 			return this;
@@ -1178,7 +1177,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the key is null.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, long value)
+		public virtual org.json.JSONObject Put(string key, long value)
 		{
 			this.Put(key, value);
 			return this;
@@ -1193,9 +1192,10 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, IDictionary<string, object> value)
+		public virtual org.json.JSONObject Put(string key, System.Collections.Generic.IDictionary
+			<string, object> value)
 		{
-			this.Put(key, new JSONObject(value));
+			this.Put(key, new org.json.JSONObject(value));
 			return this;
 		}
 
@@ -1214,11 +1214,11 @@ namespace org.json
 		/// <exception cref="JSONException">If the value is non-finite number or if the key is null.
 		/// 	</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject Put(string key, object value)
+		public virtual org.json.JSONObject Put(string key, object value)
 		{
 			if (key == null)
 			{
-				throw new ArgumentNullException("Null key.");
+				throw new System.ArgumentNullException("Null key.");
 			}
 			if (value != null)
 			{
@@ -1242,13 +1242,13 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">if the key is a duplicate</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject PutOnce(string key, object value)
+		public virtual org.json.JSONObject PutOnce(string key, object value)
 		{
 			if (key != null && value != null)
 			{
 				if (this.Opt(key) != null)
 				{
-					throw new JSONException("Duplicate key \"" + key + "\"");
+					throw new org.json.JSONException("Duplicate key \"" + key + "\"");
 				}
 				this.Put(key, value);
 			}
@@ -1268,7 +1268,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException">If the value is a non-finite number.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONObject PutOpt(string key, object value)
+		public virtual org.json.JSONObject PutOpt(string key, object value)
 		{
 			if (key != null && value != null)
 			{
@@ -1291,14 +1291,14 @@ namespace org.json
 		/// <returns>A String correctly formatted for insertion in a JSON text.</returns>
 		public static string Quote(string @string)
 		{
-			StringWriter sw = new StringWriter();
+			System.IO.StringWriter sw = new System.IO.StringWriter();
 			lock (sw.GetBuffer())
 			{
 				try
 				{
 					return Quote(@string, sw).ToString();
 				}
-				catch (IOException)
+				catch (System.IO.IOException)
 				{
 					// will never happen - we are writing to a string writer
 					return string.Empty;
@@ -1307,7 +1307,7 @@ namespace org.json
 		}
 
 		/// <exception cref="System.IO.IOException"/>
-		public static TextWriter Quote(string @string, TextWriter w)
+		public static System.IO.TextWriter Quote(string @string, System.IO.TextWriter w)
 		{
 			if (@string == null || @string.Length == 0)
 			{
@@ -1418,33 +1418,33 @@ namespace org.json
 		{
 			try
 			{
-				if (!(other is JSONObject))
+				if (!(other is org.json.JSONObject))
 				{
 					return false;
 				}
-				ICollection<string> set = this.KeySet();
-				if (!set.Equals(((JSONObject)other).KeySet()))
+				System.Collections.Generic.ICollection<string> set = this.KeySet();
+				if (!set.Equals(((org.json.JSONObject)other).KeySet()))
 				{
 					return false;
 				}
-				IEnumerator<string> iterator = set.GetEnumerator();
+				System.Collections.Generic.IEnumerator<string> iterator = set.GetEnumerator();
 				while (iterator.HasNext())
 				{
 					string name = iterator.Next();
 					object valueThis = this.Get(name);
-					object valueOther = ((JSONObject)other).Get(name);
-					if (valueThis is JSONObject)
+					object valueOther = ((org.json.JSONObject)other).Get(name);
+					if (valueThis is org.json.JSONObject)
 					{
-						if (!((JSONObject)valueThis).Similar(valueOther))
+						if (!((org.json.JSONObject)valueThis).Similar(valueOther))
 						{
 							return false;
 						}
 					}
 					else
 					{
-						if (valueThis is JSONArray)
+						if (valueThis is org.json.JSONArray)
 						{
-							if (!((JSONArray)valueThis).Similar(valueOther))
+							if (!((org.json.JSONArray)valueThis).Similar(valueOther))
 							{
 								return false;
 							}
@@ -1490,7 +1490,7 @@ namespace org.json
 			}
 			if (Sharpen.Runtime.EqualsIgnoreCase(@string, "null"))
 			{
-				return JSONObject.NULL;
+				return org.json.JSONObject.NULL;
 			}
 			/*
 			* If it might be a number, try converting it. If a number cannot be
@@ -1526,7 +1526,7 @@ namespace org.json
 						}
 					}
 				}
-				catch (Exception)
+				catch (System.Exception)
 				{
 				}
 			}
@@ -1545,7 +1545,7 @@ namespace org.json
 				{
 					if (((double)o).IsInfinite() || double.IsNaN(((double)o)))
 					{
-						throw new JSONException("JSON does not allow non-finite numbers.");
+						throw new org.json.JSONException("JSON does not allow non-finite numbers.");
 					}
 				}
 				else
@@ -1554,7 +1554,7 @@ namespace org.json
 					{
 						if (((float)o).IsInfinite() || float.IsNaN(((float)o)))
 						{
-							throw new JSONException("JSON does not allow non-finite numbers.");
+							throw new org.json.JSONException("JSON does not allow non-finite numbers.");
 						}
 					}
 				}
@@ -1572,13 +1572,13 @@ namespace org.json
 		/// <returns>A JSONArray of values.</returns>
 		/// <exception cref="JSONException">If any of the values are non-finite numbers.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual JSONArray ToJSONArray(JSONArray names)
+		public virtual org.json.JSONArray ToJSONArray(org.json.JSONArray names)
 		{
 			if (names == null || names.Length() == 0)
 			{
 				return null;
 			}
-			JSONArray ja = new JSONArray();
+			org.json.JSONArray ja = new org.json.JSONArray();
 			for (int i = 0; i < names.Length(); i += 1)
 			{
 				ja.Put(this.Opt(names.GetString(i)));
@@ -1606,7 +1606,7 @@ namespace org.json
 			{
 				return this.ToString(0);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				return null;
 			}
@@ -1630,7 +1630,7 @@ namespace org.json
 		/// <exception cref="org.json.JSONException"/>
 		public virtual string ToString(int indentFactor)
 		{
-			StringWriter w = new StringWriter();
+			System.IO.StringWriter w = new System.IO.StringWriter();
 			lock (w.GetBuffer())
 			{
 				return this.Write(w, indentFactor, 0).ToString();
@@ -1667,44 +1667,46 @@ namespace org.json
 			{
 				return "null";
 			}
-			if (value is JSONString)
+			if (value is org.json.JSONString)
 			{
 				object @object;
 				try
 				{
-					@object = ((JSONString)value).ToJSONString();
+					@object = ((org.json.JSONString)value).ToJSONString();
 				}
-				catch (Exception e)
+				catch (System.Exception e)
 				{
-					throw new JSONException(e);
+					throw new org.json.JSONException(e);
 				}
 				if (@object is string)
 				{
 					return (string)@object;
 				}
-				throw new JSONException("Bad value from toJSONString: " + @object);
+				throw new org.json.JSONException("Bad value from toJSONString: " + @object);
 			}
-			if (value is Number)
+			if (value is java.lang.Number)
 			{
-				return NumberToString((Number)value);
+				return NumberToString((java.lang.Number)value);
 			}
-			if (value is bool || value is JSONObject || value is JSONArray)
+			if (value is bool || value is org.json.JSONObject || value is org.json.JSONArray)
 			{
 				return value.ToString();
 			}
-			if (value is IDictionary)
+			if (value is System.Collections.IDictionary)
 			{
-				IDictionary<string, object> map = (IDictionary<string, object>)value;
-				return new JSONObject(map).ToString();
+				System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary
+					<string, object>)value;
+				return new org.json.JSONObject(map).ToString();
 			}
-			if (value is ICollection)
+			if (value is System.Collections.ICollection)
 			{
-				ICollection<object> coll = (ICollection<object>)value;
-				return new JSONArray(coll).ToString();
+				System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection
+					<object>)value;
+				return new org.json.JSONArray(coll).ToString();
 			}
 			if (value.GetType().IsArray)
 			{
-				return new JSONArray(value).ToString();
+				return new org.json.JSONArray(value).ToString();
 			}
 			return Quote(value.ToString());
 		}
@@ -1728,37 +1730,39 @@ namespace org.json
 				{
 					return NULL;
 				}
-				if (@object is JSONObject || @object is JSONArray || NULL.Equals(@object) || @object
-					 is JSONString || @object is byte || @object is char || @object is short || @object
-					 is int || @object is long || @object is bool || @object is float || @object is 
-					double || @object is string)
+				if (@object is org.json.JSONObject || @object is org.json.JSONArray || NULL.Equals
+					(@object) || @object is org.json.JSONString || @object is byte || @object is char
+					 || @object is short || @object is int || @object is long || @object is bool || 
+					@object is float || @object is double || @object is string)
 				{
 					return @object;
 				}
-				if (@object is ICollection)
+				if (@object is System.Collections.ICollection)
 				{
-					ICollection<object> coll = (ICollection<object>)@object;
-					return new JSONArray(coll);
+					System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection
+						<object>)@object;
+					return new org.json.JSONArray(coll);
 				}
 				if (@object.GetType().IsArray)
 				{
-					return new JSONArray(@object);
+					return new org.json.JSONArray(@object);
 				}
-				if (@object is IDictionary)
+				if (@object is System.Collections.IDictionary)
 				{
-					IDictionary<string, object> map = (IDictionary<string, object>)@object;
-					return new JSONObject(map);
+					System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary
+						<string, object>)@object;
+					return new org.json.JSONObject(map);
 				}
-				Assembly objectPackage = @object.GetType().Assembly;
+				System.Reflection.Assembly objectPackage = @object.GetType().Assembly;
 				string objectPackageName = objectPackage != null ? objectPackage.GetName() : string.Empty;
 				if (objectPackageName.StartsWith("java.") || objectPackageName.StartsWith("javax."
 					) || @object.GetType().GetClassLoader() == null)
 				{
 					return @object.ToString();
 				}
-				return new JSONObject(@object);
+				return new org.json.JSONObject(@object);
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				return null;
 			}
@@ -1774,15 +1778,15 @@ namespace org.json
 		/// <returns>The writer.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual TextWriter Write(TextWriter writer)
+		public virtual System.IO.TextWriter Write(System.IO.TextWriter writer)
 		{
 			return this.Write(writer, 0, 0);
 		}
 
 		/// <exception cref="org.json.JSONException"/>
 		/// <exception cref="System.IO.IOException"/>
-		internal static TextWriter WriteValue(TextWriter writer, object value, int indentFactor
-			, int indent)
+		internal static System.IO.TextWriter WriteValue(System.IO.TextWriter writer, object
+			 value, int indentFactor, int indent)
 		{
 			if (value == null || value.Equals(null))
 			{
@@ -1790,41 +1794,43 @@ namespace org.json
 			}
 			else
 			{
-				if (value is JSONObject)
+				if (value is org.json.JSONObject)
 				{
-					((JSONObject)value).Write(writer, indentFactor, indent);
+					((org.json.JSONObject)value).Write(writer, indentFactor, indent);
 				}
 				else
 				{
-					if (value is JSONArray)
+					if (value is org.json.JSONArray)
 					{
-						((JSONArray)value).Write(writer, indentFactor, indent);
+						((org.json.JSONArray)value).Write(writer, indentFactor, indent);
 					}
 					else
 					{
-						if (value is IDictionary)
+						if (value is System.Collections.IDictionary)
 						{
-							IDictionary<string, object> map = (IDictionary<string, object>)value;
-							new JSONObject(map).Write(writer, indentFactor, indent);
+							System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary
+								<string, object>)value;
+							new org.json.JSONObject(map).Write(writer, indentFactor, indent);
 						}
 						else
 						{
-							if (value is ICollection)
+							if (value is System.Collections.ICollection)
 							{
-								ICollection<object> coll = (ICollection<object>)value;
-								new JSONArray(coll).Write(writer, indentFactor, indent);
+								System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection
+									<object>)value;
+								new org.json.JSONArray(coll).Write(writer, indentFactor, indent);
 							}
 							else
 							{
 								if (value.GetType().IsArray)
 								{
-									new JSONArray(value).Write(writer, indentFactor, indent);
+									new org.json.JSONArray(value).Write(writer, indentFactor, indent);
 								}
 								else
 								{
-									if (value is Number)
+									if (value is java.lang.Number)
 									{
-										writer.Write(NumberToString((Number)value));
+										writer.Write(NumberToString((java.lang.Number)value));
 									}
 									else
 									{
@@ -1834,16 +1840,16 @@ namespace org.json
 										}
 										else
 										{
-											if (value is JSONString)
+											if (value is org.json.JSONString)
 											{
 												object o;
 												try
 												{
-													o = ((JSONString)value).ToJSONString();
+													o = ((org.json.JSONString)value).ToJSONString();
 												}
-												catch (Exception e)
+												catch (System.Exception e)
 												{
-													throw new JSONException(e);
+													throw new org.json.JSONException(e);
 												}
 												writer.Write(o != null ? o.ToString() : Quote(value.ToString()));
 											}
@@ -1863,7 +1869,7 @@ namespace org.json
 		}
 
 		/// <exception cref="System.IO.IOException"/>
-		internal static void Indent(TextWriter writer, int indent)
+		internal static void Indent(System.IO.TextWriter writer, int indent)
 		{
 			for (int i = 0; i < indent; i += 1)
 			{
@@ -1881,14 +1887,14 @@ namespace org.json
 		/// <returns>The writer.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		internal virtual TextWriter Write(TextWriter writer, int indentFactor, int indent
-			)
+		internal virtual System.IO.TextWriter Write(System.IO.TextWriter writer, int indentFactor
+			, int indent)
 		{
 			try
 			{
 				bool commanate = false;
 				int length = this.Length();
-				IEnumerator<string> keys = this.Keys();
+				System.Collections.Generic.IEnumerator<string> keys = this.Keys();
 				writer.Write('{');
 				if (length == 1)
 				{
@@ -1937,9 +1943,9 @@ namespace org.json
 				writer.Write('}');
 				return writer;
 			}
-			catch (IOException exception)
+			catch (System.IO.IOException exception)
 			{
-				throw new JSONException(exception);
+				throw new org.json.JSONException(exception);
 			}
 		}
 	}

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -76,7 +73,7 @@ namespace org.json
 		/// <returns>The escaped string.</returns>
 		public static string Escape(string @string)
 		{
-			StringBuilder sb = new StringBuilder(@string.Length);
+			System.Text.StringBuilder sb = new System.Text.StringBuilder(@string.Length);
 			for (int i = 0; i < length; i++)
 			{
 				char c = @string[i];
@@ -136,13 +133,13 @@ namespace org.json
 			int length = @string.Length;
 			if (length == 0)
 			{
-				throw new JSONException("Empty string.");
+				throw new org.json.JSONException("Empty string.");
 			}
 			for (i = 0; i < length; i += 1)
 			{
 				if (char.IsWhiteSpace(@string[i]))
 				{
-					throw new JSONException("'" + @string + "' contains a space character.");
+					throw new org.json.JSONException("'" + @string + "' contains a space character.");
 				}
 			}
 		}
@@ -154,11 +151,12 @@ namespace org.json
 		/// <returns>true if the close tag is processed.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		private static bool Parse(XMLTokener x, JSONObject context, string name)
+		private static bool Parse(org.json.XMLTokener x, org.json.JSONObject context, string
+			 name)
 		{
 			char c;
 			int i;
-			JSONObject jsonobject = null;
+			org.json.JSONObject jsonobject = null;
 			string @string;
 			string tagName;
 			object token;
@@ -270,7 +268,7 @@ namespace org.json
 							// Open tag <
 							tagName = (string)token;
 							token = null;
-							jsonobject = new JSONObject();
+							jsonobject = new org.json.JSONObject();
 							for (; ; )
 							{
 								if (token == null)
@@ -289,7 +287,7 @@ namespace org.json
 										{
 											throw x.SyntaxError("Missing value");
 										}
-										jsonobject.Accumulate(@string, XML.StringToValue((string)token));
+										jsonobject.Accumulate(@string, org.json.XML.StringToValue((string)token));
 										token = null;
 									}
 									else
@@ -339,7 +337,7 @@ namespace org.json
 														@string = (string)token;
 														if (@string.Length > 0)
 														{
-															jsonobject.Accumulate("content", XML.StringToValue(@string));
+															jsonobject.Accumulate("content", org.json.XML.StringToValue(@string));
 														}
 													}
 													else
@@ -406,7 +404,7 @@ namespace org.json
 			}
 			if (Sharpen.Runtime.EqualsIgnoreCase("null", @string))
 			{
-				return JSONObject.NULL;
+				return org.json.JSONObject.NULL;
 			}
 			// If it might be a number, try converting it, first as a Long, and then as a
 			// Double. If that doesn't work, return the string.
@@ -422,7 +420,7 @@ namespace org.json
 					}
 				}
 			}
-			catch (Exception)
+			catch (System.Exception)
 			{
 				try
 				{
@@ -432,7 +430,7 @@ namespace org.json
 						return value;
 					}
 				}
-				catch (Exception)
+				catch (System.Exception)
 				{
 				}
 			}
@@ -458,10 +456,10 @@ namespace org.json
 		/// <returns>A JSONObject containing the structured data from the XML string.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static JSONObject ToJSONObject(string @string)
+		public static org.json.JSONObject ToJSONObject(string @string)
 		{
-			JSONObject jo = new JSONObject();
-			XMLTokener x = new XMLTokener(@string);
+			org.json.JSONObject jo = new org.json.JSONObject();
+			org.json.XMLTokener x = new org.json.XMLTokener(@string);
 			while (x.More() && x.SkipPast("<"))
 			{
 				Parse(x, jo, null);
@@ -487,16 +485,16 @@ namespace org.json
 		/// <exception cref="org.json.JSONException"/>
 		public static string ToString(object @object, string tagName)
 		{
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			int i;
-			JSONArray ja;
-			JSONObject jo;
+			org.json.JSONArray ja;
+			org.json.JSONObject jo;
 			string key;
-			IEnumerator<string> keys;
+			System.Collections.Generic.IEnumerator<string> keys;
 			int length;
 			string @string;
 			object value;
-			if (@object is JSONObject)
+			if (@object is org.json.JSONObject)
 			{
 				// Emit <tagName>
 				if (tagName != null)
@@ -506,7 +504,7 @@ namespace org.json
 					sb.Append('>');
 				}
 				// Loop thru the keys.
-				jo = (JSONObject)@object;
+				jo = (org.json.JSONObject)@object;
 				keys = jo.Keys();
 				while (keys.HasNext())
 				{
@@ -520,9 +518,9 @@ namespace org.json
 					// Emit content in body
 					if ("content".Equals(key))
 					{
-						if (value is JSONArray)
+						if (value is org.json.JSONArray)
 						{
-							ja = (JSONArray)value;
+							ja = (org.json.JSONArray)value;
 							length = ja.Length();
 							for (i = 0; i < length; i += 1)
 							{
@@ -541,14 +539,14 @@ namespace org.json
 					else
 					{
 						// Emit an array of similar keys
-						if (value is JSONArray)
+						if (value is org.json.JSONArray)
 						{
-							ja = (JSONArray)value;
+							ja = (org.json.JSONArray)value;
 							length = ja.Length();
 							for (i = 0; i < length; i += 1)
 							{
 								value = ja.Get(i);
-								if (value is JSONArray)
+								if (value is org.json.JSONArray)
 								{
 									sb.Append('<');
 									sb.Append(key);
@@ -595,11 +593,11 @@ namespace org.json
 				// where XML is lacking, synthesize an <array> element.
 				if (@object.GetType().IsArray)
 				{
-					@object = new JSONArray(@object);
+					@object = new org.json.JSONArray(@object);
 				}
-				if (@object is JSONArray)
+				if (@object is org.json.JSONArray)
 				{
-					ja = (JSONArray)@object;
+					ja = (org.json.JSONArray)@object;
 					length = ja.Length();
 					for (i = 0; i < length; i += 1)
 					{

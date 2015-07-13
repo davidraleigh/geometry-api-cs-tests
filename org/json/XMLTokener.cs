@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Text;
 using Sharpen;
 
 namespace org.json
@@ -10,14 +8,14 @@ namespace org.json
 	/// </summary>
 	/// <author>JSON.org</author>
 	/// <version>2014-05-03</version>
-	public class XMLTokener : JSONTokener
+	public class XMLTokener : org.json.JSONTokener
 	{
 		/// <summary>The table of entity values.</summary>
 		/// <remarks>
 		/// The table of entity values. It initially contains Character values for
 		/// amp, apos, gt, lt, quot.
 		/// </remarks>
-		public static readonly Dictionary<string, char> entity;
+		public static readonly System.Collections.Generic.Dictionary<string, char> entity;
 
 		static XMLTokener()
 		{
@@ -44,12 +42,12 @@ namespace org.json
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 			*/
-			entity = new Dictionary<string, char>(8);
-			entity["amp"] = XML.AMP;
-			entity["apos"] = XML.APOS;
-			entity["gt"] = XML.GT;
-			entity["lt"] = XML.LT;
-			entity["quot"] = XML.QUOT;
+			entity = new System.Collections.Generic.Dictionary<string, char>(8);
+			entity["amp"] = org.json.XML.AMP;
+			entity["apos"] = org.json.XML.APOS;
+			entity["gt"] = org.json.XML.GT;
+			entity["lt"] = org.json.XML.LT;
+			entity["quot"] = org.json.XML.QUOT;
 		}
 
 		/// <summary>Construct an XMLTokener from a string.</summary>
@@ -67,7 +65,7 @@ namespace org.json
 		{
 			char c;
 			int i;
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
 				c = Next();
@@ -100,7 +98,7 @@ namespace org.json
 		public virtual object NextContent()
 		{
 			char c;
-			StringBuilder sb;
+			System.Text.StringBuilder sb;
 			do
 			{
 				c = Next();
@@ -112,9 +110,9 @@ namespace org.json
 			}
 			if (c == '<')
 			{
-				return XML.LT;
+				return org.json.XML.LT;
 			}
-			sb = new StringBuilder();
+			sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
 				if (c == '<' || c == 0)
@@ -145,7 +143,7 @@ namespace org.json
 		/// <exception cref="org.json.JSONException"/>
 		public virtual object NextEntity(char ampersand)
 		{
-			StringBuilder sb = new StringBuilder();
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			for (; ; )
 			{
 				char c = Next();
@@ -203,32 +201,32 @@ namespace org.json
 
 				case '<':
 				{
-					return XML.LT;
+					return org.json.XML.LT;
 				}
 
 				case '>':
 				{
-					return XML.GT;
+					return org.json.XML.GT;
 				}
 
 				case '/':
 				{
-					return XML.SLASH;
+					return org.json.XML.SLASH;
 				}
 
 				case '=':
 				{
-					return XML.EQ;
+					return org.json.XML.EQ;
 				}
 
 				case '!':
 				{
-					return XML.BANG;
+					return org.json.XML.BANG;
 				}
 
 				case '?':
 				{
-					return XML.QUEST;
+					return org.json.XML.QUEST;
 				}
 
 				case '"':
@@ -295,7 +293,7 @@ namespace org.json
 		{
 			char c;
 			char q;
-			StringBuilder sb;
+			System.Text.StringBuilder sb;
 			do
 			{
 				c = Next();
@@ -315,27 +313,27 @@ namespace org.json
 
 				case '>':
 				{
-					return XML.GT;
+					return org.json.XML.GT;
 				}
 
 				case '/':
 				{
-					return XML.SLASH;
+					return org.json.XML.SLASH;
 				}
 
 				case '=':
 				{
-					return XML.EQ;
+					return org.json.XML.EQ;
 				}
 
 				case '!':
 				{
-					return XML.BANG;
+					return org.json.XML.BANG;
 				}
 
 				case '?':
 				{
-					return XML.QUEST;
+					return org.json.XML.QUEST;
 				}
 
 				case '"':
@@ -343,7 +341,7 @@ namespace org.json
 				{
 					// Quoted string
 					q = c;
-					sb = new StringBuilder();
+					sb = new System.Text.StringBuilder();
 					for (; ; )
 					{
 						c = Next();
@@ -370,7 +368,7 @@ namespace org.json
 				default:
 				{
 					// Name
-					sb = new StringBuilder();
+					sb = new System.Text.StringBuilder();
 					for (; ; )
 					{
 						sb.Append(c);
