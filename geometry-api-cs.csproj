@@ -109,12 +109,7 @@
     <Compile Include="com\esri\core\geometry\JSONArrayEnumerator.cs" />
     <Compile Include="com\esri\core\geometry\JsonCursor.cs" />
     <Compile Include="com\esri\core\geometry\JSONObjectEnumerator.cs" />
-    <Compile Include="com\esri\core\geometry\JsonParserCursor.cs" />
-    <Compile Include="com\esri\core\geometry\JsonParserReader.cs" />
-    <Compile Include="com\esri\core\geometry\JsonReader.cs" />
     <Compile Include="com\esri\core\geometry\JsonStringWriter.cs" />
-    <Compile Include="com\esri\core\geometry\JSONUtils.cs" />
-    <Compile Include="com\esri\core\geometry\JsonValueReader.cs" />
     <Compile Include="com\esri\core\geometry\JsonWriter.cs" />
     <Compile Include="com\esri\core\geometry\Line.cs" />
     <Compile Include="com\esri\core\geometry\ListeningGeometryCursor.cs" />
@@ -169,8 +164,6 @@
     <Compile Include="com\esri\core\geometry\OperatorExportToESRIShapeCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToESRIShapeLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToGeoJson.cs" />
-    <Compile Include="com\esri\core\geometry\OperatorExportToGeoJsonCursor.cs" />
-    <Compile Include="com\esri\core\geometry\OperatorExportToGeoJsonLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToJson.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToJsonCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToJsonLocal.cs" />
@@ -196,9 +189,6 @@
     <Compile Include="com\esri\core\geometry\OperatorImportFromESRIShapeLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromGeoJson.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromGeoJsonLocal.cs" />
-    <Compile Include="com\esri\core\geometry\OperatorImportFromJson.cs" />
-    <Compile Include="com\esri\core\geometry\OperatorImportFromJsonCursor.cs" />
-    <Compile Include="com\esri\core\geometry\OperatorImportFromJsonLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkb.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkbLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkt.cs" />
@@ -276,7 +266,6 @@
     <Compile Include="com\esri\core\geometry\SimpleByteBufferCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleGeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleJsonCursor.cs" />
-    <Compile Include="com\esri\core\geometry\SimpleJsonParserCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleMapGeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleRasterizer.cs" />
     <Compile Include="com\esri\core\geometry\Simplificator.cs" />
