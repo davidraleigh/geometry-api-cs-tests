@@ -591,7 +591,7 @@ namespace org.json
 			{
 				// XML does not have good support for arrays. If an array appears in a place
 				// where XML is lacking, synthesize an <array> element.
-				if (Sharpen.Runtime.GetClassForObject(@object).IsArray())
+				if (@object.GetType().IsArray)
 				{
 					@object = new org.json.JSONArray(@object);
 				}

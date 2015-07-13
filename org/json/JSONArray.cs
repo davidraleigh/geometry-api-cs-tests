@@ -166,12 +166,12 @@ namespace org.json
 		public JSONArray(object array)
 			: this()
 		{
-			if (Sharpen.Runtime.GetClassForObject(array).IsArray())
+			if (array.GetType().IsArray)
 			{
-				int length = java.lang.reflect.Array.GetLength(array);
+				int length = Sharpen.Runtime.GetArrayLength(array);
 				for (int i = 0; i < length; i += 1)
 				{
-					this.Put(org.json.JSONObject.Wrap(java.lang.reflect.Array.Get(array, i)));
+					this.Put(org.json.JSONObject.Wrap(Sharpen.Runtime.GetArrayValue(array, i)));
 				}
 			}
 			else

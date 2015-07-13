@@ -309,13 +309,13 @@ namespace org.json
 		public JSONObject(object @object, string[] names)
 			: this()
 		{
-			java.lang.Class c = Sharpen.Runtime.GetClassForObject(@object);
+			System.Type c = @object.GetType();
 			for (int i = 0; i < names.Length; i += 1)
 			{
 				string name = names[i];
 				try
 				{
-					this.PutOpt(name, c.GetField(name).Get(@object));
+					this.PutOpt(name, c.GetField(name).GetValue(@object));
 				}
 				catch (System.Exception)
 				{
@@ -666,8 +666,8 @@ namespace org.json
 			{
 				return null;
 			}
-			java.lang.Class klass = Sharpen.Runtime.GetClassForObject(@object);
-			java.lang.reflect.Field[] fields = klass.GetFields();
+			System.Type klass = @object.GetType();
+			System.Reflection.FieldInfo[] fields = klass.GetFields();
 			int length = fields.Length;
 			if (length == 0)
 			{
@@ -676,7 +676,7 @@ namespace org.json
 			string[] names = new string[length];
 			for (int i = 0; i < length; i += 1)
 			{
-				names[i] = fields[i].GetName();
+				names[i] = fields[i].Name;
 			}
 			return names;
 		}
@@ -1058,19 +1058,19 @@ namespace org.json
 
 		private void PopulateMap(object bean)
 		{
-			java.lang.Class klass = Sharpen.Runtime.GetClassForObject(bean);
+			System.Type klass = bean.GetType();
 			// If klass is a System class then set includeSuperClass to false.
 			bool includeSuperClass = klass.GetClassLoader() != null;
-			java.lang.reflect.Method[] methods = includeSuperClass ? klass.GetMethods() : klass
-				.GetDeclaredMethods();
+			System.Reflection.MethodInfo[] methods = includeSuperClass ? klass.GetMethods() : 
+				Sharpen.Runtime.GetDeclaredMethods(klass);
 			for (int i = 0; i < methods.Length; i += 1)
 			{
 				try
 				{
-					java.lang.reflect.Method method = methods[i];
+					System.Reflection.MethodInfo method = methods[i];
 					if (java.lang.reflect.Modifier.IsPublic(method.GetModifiers()))
 					{
-						string name = method.GetName();
+						string name = method.Name;
 						string key = string.Empty;
 						if (name.StartsWith("get"))
 						{
@@ -1090,8 +1090,8 @@ namespace org.json
 								key = Sharpen.Runtime.Substring(name, 2);
 							}
 						}
-						if (key.Length > 0 && System.Char.IsUpper(key[0]) && method.GetParameterTypes().Length
-							 == 0)
+						if (key.Length > 0 && System.Char.IsUpper(key[0]) && Sharpen.Runtime.GetParameterTypes
+							(method).Length == 0)
 						{
 							if (key.Length == 1)
 							{
@@ -1704,7 +1704,7 @@ namespace org.json
 					<object>)value;
 				return new org.json.JSONArray(coll).ToString();
 			}
-			if (Sharpen.Runtime.GetClassForObject(value).IsArray())
+			if (value.GetType().IsArray)
 			{
 				return new org.json.JSONArray(value).ToString();
 			}
@@ -1743,7 +1743,7 @@ namespace org.json
 						<object>)@object;
 					return new org.json.JSONArray(coll);
 				}
-				if (Sharpen.Runtime.GetClassForObject(@object).IsArray())
+				if (@object.GetType().IsArray)
 				{
 					return new org.json.JSONArray(@object);
 				}
@@ -1753,11 +1753,10 @@ namespace org.json
 						<string, object>)@object;
 					return new org.json.JSONObject(map);
 				}
-				System.Reflection.Assembly objectPackage = Sharpen.Runtime.GetClassForObject(@object
-					).Assembly;
+				System.Reflection.Assembly objectPackage = @object.GetType().Assembly;
 				string objectPackageName = objectPackage != null ? objectPackage.GetName() : string.Empty;
 				if (objectPackageName.StartsWith("java.") || objectPackageName.StartsWith("javax."
-					) || Sharpen.Runtime.GetClassForObject(@object).GetClassLoader() == null)
+					) || @object.GetType().GetClassLoader() == null)
 				{
 					return @object.ToString();
 				}
@@ -1823,7 +1822,7 @@ namespace org.json
 							}
 							else
 							{
-								if (Sharpen.Runtime.GetClassForObject(value).IsArray())
+								if (value.GetType().IsArray)
 								{
 									new org.json.JSONArray(value).Write(writer, indentFactor, indent);
 								}
