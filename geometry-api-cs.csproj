@@ -100,7 +100,6 @@
     <Compile Include="com\esri\core\geometry\GeometryEngine.cs" />
     <Compile Include="com\esri\core\geometry\GeometryException.cs" />
     <Compile Include="com\esri\core\geometry\GeometrySerializer.cs" />
-    <Compile Include="com\esri\core\geometry\GeometryUtils.cs" />
     <Compile Include="com\esri\core\geometry\IndexHashTable.cs" />
     <Compile Include="com\esri\core\geometry\IndexMultiDCList.cs" />
     <Compile Include="com\esri\core\geometry\IndexMultiList.cs" />
@@ -295,7 +294,6 @@
     <Compile Include="com\esri\core\geometry\Transformation3D.cs" />
     <Compile Include="com\esri\core\geometry\Treap.cs" />
     <Compile Include="com\esri\core\geometry\UserCancelException.cs" />
-    <Compile Include="com\esri\core\geometry\Utils.cs" />
     <Compile Include="com\esri\core\geometry\VertexDescription.cs" />
     <Compile Include="com\esri\core\geometry\VertexDescriptionDesignerImpl.cs" />
     <Compile Include="com\esri\core\geometry\VertexDescriptionHash.cs" />
