@@ -74,7 +74,7 @@ namespace org.json
 		public static string Escape(string @string)
 		{
 			System.Text.StringBuilder sb = new System.Text.StringBuilder(@string.Length);
-			for (int i = 0; i < length; i++)
+			for (int i = 0, length = @string.Length; i < length; i++)
 			{
 				char c = @string[i];
 				switch (c)
