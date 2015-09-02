@@ -1,5 +1,16 @@
 # geometry-api-cs
 
+The following three projects should all exist in the same directory:
+[https://github.com/davidraleigh/JSON-java](https://github.com/davidraleigh/JSON-java)
+[https://github.com/davidraleigh/geometry-api-cs](https://github.com/davidraleigh/geometry-api-cs)
+[https://github.com/davidraleigh/geometry-api-java](https://github.com/davidraleigh/geometry-api-java)
+
+the bash script should be executed from within the geometry-api-cs directory
+```bash
+$ ./generateCSharp.sh
+```
+
+Below is the original version of the conversion script
 ```bash
 java -jar sharpencore-0.0.1-SNAPSHOT-jar-with-dependencies.jar ~/Downloads/jackson-core-master/src/ -cp ~/Downloads/geometry-api-java-master/DepFiles/unittest/junit-4.8.2.jar -junitConversion @sharpen-all-options
 ```
