@@ -117,7 +117,6 @@
     <Compile Include="com\esri\core\geometry\MultiVertexGeometryImpl.cs" />
     <Compile Include="com\esri\core\geometry\NonSimpleResult.cs" />
     <Compile Include="com\esri\core\geometry\NumberUtils.cs" />
-    <Compile Include="com\esri\core\geometry\ObjectCacheTable.cs" />
     <Compile Include="com\esri\core\geometry\OGCStructure.cs" />
     <Compile Include="com\esri\core\geometry\PairwiseIntersectorImpl.cs" />
     <Compile Include="com\esri\core\geometry\PathFlags.cs" />
