@@ -88,7 +88,6 @@
     <Compile Include="com\esri\core\geometry\GeoJsonImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\Geometry.cs" />
     <Compile Include="com\esri\core\geometry\GeometryException.cs" />
-    <Compile Include="com\esri\core\geometry\GeometrySerializer.cs" />
     <Compile Include="com\esri\core\geometry\IndexHashTable.cs" />
     <Compile Include="com\esri\core\geometry\IndexMultiDCList.cs" />
     <Compile Include="com\esri\core\geometry\IndexMultiList.cs" />
