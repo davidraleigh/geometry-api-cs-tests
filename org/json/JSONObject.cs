@@ -247,8 +247,7 @@ namespace org.json
 			this.map = new System.Collections.Generic.Dictionary<string, object>();
 			if (map != null)
 			{
-				System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string
-					, object>> i = map.GetEnumerator();
+				System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> i = map.GetEnumerator();
 				while (i.HasNext())
 				{
 					System.Collections.Generic.KeyValuePair<string, object> entry = i.Next();
@@ -352,8 +351,7 @@ namespace org.json
 		public JSONObject(string baseName, System.Globalization.CultureInfo locale)
 			: this()
 		{
-			java.util.ResourceBundle bundle = java.util.ResourceBundle.GetBundle(baseName, locale
-				, java.lang.Thread.CurrentThread().GetContextClassLoader());
+			java.util.ResourceBundle bundle = java.util.ResourceBundle.GetBundle(baseName, locale, java.lang.Thread.CurrentThread().GetContextClassLoader());
 			// Iterate through the keys in the bundle.
 			java.util.Enumeration<string> keys = bundle.GetKeys();
 			while (keys.MoveNext())
@@ -397,8 +395,7 @@ namespace org.json
 		/// <param name="key">A key string.</param>
 		/// <param name="value">An object to be accumulated under the key.</param>
 		/// <returns>this.</returns>
-		/// <exception cref="JSONException">If the value is an invalid number or if the key is null.
-		/// 	</exception>
+		/// <exception cref="JSONException">If the value is an invalid number or if the key is null.</exception>
 		/// <exception cref="org.json.JSONException"/>
 		public virtual org.json.JSONObject Accumulate(string key, object value)
 		{
@@ -406,8 +403,7 @@ namespace org.json
 			object @object = this.Opt(key);
 			if (@object == null)
 			{
-				this.Put(key, value is org.json.JSONArray ? new org.json.JSONArray().Put(value) : 
-					value);
+				this.Put(key, value is org.json.JSONArray ? new org.json.JSONArray().Put(value) : value);
 			}
 			else
 			{
@@ -475,8 +471,7 @@ namespace org.json
 			}
 			// Shave off trailing zeros and decimal point, if possible.
 			string @string = d.ToString();
-			if (@string.IndexOf('.') > 0 && @string.IndexOf('e') < 0 && @string.IndexOf('E') 
-				< 0)
+			if (@string.IndexOf('.') > 0 && @string.IndexOf('e') < 0 && @string.IndexOf('E') < 0)
 			{
 				while (@string.EndsWith("0"))
 				{
@@ -520,21 +515,18 @@ namespace org.json
 		public virtual bool GetBoolean(string key)
 		{
 			object @object = this.Get(key);
-			if (@object.Equals(false) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase
-				(((string)@object), "false")))
+			if (@object.Equals(false) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase(((string)@object), "false")))
 			{
 				return false;
 			}
 			else
 			{
-				if (@object.Equals(true) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase
-					(((string)@object), "true")))
+				if (@object.Equals(true) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase(((string)@object), "true")))
 				{
 					return true;
 				}
 			}
-			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a Boolean."
-				);
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a Boolean.");
 		}
 
 		/// <summary>Get the double value associated with a key.</summary>
@@ -550,13 +542,11 @@ namespace org.json
 			object @object = this.Get(key);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.Parse((
-					string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.Parse((string)@object);
 			}
 			catch (System.Exception)
 			{
-				throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a number."
-					);
+				throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a number.");
 			}
 		}
 
@@ -573,8 +563,7 @@ namespace org.json
 			object @object = this.Get(key);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt32
-					((string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt32((string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -585,8 +574,7 @@ namespace org.json
 		/// <summary>Get the JSONArray value associated with a key.</summary>
 		/// <param name="key">A key string.</param>
 		/// <returns>A JSONArray which is the value.</returns>
-		/// <exception cref="JSONException">if the key is not found or if the value is not a JSONArray.
-		/// 	</exception>
+		/// <exception cref="JSONException">if the key is not found or if the value is not a JSONArray.</exception>
 		/// <exception cref="org.json.JSONException"/>
 		public virtual org.json.JSONArray GetJSONArray(string key)
 		{
@@ -595,15 +583,13 @@ namespace org.json
 			{
 				return (org.json.JSONArray)@object;
 			}
-			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a JSONArray."
-				);
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a JSONArray.");
 		}
 
 		/// <summary>Get the JSONObject value associated with a key.</summary>
 		/// <param name="key">A key string.</param>
 		/// <returns>A JSONObject which is the value.</returns>
-		/// <exception cref="JSONException">if the key is not found or if the value is not a JSONObject.
-		/// 	</exception>
+		/// <exception cref="JSONException">if the key is not found or if the value is not a JSONObject.</exception>
 		/// <exception cref="org.json.JSONException"/>
 		public virtual org.json.JSONObject GetJSONObject(string key)
 		{
@@ -612,8 +598,7 @@ namespace org.json
 			{
 				return (org.json.JSONObject)@object;
 			}
-			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a JSONObject."
-				);
+			throw new org.json.JSONException("JSONObject[" + Quote(key) + "] is not a JSONObject.");
 		}
 
 		/// <summary>Get the long value associated with a key.</summary>
@@ -629,8 +614,7 @@ namespace org.json
 			object @object = this.Get(key);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt64
-					((string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt64((string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -827,8 +811,7 @@ namespace org.json
 			TestValidity(number);
 			// Shave off trailing zeros and decimal point, if possible.
 			string @string = number.ToString();
-			if (@string.IndexOf('.') > 0 && @string.IndexOf('e') < 0 && @string.IndexOf('E') 
-				< 0)
+			if (@string.IndexOf('.') > 0 && @string.IndexOf('e') < 0 && @string.IndexOf('E') < 0)
 			{
 				while (@string.EndsWith("0"))
 				{
@@ -1061,8 +1044,7 @@ namespace org.json
 			System.Type klass = bean.GetType();
 			// If klass is a System class then set includeSuperClass to false.
 			bool includeSuperClass = klass.GetClassLoader() != null;
-			System.Reflection.MethodInfo[] methods = includeSuperClass ? klass.GetMethods() : 
-				Sharpen.Runtime.GetDeclaredMethods(klass);
+			System.Reflection.MethodInfo[] methods = includeSuperClass ? klass.GetMethods() : Sharpen.Runtime.GetDeclaredMethods(klass);
 			for (int i = 0; i < methods.Length; i += 1)
 			{
 				try
@@ -1090,8 +1072,7 @@ namespace org.json
 								key = Sharpen.Runtime.Substring(name, 2);
 							}
 						}
-						if (key.Length > 0 && System.Char.IsUpper(key[0]) && Sharpen.Runtime.GetParameterTypes
-							(method).Length == 0)
+						if (key.Length > 0 && System.Char.IsUpper(key[0]) && Sharpen.Runtime.GetParameterTypes(method).Length == 0)
 						{
 							if (key.Length == 1)
 							{
@@ -1101,8 +1082,7 @@ namespace org.json
 							{
 								if (!System.Char.IsUpper(key[1]))
 								{
-									key = Sharpen.Runtime.Substring(key, 0, 1).ToLower() + Sharpen.Runtime.Substring(
-										key, 1);
+									key = Sharpen.Runtime.Substring(key, 0, 1).ToLower() + Sharpen.Runtime.Substring(key, 1);
 								}
 							}
 							object result = method.Invoke(bean, (object[])null);
@@ -1140,8 +1120,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONObject Put(string key, System.Collections.Generic.ICollection
-			<object> value)
+		public virtual org.json.JSONObject Put(string key, System.Collections.Generic.ICollection<object> value)
 		{
 			this.Put(key, new org.json.JSONArray(value));
 			return this;
@@ -1192,8 +1171,7 @@ namespace org.json
 		/// <returns>this.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONObject Put(string key, System.Collections.Generic.IDictionary
-			<string, object> value)
+		public virtual org.json.JSONObject Put(string key, System.Collections.Generic.IDictionary<string, object> value)
 		{
 			this.Put(key, new org.json.JSONObject(value));
 			return this;
@@ -1211,8 +1189,7 @@ namespace org.json
 		/// String, or the JSONObject.NULL object.
 		/// </param>
 		/// <returns>this.</returns>
-		/// <exception cref="JSONException">If the value is non-finite number or if the key is null.
-		/// 	</exception>
+		/// <exception cref="JSONException">If the value is non-finite number or if the key is null.</exception>
 		/// <exception cref="org.json.JSONException"/>
 		public virtual org.json.JSONObject Put(string key, object value)
 		{
@@ -1501,8 +1478,7 @@ namespace org.json
 			{
 				try
 				{
-					if (@string.IndexOf('.') > -1 || @string.IndexOf('e') > -1 || @string.IndexOf('E'
-						) > -1)
+					if (@string.IndexOf('.') > -1 || @string.IndexOf('e') > -1 || @string.IndexOf('E') > -1)
 					{
 						d = double.Parse(@string);
 						if (!d.IsInfinite() && !double.IsNaN(d))
@@ -1618,8 +1594,7 @@ namespace org.json
 		/// <p>
 		/// Warning: This method assumes that the data structure is acyclical.
 		/// </remarks>
-		/// <param name="indentFactor">The number of spaces to add to each level of indentation.
-		/// 	</param>
+		/// <param name="indentFactor">The number of spaces to add to each level of indentation.</param>
 		/// <returns>
 		/// a printable, displayable, portable, transmittable representation
 		/// of the object, beginning with <code>{</code>&nbsp;<small>(left
@@ -1694,14 +1669,12 @@ namespace org.json
 			}
 			if (value is System.Collections.IDictionary)
 			{
-				System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary
-					<string, object>)value;
+				System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary<string, object>)value;
 				return new org.json.JSONObject(map).ToString();
 			}
 			if (value is System.Collections.ICollection)
 			{
-				System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection
-					<object>)value;
+				System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection<object>)value;
 				return new org.json.JSONArray(coll).ToString();
 			}
 			if (value.GetType().IsArray)
@@ -1730,17 +1703,13 @@ namespace org.json
 				{
 					return NULL;
 				}
-				if (@object is org.json.JSONObject || @object is org.json.JSONArray || NULL.Equals
-					(@object) || @object is org.json.JSONString || @object is sbyte || @object is char
-					 || @object is short || @object is int || @object is long || @object is bool || 
-					@object is float || @object is double || @object is string)
+				if (@object is org.json.JSONObject || @object is org.json.JSONArray || NULL.Equals(@object) || @object is org.json.JSONString || @object is sbyte || @object is char || @object is short || @object is int || @object is long || @object is bool || @object is float || @object is double || @object is string)
 				{
 					return @object;
 				}
 				if (@object is System.Collections.ICollection)
 				{
-					System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection
-						<object>)@object;
+					System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection<object>)@object;
 					return new org.json.JSONArray(coll);
 				}
 				if (@object.GetType().IsArray)
@@ -1749,14 +1718,12 @@ namespace org.json
 				}
 				if (@object is System.Collections.IDictionary)
 				{
-					System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary
-						<string, object>)@object;
+					System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary<string, object>)@object;
 					return new org.json.JSONObject(map);
 				}
 				System.Reflection.Assembly objectPackage = @object.GetType().Assembly;
 				string objectPackageName = objectPackage != null ? objectPackage.GetName() : string.Empty;
-				if (objectPackageName.StartsWith("java.") || objectPackageName.StartsWith("javax."
-					) || @object.GetType().GetClassLoader() == null)
+				if (objectPackageName.StartsWith("java.") || objectPackageName.StartsWith("javax.") || @object.GetType().GetClassLoader() == null)
 				{
 					return @object.ToString();
 				}
@@ -1785,8 +1752,7 @@ namespace org.json
 
 		/// <exception cref="org.json.JSONException"/>
 		/// <exception cref="System.IO.IOException"/>
-		internal static System.IO.TextWriter WriteValue(System.IO.TextWriter writer, object
-			 value, int indentFactor, int indent)
+		internal static System.IO.TextWriter WriteValue(System.IO.TextWriter writer, object value, int indentFactor, int indent)
 		{
 			if (value == null || value.Equals(null))
 			{
@@ -1808,16 +1774,14 @@ namespace org.json
 					{
 						if (value is System.Collections.IDictionary)
 						{
-							System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary
-								<string, object>)value;
+							System.Collections.Generic.IDictionary<string, object> map = (System.Collections.Generic.IDictionary<string, object>)value;
 							new org.json.JSONObject(map).Write(writer, indentFactor, indent);
 						}
 						else
 						{
 							if (value is System.Collections.ICollection)
 							{
-								System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection
-									<object>)value;
+								System.Collections.Generic.ICollection<object> coll = (System.Collections.Generic.ICollection<object>)value;
 								new org.json.JSONArray(coll).Write(writer, indentFactor, indent);
 							}
 							else
@@ -1887,8 +1851,7 @@ namespace org.json
 		/// <returns>The writer.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		internal virtual System.IO.TextWriter Write(System.IO.TextWriter writer, int indentFactor
-			, int indent)
+		internal virtual System.IO.TextWriter Write(System.IO.TextWriter writer, int indentFactor, int indent)
 		{
 			try
 			{

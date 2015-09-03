@@ -62,8 +62,7 @@ namespace org.json
 				if (c < ' ' || c == '+' || c == '%' || c == '=' || c == ';')
 				{
 					sb.Append('%');
-					sb.Append(char.ForDigit((char)(((char)(((uchar)c) >> 4)) & unchecked((int)(0x0f))
-						), 16));
+					sb.Append(char.ForDigit((char)(((char)(((uchar)c) >> 4)) & unchecked((int)(0x0f))), 16));
 					sb.Append(char.ForDigit((char)(c & unchecked((int)(0x0f))), 16));
 				}
 				else

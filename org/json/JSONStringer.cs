@@ -2,8 +2,7 @@ using Sharpen;
 
 namespace org.json
 {
-	/// <summary>JSONStringer provides a quick and convenient way of producing JSON text.
-	/// 	</summary>
+	/// <summary>JSONStringer provides a quick and convenient way of producing JSON text.</summary>
 	/// <remarks>
 	/// JSONStringer provides a quick and convenient way of producing JSON text.
 	/// The texts produced strictly conform to JSON syntax rules. No whitespace is

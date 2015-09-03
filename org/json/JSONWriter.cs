@@ -167,8 +167,7 @@ namespace org.json
 		{
 			if (this.mode != mode)
 			{
-				throw new org.json.JSONException(mode == 'a' ? "Misplaced endArray." : "Misplaced endObject."
-					);
+				throw new org.json.JSONException(mode == 'a' ? "Misplaced endArray." : "Misplaced endObject.");
 			}
 			this.Pop(mode);
 			try

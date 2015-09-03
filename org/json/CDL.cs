@@ -160,8 +160,7 @@ namespace org.json
 		/// <returns>A JSONObject combining the names and values.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject RowToJSONObject(org.json.JSONArray names, org.json.JSONTokener
-			 x)
+		public static org.json.JSONObject RowToJSONObject(org.json.JSONArray names, org.json.JSONTokener x)
 		{
 			org.json.JSONArray ja = RowToJSONArray(x);
 			return ja != null ? ja.ToJSONObject(names) : null;
@@ -188,8 +187,7 @@ namespace org.json
 				if (@object != null)
 				{
 					string @string = @object.ToString();
-					if (@string.Length > 0 && (@string.IndexOf(',') >= 0 || @string.IndexOf('\n') >= 
-						0 || @string.IndexOf('\r') >= 0 || @string.IndexOf(0) >= 0 || @string[0] == '"'))
+					if (@string.Length > 0 && (@string.IndexOf(',') >= 0 || @string.IndexOf('\n') >= 0 || @string.IndexOf('\r') >= 0 || @string.IndexOf(0) >= 0 || @string[0] == '"'))
 					{
 						sb.Append('"');
 						int length = @string.Length;
@@ -248,8 +246,7 @@ namespace org.json
 		/// <returns>A JSONArray of JSONObjects.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONArray ToJSONArray(org.json.JSONArray names, string @string
-			)
+		public static org.json.JSONArray ToJSONArray(org.json.JSONArray names, string @string)
 		{
 			return ToJSONArray(names, new org.json.JSONTokener(@string));
 		}
@@ -263,8 +260,7 @@ namespace org.json
 		/// <returns>A JSONArray of JSONObjects.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONArray ToJSONArray(org.json.JSONArray names, org.json.JSONTokener
-			 x)
+		public static org.json.JSONArray ToJSONArray(org.json.JSONArray names, org.json.JSONTokener x)
 		{
 			if (names == null || names.Length() == 0)
 			{

@@ -159,9 +159,7 @@ namespace org.json
 			while (keys.HasNext())
 			{
 				@string = keys.Next();
-				if (!"HTTP-Version".Equals(@string) && !"Status-Code".Equals(@string) && !"Reason-Phrase"
-					.Equals(@string) && !"Method".Equals(@string) && !"Request-URI".Equals(@string) 
-					&& !jo.IsNull(@string))
+				if (!"HTTP-Version".Equals(@string) && !"Status-Code".Equals(@string) && !"Reason-Phrase".Equals(@string) && !"Method".Equals(@string) && !"Request-URI".Equals(@string) && !jo.IsNull(@string))
 				{
 					sb.Append(@string);
 					sb.Append(": ");

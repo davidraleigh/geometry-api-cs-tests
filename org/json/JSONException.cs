@@ -2,8 +2,7 @@ using Sharpen;
 
 namespace org.json
 {
-	/// <summary>The JSONException is thrown by the JSON.org classes when things are amiss.
-	/// 	</summary>
+	/// <summary>The JSONException is thrown by the JSON.org classes when things are amiss.</summary>
 	/// <author>JSON.org</author>
 	/// <version>2014-05-03</version>
 	[System.Serializable]

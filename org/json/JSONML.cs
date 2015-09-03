@@ -44,8 +44,7 @@ namespace org.json
 		/// <returns>A JSONArray if the value is the outermost tag, otherwise null.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		private static object Parse(org.json.XMLTokener x, bool arrayForm, org.json.JSONArray
-			 ja)
+		private static object Parse(org.json.XMLTokener x, bool arrayForm, org.json.JSONArray ja)
 		{
 			string attribute;
 			char c;
@@ -78,8 +77,7 @@ namespace org.json
 							token = x.NextToken();
 							if (!(token is string))
 							{
-								throw new org.json.JSONException("Expected a closing name instead of '" + token +
-									 "'.");
+								throw new org.json.JSONException("Expected a closing name instead of '" + token + "'.");
 							}
 							if (x.NextToken() != org.json.XML.GT)
 							{
@@ -480,8 +478,7 @@ namespace org.json
 			return sb.ToString();
 		}
 
-		/// <summary>Reverse the JSONML transformation, making an XML text from a JSONObject.
-		/// 	</summary>
+		/// <summary>Reverse the JSONML transformation, making an XML text from a JSONObject.</summary>
 		/// <remarks>
 		/// Reverse the JSONML transformation, making an XML text from a JSONObject.
 		/// The JSONObject must contain a "tagName" property. If it has children,

@@ -151,8 +151,7 @@ namespace org.json
 		/// <returns>true if the close tag is processed.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		private static bool Parse(org.json.XMLTokener x, org.json.JSONObject context, string
-			 name)
+		private static bool Parse(org.json.XMLTokener x, org.json.JSONObject context, string name)
 		{
 			char c;
 			int i;
@@ -608,8 +607,7 @@ namespace org.json
 				else
 				{
 					@string = (@object == null) ? "null" : Escape(@object.ToString());
-					return (tagName == null) ? "\"" + @string + "\"" : (@string.Length == 0) ? "<" + 
-						tagName + "/>" : "<" + tagName + ">" + @string + "</" + tagName + ">";
+					return (tagName == null) ? "\"" + @string + "\"" : (@string.Length == 0) ? "<" + tagName + "/>" : "<" + tagName + ">" + @string + "</" + tagName + ">";
 				}
 			}
 		}

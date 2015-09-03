@@ -176,8 +176,7 @@ namespace org.json
 			}
 			else
 			{
-				throw new org.json.JSONException("JSONArray initial value should be a string or collection or array."
-					);
+				throw new org.json.JSONException("JSONArray initial value should be a string or collection or array.");
 			}
 		}
 
@@ -216,15 +215,13 @@ namespace org.json
 		public virtual bool GetBoolean(int index)
 		{
 			object @object = this.Get(index);
-			if (@object.Equals(false) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase
-				(((string)@object), "false")))
+			if (@object.Equals(false) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase(((string)@object), "false")))
 			{
 				return false;
 			}
 			else
 			{
-				if (@object.Equals(true) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase
-					(((string)@object), "true")))
+				if (@object.Equals(true) || (@object is string && Sharpen.Runtime.EqualsIgnoreCase(((string)@object), "true")))
 				{
 					return true;
 				}
@@ -245,8 +242,7 @@ namespace org.json
 			object @object = this.Get(index);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.Parse((
-					string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : double.Parse((string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -257,16 +253,14 @@ namespace org.json
 		/// <summary>Get the int value associated with an index.</summary>
 		/// <param name="index">The index must be between 0 and length() - 1.</param>
 		/// <returns>The value.</returns>
-		/// <exception cref="JSONException">If the key is not found or if the value is not a number.
-		/// 	</exception>
+		/// <exception cref="JSONException">If the key is not found or if the value is not a number.</exception>
 		/// <exception cref="org.json.JSONException"/>
 		public virtual int GetInt(int index)
 		{
 			object @object = this.Get(index);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt32
-					((string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt32((string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -323,8 +317,7 @@ namespace org.json
 			object @object = this.Get(index);
 			try
 			{
-				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt64
-					((string)@object);
+				return @object is java.lang.Number ? ((java.lang.Number)@object) : System.Convert.ToInt64((string)@object);
 			}
 			catch (System.Exception)
 			{
@@ -581,8 +574,7 @@ namespace org.json
 		public virtual string OptString(int index, string defaultValue)
 		{
 			object @object = this.Opt(index);
-			return org.json.JSONObject.NULL.Equals(@object) ? defaultValue : @object.ToString
-				();
+			return org.json.JSONObject.NULL.Equals(@object) ? defaultValue : @object.ToString();
 		}
 
 		/// <summary>Append a boolean value.</summary>
@@ -601,8 +593,7 @@ namespace org.json
 		/// </summary>
 		/// <param name="value">A Collection value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray Put(System.Collections.Generic.ICollection<object
-			> value)
+		public virtual org.json.JSONArray Put(System.Collections.Generic.ICollection<object> value)
 		{
 			this.Put(new org.json.JSONArray(value));
 			return this;
@@ -648,8 +639,7 @@ namespace org.json
 		/// </summary>
 		/// <param name="value">A Map value.</param>
 		/// <returns>this.</returns>
-		public virtual org.json.JSONArray Put(System.Collections.Generic.IDictionary<string
-			, object> value)
+		public virtual org.json.JSONArray Put(System.Collections.Generic.IDictionary<string, object> value)
 		{
 			this.Put(new org.json.JSONObject(value));
 			return this;
@@ -693,11 +683,9 @@ namespace org.json
 		/// <param name="index">The subscript.</param>
 		/// <param name="value">A Collection value.</param>
 		/// <returns>this.</returns>
-		/// <exception cref="JSONException">If the index is negative or if the value is not finite.
-		/// 	</exception>
+		/// <exception cref="JSONException">If the index is negative or if the value is not finite.</exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray Put(int index, System.Collections.Generic.ICollection
-			<object> value)
+		public virtual org.json.JSONArray Put(int index, System.Collections.Generic.ICollection<object> value)
 		{
 			this.Put(index, new org.json.JSONArray(value));
 			return this;
@@ -712,8 +700,7 @@ namespace org.json
 		/// <param name="index">The subscript.</param>
 		/// <param name="value">A double value.</param>
 		/// <returns>this.</returns>
-		/// <exception cref="JSONException">If the index is negative or if the value is not finite.
-		/// 	</exception>
+		/// <exception cref="JSONException">If the index is negative or if the value is not finite.</exception>
 		/// <exception cref="org.json.JSONException"/>
 		public virtual org.json.JSONArray Put(int index, double value)
 		{
@@ -767,8 +754,7 @@ namespace org.json
 		/// number.
 		/// </exception>
 		/// <exception cref="org.json.JSONException"/>
-		public virtual org.json.JSONArray Put(int index, System.Collections.Generic.IDictionary
-			<string, object> value)
+		public virtual org.json.JSONArray Put(int index, System.Collections.Generic.IDictionary<string, object> value)
 		{
 			this.Put(index, new org.json.JSONObject(value));
 			return this;
@@ -933,8 +919,7 @@ namespace org.json
 		/// Make a prettyprinted JSON text of this JSONArray. Warning: This method
 		/// assumes that the data structure is acyclical.
 		/// </remarks>
-		/// <param name="indentFactor">The number of spaces to add to each level of indentation.
-		/// 	</param>
+		/// <param name="indentFactor">The number of spaces to add to each level of indentation.</param>
 		/// <returns>
 		/// a printable, displayable, transmittable representation of the
 		/// object, beginning with <code>[</code>&nbsp;<small>(left
@@ -974,14 +959,12 @@ namespace org.json
 		/// <p>
 		/// Warning: This method assumes that the data structure is acyclical.
 		/// </remarks>
-		/// <param name="indentFactor">The number of spaces to add to each level of indentation.
-		/// 	</param>
+		/// <param name="indentFactor">The number of spaces to add to each level of indentation.</param>
 		/// <param name="indent">The indention of the top level.</param>
 		/// <returns>The writer.</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		internal virtual System.IO.TextWriter Write(System.IO.TextWriter writer, int indentFactor
-			, int indent)
+		internal virtual System.IO.TextWriter Write(System.IO.TextWriter writer, int indentFactor, int indent)
 		{
 			try
 			{
@@ -1008,8 +991,7 @@ namespace org.json
 								writer.Write('\n');
 							}
 							org.json.JSONObject.Indent(writer, newindent);
-							org.json.JSONObject.WriteValue(writer, this.myArrayList[i], indentFactor, newindent
-								);
+							org.json.JSONObject.WriteValue(writer, this.myArrayList[i], indentFactor, newindent);
 							commanate = true;
 						}
 						if (indentFactor > 0)

@@ -56,8 +56,7 @@ namespace org.json
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 			*/
-			this.reader = reader.MarkSupported() ? reader : new java.io.BufferedReader(reader
-				);
+			this.reader = reader.MarkSupported() ? reader : new java.io.BufferedReader(reader);
 			this.eof = false;
 			this.usePrevious = false;
 			this.previous = (char)0;
@@ -519,8 +518,7 @@ namespace org.json
 		/// <returns>" at {index} [character {character} line {line}]"</returns>
 		public override string ToString()
 		{
-			return " at " + this.index + " [character " + this.character + " line " + this.line
-				 + "]";
+			return " at " + this.index + " [character " + this.character + " line " + this.line + "]";
 		}
 	}
 }

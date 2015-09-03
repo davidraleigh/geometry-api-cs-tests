@@ -31,8 +31,7 @@ namespace org.json
 		SOFTWARE.
 		*/
 		/// <summary>Converts a property file object into a JSONObject.</summary>
-		/// <remarks>Converts a property file object into a JSONObject. The property file object is a table of name value pairs.
-		/// 	</remarks>
+		/// <remarks>Converts a property file object into a JSONObject. The property file object is a table of name value pairs.</remarks>
 		/// <param name="properties">java.util.Properties</param>
 		/// <returns>JSONObject</returns>
 		/// <exception cref="JSONException"/>
