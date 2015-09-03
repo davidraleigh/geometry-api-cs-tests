@@ -118,7 +118,7 @@ namespace org.json
 				if (c == '<' || c == 0)
 				{
 					Back();
-					return Sharpen.Extensions.Trim(sb.ToString());
+					return sb.ToString().Trim();
 				}
 				if (c == '&')
 				{

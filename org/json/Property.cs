@@ -37,7 +37,7 @@ namespace org.json
 		/// <returns>JSONObject</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static org.json.JSONObject ToJSONObject(Sharpen.Properties properties)
+		public static org.json.JSONObject ToJSONObject(java.util.Properties properties)
 		{
 			org.json.JSONObject jo = new org.json.JSONObject();
 			if (properties != null && !properties.IsEmpty())
@@ -57,9 +57,9 @@ namespace org.json
 		/// <returns>java.util.Properties</returns>
 		/// <exception cref="JSONException"/>
 		/// <exception cref="org.json.JSONException"/>
-		public static Sharpen.Properties ToProperties(org.json.JSONObject jo)
+		public static java.util.Properties ToProperties(org.json.JSONObject jo)
 		{
-			Sharpen.Properties properties = new Sharpen.Properties();
+			java.util.Properties properties = new java.util.Properties();
 			if (jo != null)
 			{
 				System.Collections.Generic.IEnumerator<string> keys = jo.Keys();

@@ -1379,7 +1379,7 @@ namespace org.json
 						if (c < ' ' || (c >= '\u0080' && c < '\u00a0') || (c >= '\u2000' && c < '\u2100'))
 						{
 							w.Write("\\u");
-							hhhh = Sharpen.Extensions.ToHexString(c);
+							hhhh = int.ToHexString(c);
 							w.Write("0000", 0, 4 - hhhh.Length);
 							w.Write(hhhh);
 						}

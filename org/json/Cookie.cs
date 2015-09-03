@@ -53,7 +53,7 @@ namespace org.json
 		public static string Escape(string @string)
 		{
 			char c;
-			string s = Sharpen.Extensions.Trim(@string);
+			string s = @string.Trim();
 			int length = s.Length;
 			System.Text.StringBuilder sb = new System.Text.StringBuilder(length);
 			for (int i = 0; i < length; i += 1)

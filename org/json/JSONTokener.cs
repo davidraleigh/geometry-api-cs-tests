@@ -69,7 +69,7 @@ namespace org.json
 		/// <summary>Construct a JSONTokener from an InputStream.</summary>
 		/// <param name="inputStream">The source.</param>
 		/// <exception cref="org.json.JSONException"/>
-		public JSONTokener(Sharpen.InputStream inputStream)
+		public JSONTokener(java.io.InputStream inputStream)
 			: this(new System.IO.StreamReader(inputStream))
 		{
 		}
@@ -77,7 +77,7 @@ namespace org.json
 		/// <summary>Construct a JSONTokener from a string.</summary>
 		/// <param name="s">A source string.</param>
 		public JSONTokener(string s)
-			: this(new Sharpen.StringReader(s))
+			: this(new java.io.StringReader(s))
 		{
 		}
 
@@ -378,7 +378,7 @@ namespace org.json
 					{
 						this.Back();
 					}
-					return Sharpen.Extensions.Trim(sb.ToString());
+					return sb.ToString().Trim();
 				}
 				sb.Append(c);
 			}
@@ -404,7 +404,7 @@ namespace org.json
 					{
 						this.Back();
 					}
-					return Sharpen.Extensions.Trim(sb.ToString());
+					return sb.ToString().Trim();
 				}
 				sb.Append(c);
 			}
@@ -457,7 +457,7 @@ namespace org.json
 				c = this.Next();
 			}
 			this.Back();
-			@string = Sharpen.Extensions.Trim(sb.ToString());
+			@string = sb.ToString().Trim();
 			if (string.Empty.Equals(@string))
 			{
 				throw this.SyntaxError("Missing value");
