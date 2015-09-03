@@ -1731,7 +1731,7 @@ namespace org.json
 					return NULL;
 				}
 				if (@object is org.json.JSONObject || @object is org.json.JSONArray || NULL.Equals
-					(@object) || @object is org.json.JSONString || @object is byte || @object is char
+					(@object) || @object is org.json.JSONString || @object is sbyte || @object is char
 					 || @object is short || @object is int || @object is long || @object is bool || 
 					@object is float || @object is double || @object is string)
 				{
