@@ -7,7 +7,7 @@ namespace org.json
 	/// <author>JSON.org</author>
 	/// <version>2014-05-03</version>
 	[System.Serializable]
-	public class JSONException : Sharpen.RuntimeException
+	public class JSONException : System.Exception
 	{
 		private const long serialVersionUID = 0;
 
