@@ -15,7 +15,7 @@ namespace java.util {
             if (start < 0 || start >= end) {
                 throw new ArgumentOutOfRangeException("fromIndex");
             }
-            if (end >= array.Length) {
+            if (end > array.Length) {
                 throw new ArgumentOutOfRangeException("toIndex");
             }
             for (int i = start; i < end; i++) {
