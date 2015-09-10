@@ -1,9 +1,20 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
 	public class TestPolygon : NUnit.Framework.TestFixtureAttribute
 	{
+		/// <exception cref="System.Exception"/>
+		protected override void SetUp()
+		{
+			
+		}
+
+		/// <exception cref="System.Exception"/>
+		protected override void TearDown()
+		{
+			
+		}
 
 		[NUnit.Framework.Test]
 		public virtual void TestCreation()
@@ -996,8 +1007,8 @@ namespace com.esri.core.geometry
 			line.SetStart(new com.esri.core.geometry.Point(0, 0));
 			line.SetEnd(new com.esri.core.geometry.Point(1, 0));
 			line.ToString();
-            //double geoLength = com.esri.core.geometry.GeometryEngine.GeodesicDistanceOnWGS84(new com.esri.core.geometry.Point(0, 0), new com.esri.core.geometry.Point(1, 0));
-            //NUnit.Framework.Assert.IsTrue(System.Math.Abs(geoLength - 111319) < 1);
+			double geoLength = com.esri.core.geometry.GeometryEngine.GeodesicDistanceOnWGS84(new com.esri.core.geometry.Point(0, 0), new com.esri.core.geometry.Point(1, 0));
+			NUnit.Framework.Assert.IsTrue(System.Math.Abs(geoLength - 111319) < 1);
 		}
 
 		[NUnit.Framework.Test]
@@ -1037,7 +1048,7 @@ namespace com.esri.core.geometry
 			catch (System.Exception e)
 			{
 				// exception thrown here!!!
-				//e.PrintStackTrace();
+				e.PrintStackTrace();
 				noException = false;
 			}
 			NUnit.Framework.Assert.IsTrue(noException);
@@ -1047,12 +1058,12 @@ namespace com.esri.core.geometry
 		[NUnit.Framework.Test]
 		public virtual void TestBoundary()
 		{
-            //com.esri.core.geometry.Geometry g = com.esri.core.geometry.OperatorImportFromWkt.Local().Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, "POLYGON((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))", null);
-            //com.esri.core.geometry.Geometry boundary = com.esri.core.geometry.OperatorBoundary.Local().Execute(g, null);
-            //com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)boundary;
-            //polyline.ReverseAllPaths();
-            //string s = com.esri.core.geometry.OperatorExportToWkt.Local().Execute(0, boundary, null);
-            //NUnit.Framework.Assert.IsTrue(s.Equals("MULTILINESTRING ((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))"));
+			com.esri.core.geometry.Geometry g = com.esri.core.geometry.OperatorImportFromWkt.Local().Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, "POLYGON((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))", null);
+			com.esri.core.geometry.Geometry boundary = com.esri.core.geometry.OperatorBoundary.Local().Execute(g, null);
+			com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)boundary;
+			polyline.ReverseAllPaths();
+			string s = com.esri.core.geometry.OperatorExportToWkt.Local().Execute(0, boundary, null);
+			NUnit.Framework.Assert.IsTrue(s.Equals("MULTILINESTRING ((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))"));
 		}
 
 		[NUnit.Framework.Test]

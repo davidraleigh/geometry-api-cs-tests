@@ -1,4 +1,4 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
@@ -24,7 +24,7 @@ namespace com.esri.core.geometry
 		/// <exception cref="System.Exception"/>
 		protected override void SetUp()
 		{
-			base.SetUp();
+			
 			factory = com.esri.core.geometry.OperatorFactoryLocal.GetInstance();
 			simplifyOp = (com.esri.core.geometry.OperatorSimplify)factory.GetOperator(com.esri.core.geometry.Operator.Type.Simplify);
 			simplifyOpOGC = (com.esri.core.geometry.OperatorSimplifyOGC)factory.GetOperator(com.esri.core.geometry.Operator.Type.SimplifyOGC);
@@ -39,7 +39,7 @@ namespace com.esri.core.geometry
 		/// <exception cref="System.Exception"/>
 		protected override void TearDown()
 		{
-			base.TearDown();
+			
 		}
 
 		public virtual com.esri.core.geometry.Polygon MakeNonSimplePolygon2()

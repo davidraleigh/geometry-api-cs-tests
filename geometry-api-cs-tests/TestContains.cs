@@ -1,19 +1,19 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
-	public class TestContains : NUnit.Framework.TestCase
+	public class TestContains : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
 		protected override void SetUp()
 		{
-			base.SetUp();
+			
 		}
 
 		/// <exception cref="System.Exception"/>
 		protected override void TearDown()
 		{
-			base.TearDown();
+			
 		}
 
 		/// <exception cref="org.codehaus.jackson.JsonParseException"/>

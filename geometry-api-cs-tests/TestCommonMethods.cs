@@ -1,8 +1,8 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
-	public class TestCommonMethods : NUnit.Framework.TestCase
+	public class TestCommonMethods : NUnit.Framework.TestFixtureAttribute
 	{
 		public static bool CompareDouble(double a, double b, double tol)
 		{

@@ -1,4 +1,4 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
@@ -7,13 +7,13 @@ namespace com.esri.core.geometry
 		/// <exception cref="System.Exception"/>
 		protected override void SetUp()
 		{
-			base.SetUp();
+			
 		}
 
 		/// <exception cref="System.Exception"/>
 		protected override void TearDown()
 		{
-			base.TearDown();
+			
 		}
 
 		[NUnit.Framework.Test]

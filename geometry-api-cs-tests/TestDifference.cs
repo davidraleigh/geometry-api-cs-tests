@@ -1,19 +1,19 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
-	public class TestDifference : NUnit.Framework.TestCase
+	public class TestDifference : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
 		protected override void SetUp()
 		{
-			base.SetUp();
+			
 		}
 
 		/// <exception cref="System.Exception"/>
 		protected override void TearDown()
 		{
-			base.TearDown();
+			
 		}
 
 		[NUnit.Framework.Test]

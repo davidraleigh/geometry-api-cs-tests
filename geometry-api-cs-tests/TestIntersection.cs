@@ -1,4 +1,4 @@
-
+using NUnit.Framework;
 
 namespace com.esri.core.geometry
 {
@@ -20,7 +20,7 @@ namespace com.esri.core.geometry
 		/// <exception cref="System.Exception"/>
 		protected override void SetUp()
 		{
-			base.SetUp();
+			
 			projEnv = com.esri.core.geometry.OperatorFactoryLocal.GetInstance();
 			inputSR = com.esri.core.geometry.SpatialReference.Create(codeIn);
 			outputSR = com.esri.core.geometry.SpatialReference.Create(codeOut);
@@ -29,7 +29,7 @@ namespace com.esri.core.geometry
 		/// <exception cref="System.Exception"/>
 		protected override void TearDown()
 		{
-			base.TearDown();
+			
 		}
 
 		[NUnit.Framework.Test]
