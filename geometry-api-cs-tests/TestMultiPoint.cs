@@ -5,13 +5,13 @@ namespace com.esri.core.geometry
 	public class TestMultiPoint : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
-		protected override void SetUp()
+		protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected override void TearDown()
+		protected void TearDown()
 		{
 			
 		}
@@ -61,7 +61,7 @@ namespace com.esri.core.geometry
 			{
 				// simple create
 				com.esri.core.geometry.MultiPoint mpoint = new com.esri.core.geometry.MultiPoint();
-				NUnit.Framework.Assert.IsTrue(mpoint.GetType() == typeof(com.esri.core.geometry.MultiPoint));
+				NUnit.Framework.Assert.IsTrue(mpoint.GetType() == Geometry.Type.MultiPoint);
 				// assertFalse(mpoint.getClass() == Polyline.class);
 				NUnit.Framework.Assert.IsTrue(mpoint != null);
 				NUnit.Framework.Assert.IsTrue(mpoint.GetType() == com.esri.core.geometry.Geometry.Type.MultiPoint);

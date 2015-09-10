@@ -5,13 +5,13 @@ namespace com.esri.core.geometry
 	public class TestPoint : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
-		protected override void SetUp()
+		protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected override void TearDown()
+		protected void TearDown()
 		{
 			
 		}
@@ -26,30 +26,30 @@ namespace com.esri.core.geometry
 			pt.ToString();
 		}
 
-		[NUnit.Framework.Test]
-		public virtual void TestEnvelope2000()
-		{
-			com.esri.core.geometry.Point[] points = new com.esri.core.geometry.Point[2000];
-			java.util.Random random = new java.util.Random(69);
-			for (int i = 0; i < 2000; i++)
-			{
-				points[i] = new com.esri.core.geometry.Point();
-				points[i].SetX(random.NextDouble() * 100);
-				points[i].SetY(random.NextDouble() * 100);
-			}
-			for (int iter = 0; iter < 2; iter++)
-			{
-				long startTime = Sharpen.Runtime.NanoTime();
-				com.esri.core.geometry.Envelope geomExtent = new com.esri.core.geometry.Envelope();
-				com.esri.core.geometry.Envelope fullExtent = new com.esri.core.geometry.Envelope();
-				for (int i_1 = 0; i_1 < 2000; i_1++)
-				{
-					points[i_1].QueryEnvelope(geomExtent);
-					fullExtent.Merge(geomExtent);
-				}
-				long endTime = Sharpen.Runtime.NanoTime();
-			}
-		}
+        //[NUnit.Framework.Test]
+        //public virtual void TestEnvelope2000()
+        //{
+        //    com.esri.core.geometry.Point[] points = new com.esri.core.geometry.Point[2000];
+        //    System.Random random = new System.Random(69);
+        //    for (int i = 0; i < 2000; i++)
+        //    {
+        //        points[i] = new com.esri.core.geometry.Point();
+        //        points[i].SetX(random.NextDouble() * 100);
+        //        points[i].SetY(random.NextDouble() * 100);
+        //    }
+        //    for (int iter = 0; iter < 2; iter++)
+        //    {
+        //        long startTime = Sharpen.Runtime.NanoTime();
+        //        com.esri.core.geometry.Envelope geomExtent = new com.esri.core.geometry.Envelope();
+        //        com.esri.core.geometry.Envelope fullExtent = new com.esri.core.geometry.Envelope();
+        //        for (int i_1 = 0; i_1 < 2000; i_1++)
+        //        {
+        //            points[i_1].QueryEnvelope(geomExtent);
+        //            fullExtent.Merge(geomExtent);
+        //        }
+        //        long endTime = Sharpen.Runtime.NanoTime();
+        //    }
+        //}
 
 		[NUnit.Framework.Test]
 		public virtual void TestBasic()
