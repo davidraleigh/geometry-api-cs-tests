@@ -55,10 +55,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="TestAttributes.cs" />
+    <Compile Include="TestMathUtils.cs" />
     <Compile Include="TestMultiPoint.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="TestPolygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestWkid.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\geometry-api-cs.csproj">
