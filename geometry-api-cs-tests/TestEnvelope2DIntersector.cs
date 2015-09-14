@@ -5,13 +5,13 @@ namespace com.esri.core.geometry
 	public class TestEnvelope2DIntersector : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
-		protected override void SetUp()
+		protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected override void TearDown()
+		protected void TearDown()
 		{
 			
 		}

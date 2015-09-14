@@ -28,13 +28,13 @@ namespace com.esri.core.geometry
 		internal com.esri.core.geometry.OperatorFactoryLocal factory = com.esri.core.geometry.OperatorFactoryLocal.GetInstance();
 
 		/// <exception cref="System.Exception"/>
-		protected override void SetUp()
+		protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected override void TearDown()
+		protected void TearDown()
 		{
 			
 		}

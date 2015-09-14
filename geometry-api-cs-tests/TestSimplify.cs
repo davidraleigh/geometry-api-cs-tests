@@ -22,7 +22,7 @@ namespace com.esri.core.geometry
 		//import java.util.List;
 		//import java.util.Random;
 		/// <exception cref="System.Exception"/>
-		protected override void SetUp()
+		protected void SetUp()
 		{
 			
 			factory = com.esri.core.geometry.OperatorFactoryLocal.GetInstance();
@@ -37,7 +37,7 @@ namespace com.esri.core.geometry
 		// enum_value2(SpatialReference,
 		// Code, GCS_WGS_1984));
 		/// <exception cref="System.Exception"/>
-		protected override void TearDown()
+		protected void TearDown()
 		{
 			
 		}
