@@ -4,6 +4,7 @@ namespace com.esri.core.geometry
 {
 	public class TestWktParser : NUnit.Framework.TestFixtureAttribute
 	{
+		[NUnit.Framework.Test]
 		public virtual void TestGeometryCollection()
 		{
 			string s = "   geometrycollection    emPty ";
@@ -93,6 +94,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(currentToken == com.esri.core.geometry.WktParser.WktToken.not_available);
 		}
 
+		[NUnit.Framework.Test]
 		public virtual void TestMultiPolygon()
 		{
 			string s = "   MultIPolYgOn    emPty ";
@@ -281,6 +283,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(currentToken == com.esri.core.geometry.WktParser.WktToken.not_available);
 		}
 
+		[NUnit.Framework.Test]
 		public virtual void TestMultiLineString()
 		{
 			string s = "   MultiLineString    emPty ";
@@ -424,6 +427,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(currentToken == com.esri.core.geometry.WktParser.WktToken.not_available);
 		}
 
+		[NUnit.Framework.Test]
 		public virtual void TestMultiPoint()
 		{
 			string s = "   MultipoInt    emPty ";
@@ -518,6 +522,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(currentToken == com.esri.core.geometry.WktParser.WktToken.not_available);
 		}
 
+		[NUnit.Framework.Test]
 		public virtual void TestPolygon()
 		{
 			string s = "   Polygon    emPty ";
@@ -661,6 +666,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(currentToken == com.esri.core.geometry.WktParser.WktToken.not_available);
 		}
 
+		[NUnit.Framework.Test]
 		public virtual void TestLineString()
 		{
 			string s = "   LineString    emPty ";
@@ -700,6 +706,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(currentToken == com.esri.core.geometry.WktParser.WktToken.not_available);
 		}
 
+		[NUnit.Framework.Test]
 		public virtual void TestPoint()
 		{
 			string s = "   PoInT    emPty ";
