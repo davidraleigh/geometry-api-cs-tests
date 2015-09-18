@@ -61,6 +61,7 @@
     <Compile Include="TestPolygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestWkid.cs" />
+    <Compile Include="TestWktParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\geometry-api-cs.csproj">
