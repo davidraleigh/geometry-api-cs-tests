@@ -87,6 +87,7 @@
     <Compile Include="com\esri\core\geometry\GeoJsonExportFlags.cs" />
     <Compile Include="com\esri\core\geometry\GeoJsonImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\Geometry.cs" />
+    <Compile Include="com\esri\core\geometry\GeometryAccelerators.cs" />
     <Compile Include="com\esri\core\geometry\GeometryException.cs" />
     <Compile Include="com\esri\core\geometry\IndexHashTable.cs" />
     <Compile Include="com\esri\core\geometry\IndexMultiDCList.cs" />
@@ -123,6 +124,8 @@
     <Compile Include="com\esri\core\geometry\ProjectionTransformation.cs" />
     <Compile Include="com\esri\core\geometry\QuadTree.cs" />
     <Compile Include="com\esri\core\geometry\QuadTreeImpl.cs" />
+    <Compile Include="com\esri\core\geometry\RasterizedGeometry2D.cs" />
+    <Compile Include="com\esri\core\geometry\RasterizedGeometry2DImpl.cs" />
     <Compile Include="com\esri\core\geometry\RingOrientationFixer.cs" />
     <Compile Include="com\esri\core\geometry\Segment.cs" />
     <Compile Include="com\esri\core\geometry\SegmentBuffer.cs" />
