@@ -243,7 +243,7 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.Envelope env = new com.esri.core.geometry.Envelope();
 			env.SetCoords(-10000, -10000, 10000, 10000);
 			com.esri.core.geometry.RandomCoordinateGenerator generator = new com.esri.core.geometry.RandomCoordinateGenerator(System.Math.Max(figureSize, 10000), env, 0.001);
-			java.util.Random random = new java.util.Random(2013);
+			System.Random random = new System.Random(2013);
 			int rand_max = 98765;
 			System.Collections.Generic.List<com.esri.core.geometry.Envelope1D> intervals = new System.Collections.Generic.List<com.esri.core.geometry.Envelope1D>();
 			com.esri.core.geometry.AttributeStreamOfInt8 intervalsFound = new com.esri.core.geometry.AttributeStreamOfInt8(0);
@@ -258,7 +258,7 @@ namespace com.esri.core.geometry
 				com.esri.core.geometry.Point pt;
 				for (int j = 0; j < r; j++)
 				{
-					int rand = random.NextInt(rand_max);
+					int rand = random.Next(rand_max);
 					bool bRandomNew = (r > 10) && ((1.0 * rand) / rand_max > 0.95);
 					pt = generator.GetRandomCoord();
 					if (j == 0 || bRandomNew)

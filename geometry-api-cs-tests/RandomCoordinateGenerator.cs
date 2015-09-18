@@ -1,6 +1,5 @@
-
+using NUnit.Framework;
 using System.Linq;
-
 namespace com.esri.core.geometry
 {
 	public class RandomCoordinateGenerator
@@ -72,8 +71,7 @@ namespace com.esri.core.geometry
 			return pt;
 		}
 
-		public RandomCoordinateGenerator(int count, com.esri.core.geometry.Envelope e, double
-			 tol)
+		public RandomCoordinateGenerator(int count, com.esri.core.geometry.Envelope e, double tol)
 		{
 			env = e;
 			maxlen = (env.GetWidth() + env.GetHeight()) / 2 * 0.1;
@@ -98,8 +96,7 @@ namespace com.esri.core.geometry
 			return pt;
 		}
 
-		internal virtual com.esri.core.geometry.Point _snapClip(com.esri.core.geometry.Point
-			 pt, com.esri.core.geometry.Envelope env)
+		internal virtual com.esri.core.geometry.Point _snapClip(com.esri.core.geometry.Point pt, com.esri.core.geometry.Envelope env)
 		{
 			double x = pt.GetX();
 			if (x < env.GetXMin())
@@ -124,19 +121,19 @@ namespace com.esri.core.geometry
 		// void CompareGeometryContent(MultiVertexGeometry geom, Point buf[], int
 		// sz) {
 		// Assert.assertTrue(!geom.isEmpty());
-		// Assert.assertTrue(geom.GetPointCount() == sz);
+		// Assert.assertTrue(geom.getPointCount() == sz);
 		// // Go through the geometry points
-		// for (int i = 0; i < geom.GetPointCount(); i++) {
+		// for (int i = 0; i < geom.getPointCount(); i++) {
 		// Point point = new Point(); // not a right pattern the point has to
 		// // be created outside of the loop.
-		// geom.GetPointByVal(i, point);
-		// Assert.assertTrue(point.GetX() == buf[i].GetX());
-		// Assert.assertTrue(point.GetY() == buf[i].GetY());
-		// Assert.assertTrue(point.GetX() == buf[i].GetX());
-		// Assert.assertTrue(point.GetY() == buf[i].GetY());
+		// geom.getPointByVal(i, point);
+		// Assert.assertTrue(point.getX() == buf[i].getX());
+		// Assert.assertTrue(point.getY() == buf[i].getY());
+		// Assert.assertTrue(point.getX() == buf[i].getX());
+		// Assert.assertTrue(point.getY() == buf[i].getY());
 		// }
-		// if (geom.GetType() == Geometry.Type.Polygon
-		// || geom.GetType() == Geometry.Type.Polyline) {
+		// if (geom.getType() == Geometry.Type.Polygon
+		// || geom.getType() == Geometry.Type.Polyline) {
 		// CompareGeometryContent((MultiPath) geom, buf, sz);
 		// }
 		// }
@@ -144,12 +141,12 @@ namespace com.esri.core.geometry
 		// void CompareGeometryContent(MultiPath geom, Point buf[], int sz) {
 		// // Go through the geometry parts
 		// int j = 0;
-		// for (int ipart = 0; ipart < geom.GetPathCount(); ipart++) {
-		// int start = geom.GetPathStart(ipart);
-		// for (int i = 0; i < geom.GetPathSize(ipart); i++, j++) {
-		// Point point = geom.GetPoint(start + i);
-		// Assert.assertTrue(point.GetX() == buf[j].GetX());
-		// Assert.assertTrue(point.GetY() == buf[j].GetY());
+		// for (int ipart = 0; ipart < geom.getPathCount(); ipart++) {
+		// int start = geom.getPathStart(ipart);
+		// for (int i = 0; i < geom.getPathSize(ipart); i++, j++) {
+		// Point point = geom.getPoint(start + i);
+		// Assert.assertTrue(point.getX() == buf[j].getX());
+		// Assert.assertTrue(point.getY() == buf[j].getY());
 		//
 		// }
 		// }
@@ -157,16 +154,16 @@ namespace com.esri.core.geometry
 		// void CompareGeometryContent(MultiVertexGeometry geom, Point3D buf[], int
 		// sz) {
 		// Assert.assertTrue(!geom.isEmpty());
-		// Assert.assertTrue(geom.GetPointCount() == sz);
+		// Assert.assertTrue(geom.getPointCount() == sz);
 		// // Go through the geometry points
-		// for (int i = 0; i < geom.GetPointCount(); i++) {
+		// for (int i = 0; i < geom.getPointCount(); i++) {
 		// Point point = new Point(); // not a right pattern the point has to
 		// // be created outside of the loop.
-		// geom.GetPointByVal(i, point);
-		// Assert.assertTrue(point.GetX() == buf[i].x);
-		// Assert.assertTrue(point.GetY() == buf[i].y);
-		// Assert.assertTrue(point.GetZ() == buf[i].z);
-		// Point3D pt = point.GetXYZ();
+		// geom.getPointByVal(i, point);
+		// Assert.assertTrue(point.getX() == buf[i].x);
+		// Assert.assertTrue(point.getY() == buf[i].y);
+		// Assert.assertTrue(point.getZ() == buf[i].z);
+		// Point3D pt = point.getXYZ();
 		// Assert.assertTrue(pt.x == buf[i].x);
 		// Assert.assertTrue(pt.y == buf[i].y);
 		// Assert.assertTrue(pt.z == buf[i].z);
@@ -176,10 +173,10 @@ namespace com.esri.core.geometry
 		// MultiVertexGeometryImpl mpGeom = (MultiVertexGeometryImpl) geom
 		// ._getImpl();
 		// AttributeStreamOfDbl streamPos = (AttributeStreamOfDbl) mpGeom
-		// .GetAttributeStreamRef(VertexDescription.Semantics.POSITION);
+		// .getAttributeStreamRef(VertexDescription.Semantics.POSITION);
 		// AttributeStreamOfDbl streamZ = (AttributeStreamOfDbl) mpGeom
-		// .GetAttributeStreamRef(VertexDescription.Semantics.Z);
-		// for (int i = 0; i < geom.GetPointCount(); i++) {
+		// .getAttributeStreamRef(VertexDescription.Semantics.Z);
+		// for (int i = 0; i < geom.getPointCount(); i++) {
 		// double x = streamPos.read(2 * i);
 		// double y = streamPos.read(2 * i + 1);
 		// double z = streamZ.read(i);
@@ -190,25 +187,25 @@ namespace com.esri.core.geometry
 		// }
 		// }
 		//
-		// if (geom.GetType() == Geometry.Type.Polygon
-		// || geom.GetType() == Geometry.Type.Polyline) {
+		// if (geom.getType() == Geometry.Type.Polygon
+		// || geom.getType() == Geometry.Type.Polyline) {
 		// CompareGeometryContent((MultiPath) geom, buf, sz);
 		// }
 		// }
 		// void CompareGeometryContent(MultiPath geom, Point3D buf[], int sz) {
 		// Assert.assertTrue(!geom.isEmpty());
-		// Assert.assertTrue(geom.GetPointCount() == sz);
+		// Assert.assertTrue(geom.getPointCount() == sz);
 		//
 		// // Go through the geometry parts
 		// int j = 0;
-		// for (int ipart = 0; ipart < geom.GetPathCount(); ipart++) {
-		// int start = geom.GetPathStart(ipart);
-		// for (int i = 0; i < geom.GetPathSize(ipart); i++, j++) {
-		// double x = geom.GetAttributeAsDbl(
+		// for (int ipart = 0; ipart < geom.getPathCount(); ipart++) {
+		// int start = geom.getPathStart(ipart);
+		// for (int i = 0; i < geom.getPathSize(ipart); i++, j++) {
+		// double x = geom.getAttributeAsDbl(
 		// VertexDescription.Semantics.POSITION, i + start, 0);
-		// double y = geom.GetAttributeAsDbl(
+		// double y = geom.getAttributeAsDbl(
 		// VertexDescription.Semantics.POSITION, i + start, 1);
-		// double z = geom.GetAttributeAsDbl(
+		// double z = geom.getAttributeAsDbl(
 		// VertexDescription.Semantics.Z, i + start, 0);
 		// Assert.assertTrue(x == buf[j].x);
 		// Assert.assertTrue(y == buf[j].y);
@@ -217,11 +214,11 @@ namespace com.esri.core.geometry
 		// Point point = new Point(); // not a right pattern the point has
 		// // to be created outside of the
 		// // loop.
-		// geom.GetPointByVal(start + i, point);
-		// Assert.assertTrue(point.GetX() == buf[j].x);
-		// Assert.assertTrue(point.GetY() == buf[j].y);
-		// Assert.assertTrue(point.GetZ() == buf[j].z);
-		// Point3D pt = point.GetXYZ();
+		// geom.getPointByVal(start + i, point);
+		// Assert.assertTrue(point.getX() == buf[j].x);
+		// Assert.assertTrue(point.getY() == buf[j].y);
+		// Assert.assertTrue(point.getZ() == buf[j].z);
+		// Point3D pt = point.getXYZ();
 		// Assert.assertTrue(pt.x == buf[j].x);
 		// Assert.assertTrue(pt.y == buf[j].y);
 		// Assert.assertTrue(pt.z == buf[j].z);
@@ -231,7 +228,7 @@ namespace com.esri.core.geometry
 		// void CompareGeometryContent(MultiVertexGeometry geom1,
 		// MultiVertexGeometry geom2) {
 		// // Geometry types
-		// Assert.assertTrue(geom1.GetType() == geom2.GetType());
+		// Assert.assertTrue(geom1.getType() == geom2.getType());
 		//
 		// // Envelopes
 		// Envelope env1 = new Envelope();
@@ -240,32 +237,32 @@ namespace com.esri.core.geometry
 		// Envelope env2 = new Envelope();
 		// geom2.queryEnvelope(env2);
 		//
-		// Assert.assertTrue(env1.GetXMin() == env2.GetXMin()
-		// && env1.GetXMax() == env2.GetXMax()
-		// && env1.GetYMin() == env2.GetYMin()
-		// && env1.GetYMax() == env2.GetYMax());
+		// Assert.assertTrue(env1.getXMin() == env2.getXMin()
+		// && env1.getXMax() == env2.getXMax()
+		// && env1.getYMin() == env2.getYMin()
+		// && env1.getYMax() == env2.getYMax());
 		//
-		// int type = geom1.GetType();
+		// int type = geom1.getType();
 		// if (type == Geometry.Type.Polyline || type == Geometry.Type.Polygon) {
 		// // Part Count
-		// int partCount1 = ((MultiPath) geom1).GetPathCount();
-		// int partCount2 = ((MultiPath) geom2).GetPathCount();
+		// int partCount1 = ((MultiPath) geom1).getPathCount();
+		// int partCount2 = ((MultiPath) geom2).getPathCount();
 		// Assert.assertTrue(partCount1 == partCount2);
 		//
 		// // Part indices
 		// for (int i = 0; i < partCount1; i++) {
-		// int start1 = ((MultiPath) geom1).GetPathStart(i);
-		// int start2 = ((MultiPath) geom2).GetPathStart(i);
+		// int start1 = ((MultiPath) geom1).getPathStart(i);
+		// int start2 = ((MultiPath) geom2).getPathStart(i);
 		// Assert.assertTrue(start1 == start2);
-		// int end1 = ((MultiPath) geom1).GetPathEnd(i);
-		// int end2 = ((MultiPath) geom2).GetPathEnd(i);
+		// int end1 = ((MultiPath) geom1).getPathEnd(i);
+		// int end2 = ((MultiPath) geom2).getPathEnd(i);
 		// Assert.assertTrue(end1 == end2);
 		// }
 		// }
 		//
 		// // Point count
-		// int pointCount1 = geom1.GetPointCount();
-		// int pointCount2 = geom2.GetPointCount();
+		// int pointCount1 = geom1.getPointCount();
+		// int pointCount2 = geom2.getPointCount();
 		// Assert.assertTrue(pointCount1 == pointCount2);
 		//
 		// if (type == Geometry.Type.MultiPoint || type == Geometry.Type.Polyline
@@ -276,11 +273,11 @@ namespace com.esri.core.geometry
 		// ._getImpl();
 		// // POSITION
 		// AttributeStreamBase positionStream1 = mpGeom1
-		// .GetAttributeStreamRef(VertexDescription.Semantics.POSITION);
+		// .getAttributeStreamRef(VertexDescription.Semantics.POSITION);
 		// AttributeStreamOfDbl position1 = (AttributeStreamOfDbl) positionStream1;
 		//
 		// AttributeStreamBase positionStream2 = mpGeom2
-		// .GetAttributeStreamRef(VertexDescription.Semantics.POSITION);
+		// .getAttributeStreamRef(VertexDescription.Semantics.POSITION);
 		// AttributeStreamOfDbl position2 = (AttributeStreamOfDbl) positionStream2;
 		//
 		// for (int i = 0; i < pointCount1; i++) {
@@ -302,11 +299,11 @@ namespace com.esri.core.geometry
 		//
 		// if (bHasZs1) {
 		// AttributeStreamBase zStream1 = mpGeom1
-		// .GetAttributeStreamRef(VertexDescription.Semantics.Z);
+		// .getAttributeStreamRef(VertexDescription.Semantics.Z);
 		// AttributeStreamOfDbl zs1 = (AttributeStreamOfDbl) zStream1;
 		//
 		// AttributeStreamBase zStream2 = mpGeom2
-		// .GetAttributeStreamRef(VertexDescription.Semantics.Z);
+		// .getAttributeStreamRef(VertexDescription.Semantics.Z);
 		// AttributeStreamOfDbl zs2 = (AttributeStreamOfDbl) zStream2;
 		//
 		// for (int i = 0; i < pointCount1; i++) {
@@ -325,11 +322,11 @@ namespace com.esri.core.geometry
 		//
 		// if (bHasMs1) {
 		// AttributeStreamBase mStream1 = mpGeom1
-		// .GetAttributeStreamRef(VertexDescription.Semantics.M);
+		// .getAttributeStreamRef(VertexDescription.Semantics.M);
 		// AttributeStreamOfDbl ms1 = (AttributeStreamOfDbl) mStream1;
 		//
 		// AttributeStreamBase mStream2 = mpGeom2
-		// .GetAttributeStreamRef(VertexDescription.Semantics.M);
+		// .getAttributeStreamRef(VertexDescription.Semantics.M);
 		// AttributeStreamOfDbl ms2 = (AttributeStreamOfDbl) mStream2;
 		//
 		// for (int i = 0; i < pointCount1; i++) {
@@ -348,11 +345,11 @@ namespace com.esri.core.geometry
 		//
 		// if (bHasIDs1) {
 		// AttributeStreamBase idStream1 = mpGeom1
-		// .GetAttributeStreamRef(VertexDescription.Semantics.ID);
+		// .getAttributeStreamRef(VertexDescription.Semantics.ID);
 		// AttributeStreamOfInt32 ids1 = (AttributeStreamOfInt32) idStream1;
 		//
 		// AttributeStreamBase idStream2 = mpGeom2
-		// .GetAttributeStreamRef(VertexDescription.Semantics.ID);
+		// .getAttributeStreamRef(VertexDescription.Semantics.ID);
 		// AttributeStreamOfInt32 ids2 = (AttributeStreamOfInt32) idStream2;
 		//
 		// for (int i = 0; i < pointCount1; i++) {
@@ -366,25 +363,25 @@ namespace com.esri.core.geometry
 		//
 		// void SimpleTest(Geometry point) {
 		// Assert.assertTrue(point != null);
-		// point.AddAttribute(VertexDescription.Semantics.Z);
+		// point.addAttribute(VertexDescription.Semantics.Z);
 		// Assert.assertTrue(point
 		// .hasAttribute(VertexDescription.Semantics.POSITION));
 		// Assert.assertTrue(point.hasAttribute(VertexDescription.Semantics.Z));
-		// point.AddAttribute(VertexDescription.Semantics.Z);// duplicate call
-		// Assert.assertTrue(point.GetDescription().GetAttributeCount() == 2);
+		// point.addAttribute(VertexDescription.Semantics.Z);// duplicate call
+		// Assert.assertTrue(point.getDescription().getAttributeCount() == 2);
 		// Assert
-		// .assertTrue(point.GetDescription().GetSemantics(1) ==
+		// .assertTrue(point.getDescription().getSemantics(1) ==
 		// VertexDescription.Semantics.Z);
 		// point.dropAttribute(VertexDescription.Semantics.Z);
 		// Assert.assertTrue(!point.hasAttribute(VertexDescription.Semantics.Z));
 		// point.dropAttribute(VertexDescription.Semantics.Z);// duplicate call
 		// Assert.assertTrue(!point.hasAttribute(VertexDescription.Semantics.Z));
-		// Assert.assertTrue(point.GetDescription().GetAttributeCount() == 1);
+		// Assert.assertTrue(point.getDescription().getAttributeCount() == 1);
 		// Assert
-		// .assertTrue(point.GetDescription().GetSemantics(0) ==
+		// .assertTrue(point.getDescription().getSemantics(0) ==
 		// VertexDescription.Semantics.POSITION);
 		//
-		// point.AddAttribute(VertexDescription.Semantics.M);
+		// point.addAttribute(VertexDescription.Semantics.M);
 		// Assert.assertTrue(point
 		// .hasAttribute(VertexDescription.Semantics.POSITION));
 		// Assert.assertTrue(!point.hasAttribute(VertexDescription.Semantics.Z));
@@ -392,7 +389,7 @@ namespace com.esri.core.geometry
 		// point.dropAttribute(VertexDescription.Semantics.M);
 		// Assert.assertTrue(!point.hasAttribute(VertexDescription.Semantics.M));
 		//
-		// point.AddAttribute(VertexDescription.Semantics.ID);
+		// point.addAttribute(VertexDescription.Semantics.ID);
 		// Assert.assertTrue(point
 		// .hasAttribute(VertexDescription.Semantics.POSITION));
 		// Assert.assertTrue(!point.hasAttribute(VertexDescription.Semantics.Z));

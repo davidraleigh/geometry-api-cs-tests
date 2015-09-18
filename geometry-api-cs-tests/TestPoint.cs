@@ -30,7 +30,7 @@ namespace com.esri.core.geometry
 //		public virtual void TestEnvelope2000()
 //		{
 //			com.esri.core.geometry.Point[] points = new com.esri.core.geometry.Point[2000];
-//			java.util.Random random = new java.util.Random(69);
+//			System.Random random = new System.Random(69);
 //			for (int i = 0; i < 2000; i++)
 //			{
 //				points[i] = new com.esri.core.geometry.Point();
