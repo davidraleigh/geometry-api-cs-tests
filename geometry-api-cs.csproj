@@ -121,6 +121,9 @@
     <Compile Include="com\esri\core\geometry\PolylinePath.cs" />
     <Compile Include="com\esri\core\geometry\ProgressTracker.cs" />
     <Compile Include="com\esri\core\geometry\ProjectionTransformation.cs" />
+    <Compile Include="com\esri\core\geometry\QuadTree.cs" />
+    <Compile Include="com\esri\core\geometry\QuadTreeImpl.cs" />
+    <Compile Include="com\esri\core\geometry\RandomCoordinateGenerator.cs" />
     <Compile Include="com\esri\core\geometry\RingOrientationFixer.cs" />
     <Compile Include="com\esri\core\geometry\Segment.cs" />
     <Compile Include="com\esri\core\geometry\SegmentBuffer.cs" />

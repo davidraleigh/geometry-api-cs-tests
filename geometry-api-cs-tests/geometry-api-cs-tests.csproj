@@ -55,6 +55,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="TestAttributes.cs" />
+    <Compile Include="TestEnvelope2DIntersector.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TestMathUtils.cs" />
     <Compile Include="TestMultiPoint.cs" />
     <Compile Include="TestPoint.cs" />

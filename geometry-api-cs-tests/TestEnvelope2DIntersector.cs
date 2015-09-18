@@ -183,7 +183,7 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.RandomCoordinateGenerator generator2 = new com.esri.core.geometry.RandomCoordinateGenerator(System.Math.Max(figureSize, 10000), extent2, 0.001);
 			com.esri.core.geometry.RandomCoordinateGenerator generator3 = new com.esri.core.geometry.RandomCoordinateGenerator(System.Math.Max(figureSize, 10000), extent3, 0.001);
 			com.esri.core.geometry.RandomCoordinateGenerator generator4 = new com.esri.core.geometry.RandomCoordinateGenerator(System.Math.Max(figureSize, 10000), extent4, 0.001);
-			java.util.Random random = new java.util.Random(1982);
+			System.Random random = new System.Random(1982);
 			int rand_max = 511;
 			int qCount = 0;
 			int eCount = 0;
@@ -200,7 +200,7 @@ namespace com.esri.core.geometry
 				com.esri.core.geometry.Point pt;
 				for (int j = 0; j < r; j++)
 				{
-					int rand = random.NextInt(rand_max);
+					int rand = random.Next(rand_max);
 					bool bRandomNew = (r > 10) && ((1.0 * rand) / rand_max > 0.95);
 					pt = generator1.GetRandomCoord();
 					if (j == 0 || bRandomNew)
@@ -214,7 +214,7 @@ namespace com.esri.core.geometry
 				}
 				for (int j_1 = 0; j_1 < r; j_1++)
 				{
-					int rand = random.NextInt(rand_max);
+					int rand = random.Next(rand_max);
 					bool bRandomNew = (r > 10) && ((1.0 * rand) / rand_max > 0.95);
 					pt = generator4.GetRandomCoord();
 					if (j_1 == 0 || bRandomNew)
@@ -233,7 +233,7 @@ namespace com.esri.core.geometry
 				}
 				for (int j_2 = 0; j_2 < r; j_2++)
 				{
-					int rand = random.NextInt(rand_max);
+					int rand = random.Next(rand_max);
 					bool bRandomNew = (r > 10) && ((1.0 * rand) / rand_max > 0.95);
 					pt = generator2.GetRandomCoord();
 					if (j_2 == 0 || bRandomNew)
@@ -247,7 +247,7 @@ namespace com.esri.core.geometry
 				}
 				for (int j_3 = 0; j_3 < r; j_3++)
 				{
-					int rand = random.NextInt(rand_max);
+					int rand = random.Next(rand_max);
 					bool bRandomNew = (r > 10) && ((1.0 * rand) / rand_max > 0.95);
 					pt = generator3.GetRandomCoord();
 					if (j_3 == 0 || bRandomNew)
