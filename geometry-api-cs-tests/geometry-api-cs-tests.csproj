@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="RandomCoordinateGenerator.cs" />
     <Compile Include="TestAttributes.cs" />
     <Compile Include="TestEnvelope2DIntersector.cs">
       <SubType>Code</SubType>
