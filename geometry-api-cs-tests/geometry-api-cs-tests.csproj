@@ -56,10 +56,13 @@
   <ItemGroup>
     <Compile Include="RandomCoordinateGenerator.cs" />
     <Compile Include="TestAttributes.cs" />
+    <Compile Include="TestClip.cs" />
     <Compile Include="TestCut.cs" />
     <Compile Include="TestEnvelope2DIntersector.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TestEquals.cs" />
+    <Compile Include="TestGeneralize.cs" />
     <Compile Include="TestIntervalTree.cs" />
     <Compile Include="TestMathUtils.cs" />
     <Compile Include="TestMultiPoint.cs" />
