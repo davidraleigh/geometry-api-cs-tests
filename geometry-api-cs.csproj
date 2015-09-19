@@ -93,6 +93,7 @@
     <Compile Include="com\esri\core\geometry\GeoJsonImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\Geometry.cs" />
     <Compile Include="com\esri\core\geometry\GeometryAccelerators.cs" />
+    <Compile Include="com\esri\core\geometry\GeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\GeometryException.cs" />
     <Compile Include="com\esri\core\geometry\IndexHashTable.cs" />
     <Compile Include="com\esri\core\geometry\IndexMultiDCList.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="com\esri\core\geometry\ShapeImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\ShapeModifiers.cs" />
     <Compile Include="com\esri\core\geometry\ShapeType.cs" />
+    <Compile Include="com\esri\core\geometry\SimpleGeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleRasterizer.cs" />
     <Compile Include="com\esri\core\geometry\SpatialReference.cs" />
     <Compile Include="com\esri\core\geometry\SpatialReferenceImpl.cs" />
