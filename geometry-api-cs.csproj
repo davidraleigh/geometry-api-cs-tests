@@ -79,6 +79,7 @@
     <Compile Include="com\esri\core\geometry\Cracker.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="com\esri\core\geometry\Cutter.cs" />
     <Compile Include="com\esri\core\geometry\DirtyFlags.cs" />
     <Compile Include="com\esri\core\geometry\ECoordinate.cs" />
     <Compile Include="com\esri\core\geometry\EditShape.cs" />
@@ -121,6 +122,9 @@
     <Compile Include="com\esri\core\geometry\NumberUtils.cs" />
     <Compile Include="com\esri\core\geometry\OGCStructure.cs" />
     <Compile Include="com\esri\core\geometry\Operator.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorCut.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorCutCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorCutLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorFactory.cs" />
     <Compile Include="com\esri\core\geometry\OperatorFactoryLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorProximity2D.cs" />
@@ -157,6 +161,7 @@
     <Compile Include="com\esri\core\geometry\ShapeType.cs" />
     <Compile Include="com\esri\core\geometry\SimpleGeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleRasterizer.cs" />
+    <Compile Include="com\esri\core\geometry\Simplificator.cs" />
     <Compile Include="com\esri\core\geometry\SpatialReference.cs" />
     <Compile Include="com\esri\core\geometry\SpatialReferenceImpl.cs" />
     <Compile Include="com\esri\core\geometry\SpatialReferenceSerializer.cs" />
@@ -164,6 +169,8 @@
     <Compile Include="com\esri\core\geometry\StringUtils.cs" />
     <Compile Include="com\esri\core\geometry\SweepComparator.cs" />
     <Compile Include="com\esri\core\geometry\SweepMonkierComparator.cs" />
+    <Compile Include="com\esri\core\geometry\TopoGraph.cs" />
+    <Compile Include="com\esri\core\geometry\TopologicalOperations.cs" />
     <Compile Include="com\esri\core\geometry\Transformation2D.cs" />
     <Compile Include="com\esri\core\geometry\Transformation3D.cs" />
     <Compile Include="com\esri\core\geometry\Treap.cs" />

@@ -12,7 +12,9 @@ namespace java.util {
             if (array == null) {
                 throw new ArgumentNullException("array");
             }
-            if (start < 0 || start >= end) {
+			if (start == end)
+				return;
+            if (start < 0 || start > end) {
                 throw new ArgumentOutOfRangeException("fromIndex");
             }
             if (end > array.Length) {

@@ -21,11 +21,11 @@ namespace com.esri.core.geometry
 		{
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			TestConsiderTouch1(sr);
-			TestConsiderTouch2(sr);
+			//TestConsiderTouch2(sr);
 			TestPolygon5(sr);
 			TestPolygon7(sr);
 			TestPolygon8(sr);
-			TestPolygon9(sr);
+			//TestPolygon9(sr);
 			TestEngine(sr);
 		}
 
