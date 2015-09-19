@@ -27,7 +27,7 @@ namespace com.esri.core.geometry
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestIntervalTree()
+		public static void TestIntervalTree_1()
 		{
 			System.Collections.Generic.List<com.esri.core.geometry.Envelope1D> intervals = new System.Collections.Generic.List<com.esri.core.geometry.Envelope1D>(0);
 			com.esri.core.geometry.Envelope1D env0 = new com.esri.core.geometry.Envelope1D(2, 3);

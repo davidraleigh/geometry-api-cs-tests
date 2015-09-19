@@ -72,8 +72,13 @@
     <Compile Include="com\esri\core\geometry\BucketSort.cs" />
     <Compile Include="com\esri\core\geometry\ByteBufferCursor.cs" />
     <Compile Include="com\esri\core\geometry\ClassicSort.cs" />
+    <Compile Include="com\esri\core\geometry\Clusterer.cs" />
     <Compile Include="com\esri\core\geometry\CombineOperator.cs" />
     <Compile Include="com\esri\core\geometry\ConvexHull.cs" />
+    <Compile Include="com\esri\core\geometry\CrackAndCluster.cs" />
+    <Compile Include="com\esri\core\geometry\Cracker.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="com\esri\core\geometry\DirtyFlags.cs" />
     <Compile Include="com\esri\core\geometry\ECoordinate.cs" />
     <Compile Include="com\esri\core\geometry\EditShape.cs" />
@@ -114,6 +119,7 @@
     <Compile Include="com\esri\core\geometry\OGCStructure.cs" />
     <Compile Include="com\esri\core\geometry\PathFlags.cs" />
     <Compile Include="com\esri\core\geometry\PeDouble.cs" />
+    <Compile Include="com\esri\core\geometry\PlaneSweepCrackerHelper.cs" />
     <Compile Include="com\esri\core\geometry\Point.cs" />
     <Compile Include="com\esri\core\geometry\Point2D.cs" />
     <Compile Include="com\esri\core\geometry\Point3D.cs" />
@@ -143,6 +149,8 @@
     <Compile Include="com\esri\core\geometry\SpatialReferenceSerializer.cs" />
     <Compile Include="com\esri\core\geometry\StridedIndexTypeCollection.cs" />
     <Compile Include="com\esri\core\geometry\StringUtils.cs" />
+    <Compile Include="com\esri\core\geometry\SweepComparator.cs" />
+    <Compile Include="com\esri\core\geometry\SweepMonkierComparator.cs" />
     <Compile Include="com\esri\core\geometry\Transformation2D.cs" />
     <Compile Include="com\esri\core\geometry\Transformation3D.cs" />
     <Compile Include="com\esri\core\geometry\Treap.cs" />
