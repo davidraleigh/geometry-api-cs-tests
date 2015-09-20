@@ -209,3 +209,5 @@ FakesAssemblies/
 sharpencore-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 esri-geometry-api-1.2.1.jar
+
+*.orig

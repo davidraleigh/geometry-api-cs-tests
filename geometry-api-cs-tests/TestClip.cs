@@ -81,7 +81,7 @@ namespace com.esri.core.geometry
 			}
 		}
 
-		[NUnit.Framework.Test]
+
 		public static com.esri.core.geometry.Polygon MakePolygon()
 		{
 			com.esri.core.geometry.Polygon poly = new com.esri.core.geometry.Polygon();
@@ -91,7 +91,7 @@ namespace com.esri.core.geometry
 			return poly;
 		}
 
-		[NUnit.Framework.Test]
+
 		public static com.esri.core.geometry.Polyline MakePolyline()
 		{
 			com.esri.core.geometry.Polyline poly = new com.esri.core.geometry.Polyline();
@@ -148,7 +148,6 @@ namespace com.esri.core.geometry
 		}
 
 		// ((MultiPathImpl::SPtr)clippedPolygon._GetImpl()).SaveToTextFileDbg("c:\\temp\\test_ArcObjects_failure_CR196492.txt");
-		[NUnit.Framework.Test]
 		public static com.esri.core.geometry.Polyline MakePolylineCR()
 		{
 			com.esri.core.geometry.Polyline polyline = new com.esri.core.geometry.Polyline();
@@ -162,7 +161,7 @@ namespace com.esri.core.geometry
 			return polyline;
 		}
 
-		[NUnit.Framework.Test]
+
 		public static com.esri.core.geometry.MultiPoint MakeMultiPoint()
 		{
 			com.esri.core.geometry.MultiPoint mpoint = new com.esri.core.geometry.MultiPoint();
@@ -181,7 +180,7 @@ namespace com.esri.core.geometry
 			return mpoint;
 		}
 
-		[NUnit.Framework.Test]
+
 		public static com.esri.core.geometry.Point MakePoint()
 		{
 			com.esri.core.geometry.Point point = new com.esri.core.geometry.Point();
