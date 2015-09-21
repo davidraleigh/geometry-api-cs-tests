@@ -17,7 +17,7 @@ namespace com.esri.core.geometry
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestUnion()
+		public static void TestUnion_()
 		{
 			com.esri.core.geometry.Point pt = new com.esri.core.geometry.Point(10, 20);
 			com.esri.core.geometry.Point pt2 = new com.esri.core.geometry.Point();
