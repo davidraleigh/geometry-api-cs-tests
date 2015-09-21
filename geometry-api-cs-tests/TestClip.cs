@@ -81,7 +81,6 @@ namespace com.esri.core.geometry
 			}
 		}
 
-
 		public static com.esri.core.geometry.Polygon MakePolygon()
 		{
 			com.esri.core.geometry.Polygon poly = new com.esri.core.geometry.Polygon();
@@ -90,7 +89,6 @@ namespace com.esri.core.geometry
 			poly.LineTo(20, 0);
 			return poly;
 		}
-
 
 		public static com.esri.core.geometry.Polyline MakePolyline()
 		{
@@ -161,7 +159,6 @@ namespace com.esri.core.geometry
 			return polyline;
 		}
 
-
 		public static com.esri.core.geometry.MultiPoint MakeMultiPoint()
 		{
 			com.esri.core.geometry.MultiPoint mpoint = new com.esri.core.geometry.MultiPoint();
@@ -179,7 +176,6 @@ namespace com.esri.core.geometry
 			mpoint.Add(pt3.x, pt3.y);
 			return mpoint;
 		}
-
 
 		public static com.esri.core.geometry.Point MakePoint()
 		{
