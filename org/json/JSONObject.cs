@@ -766,7 +766,7 @@ namespace org.json
 
 		/// <summary>Get a set of keys of the JSONObject.</summary>
 		/// <returns>A keySet.</returns>
-		public virtual System.Collections.Generic.ICollection<string> KeySet()
+		public virtual System.Collections.Generic.HashSet<string> KeySet()
 		{
 			return this.map.Keys;
 		}
@@ -1399,7 +1399,7 @@ namespace org.json
 				{
 					return false;
 				}
-				System.Collections.Generic.ICollection<string> set = this.KeySet();
+				System.Collections.Generic.HashSet<string> set = this.KeySet();
 				if (!set.Equals(((org.json.JSONObject)other).KeySet()))
 				{
 					return false;
