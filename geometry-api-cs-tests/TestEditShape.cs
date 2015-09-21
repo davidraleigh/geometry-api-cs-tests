@@ -5,20 +5,20 @@ namespace com.esri.core.geometry
 	public class TestEditShape : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
-		protected void SetUp()
+		[SetUp]
+        protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		[SetUp]
-     protected void TearDown()
+		protected void TearDown()
 		{
 			
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestEditShape()
+		public static void TestEditShape_()
 		{
 			{
 				// std::shared_ptr<Esri_runtimecore::Geometry::Polygon> poly_base_6

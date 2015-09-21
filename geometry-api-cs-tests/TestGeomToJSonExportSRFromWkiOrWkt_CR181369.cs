@@ -5,14 +5,14 @@ namespace com.esri.core.geometry
 	public class TestGeomToJSonExportSRFromWkiOrWkt_CR181369 : NUnit.Framework.TestFixtureAttribute
 	{
 		/// <exception cref="System.Exception"/>
-		protected void SetUp()
+		[SetUp]
+        protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		[SetUp]
-     protected void TearDown()
+		protected void TearDown()
 		{
 			
 		}

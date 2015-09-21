@@ -6,14 +6,14 @@ namespace com.esri.core.geometry
 	{
 		//import com.vividsolutions.jts.io.WKBReader;
 		/// <exception cref="System.Exception"/>
-		protected void SetUp()
+		[SetUp]
+        protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		[SetUp]
-     protected void TearDown()
+		protected void TearDown()
 		{
 			
 		}

@@ -18,7 +18,8 @@ namespace com.esri.core.geometry
 		// NAD_1983_UTM_Zone_10N : GCS 6269
 		// WGS_1984_UTM_Zone_10N; : GCS 4326
 		/// <exception cref="System.Exception"/>
-		protected void SetUp()
+		[SetUp]
+        protected void SetUp()
 		{
 			
 			projEnv = com.esri.core.geometry.OperatorFactoryLocal.GetInstance();
@@ -27,8 +28,7 @@ namespace com.esri.core.geometry
 		}
 
 		/// <exception cref="System.Exception"/>
-		[SetUp]
-     protected void TearDown()
+		protected void TearDown()
 		{
 			
 		}

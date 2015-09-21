@@ -7,14 +7,14 @@ namespace com.esri.core.geometry
 		internal org.codehaus.jackson.JsonFactory factory = new org.codehaus.jackson.JsonFactory();
 
 		/// <exception cref="System.Exception"/>
-		protected void SetUp()
+		[SetUp]
+        protected void SetUp()
 		{
 			
 		}
 
 		/// <exception cref="System.Exception"/>
-		[SetUp]
-     protected void TearDown()
+		protected void TearDown()
 		{
 			
 		}
