@@ -69,6 +69,7 @@
     <Compile Include="TestIntervalTree.cs" />
     <Compile Include="TestMathUtils.cs" />
     <Compile Include="TestMultiPoint.cs" />
+    <Compile Include="TestOffset.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="TestPolygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

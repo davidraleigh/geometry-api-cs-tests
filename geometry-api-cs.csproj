@@ -76,6 +76,7 @@
     <Compile Include="com\esri\core\geometry\Clipper.cs" />
     <Compile Include="com\esri\core\geometry\Clusterer.cs" />
     <Compile Include="com\esri\core\geometry\CombineOperator.cs" />
+    <Compile Include="com\esri\core\geometry\ConstructOffset.cs" />
     <Compile Include="com\esri\core\geometry\ConvexHull.cs" />
     <Compile Include="com\esri\core\geometry\CrackAndCluster.cs" />
     <Compile Include="com\esri\core\geometry\Cracker.cs">
@@ -143,6 +144,9 @@
     <Compile Include="com\esri\core\geometry\OperatorGeneralize.cs" />
     <Compile Include="com\esri\core\geometry\OperatorGeneralizeCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorGeneralizeLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorOffset.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorOffsetCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorOffsetLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorProximity2D.cs" />
     <Compile Include="com\esri\core\geometry\OperatorProximity2DLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorSimpleRelation.cs" />
