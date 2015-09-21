@@ -112,6 +112,7 @@
     <Compile Include="com\esri\core\geometry\JsonStringWriter.cs" />
     <Compile Include="com\esri\core\geometry\JsonWriter.cs" />
     <Compile Include="com\esri\core\geometry\Line.cs" />
+    <Compile Include="com\esri\core\geometry\ListeningGeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\MapGeometry.cs" />
     <Compile Include="com\esri\core\geometry\MathUtils.cs" />
     <Compile Include="com\esri\core\geometry\MgrsConversionMode.cs" />
@@ -131,6 +132,11 @@
     <Compile Include="com\esri\core\geometry\OperatorClip.cs" />
     <Compile Include="com\esri\core\geometry\OperatorClipCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorClipLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorContains.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorContainsLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorConvexHull.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorConvexHullCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorConvexHullLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorCut.cs" />
     <Compile Include="com\esri\core\geometry\OperatorCutCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorCutLocal.cs" />

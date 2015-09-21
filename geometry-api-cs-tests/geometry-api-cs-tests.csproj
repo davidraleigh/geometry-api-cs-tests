@@ -58,6 +58,7 @@
     <Compile Include="TestAttributes.cs" />
     <Compile Include="TestBuffer.cs" />
     <Compile Include="TestClip.cs" />
+    <Compile Include="TestConvexHull.cs" />
     <Compile Include="TestCut.cs" />
     <Compile Include="TestDifference.cs" />
     <Compile Include="TestDistance.cs" />
