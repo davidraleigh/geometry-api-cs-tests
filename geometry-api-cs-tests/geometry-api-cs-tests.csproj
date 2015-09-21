@@ -58,21 +58,29 @@
     <Compile Include="TestAttributes.cs" />
     <Compile Include="TestClip.cs" />
     <Compile Include="TestCut.cs" />
+    <Compile Include="TestEditShape.cs" />
     <Compile Include="TestEnvelope2DIntersector.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TestEquals.cs" />
     <Compile Include="TestGeneralize.cs" />
+    <Compile Include="TestInterpolateAttributes.cs" />
     <Compile Include="TestIntervalTree.cs" />
     <Compile Include="TestMathUtils.cs" />
     <Compile Include="TestMultiPoint.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="TestPolygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPolygonUtils.cs" />
     <Compile Include="TestProximity2D.cs" />
     <Compile Include="TestQuadTree.cs" />
+    <Compile Include="TestRasterizedGeometry2D.cs" />
+    <Compile Include="TestSimplify.cs" />
+    <Compile Include="TestTreap.cs" />
+    <Compile Include="TestUnion.cs" />
     <Compile Include="TestWkid.cs" />
     <Compile Include="TestWktParser.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\geometry-api-cs.csproj">

@@ -17,7 +17,7 @@ namespace com.esri.core.geometry
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestEditShape()
+		public static void TestEditShape_1()
 		{
 			{
 				// std::shared_ptr<Esri_runtimecore::Geometry::Polygon> poly_base_6
