@@ -17,7 +17,7 @@ namespace com.esri.core.geometry
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestUnion_1()
+		public static void TestUnion()
 		{
 			com.esri.core.geometry.Point pt = new com.esri.core.geometry.Point(10, 20);
 			com.esri.core.geometry.Point pt2 = new com.esri.core.geometry.Point();
@@ -30,9 +30,6 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			com.esri.core.geometry.GeometryCursor outputCursor = union.Execute(inputGeometries, sr, null);
 			com.esri.core.geometry.Geometry result = outputCursor.Next();
-			Assert.AreEqual(Geometry.Type.Polygon, result.GetType());
-			Assert.LessOrEqual(result.CalculateArea2D() - 40.0 * 50.0, 0.01);
-
 		}
 	}
 }
