@@ -137,6 +137,11 @@
     <Compile Include="com\esri\core\geometry\OperatorDensifyByLength.cs" />
     <Compile Include="com\esri\core\geometry\OperatorDensifyByLengthCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorDensifyByLengthLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorDifference.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorDifferenceCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorDifferenceLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorDistance.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorDistanceLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorEquals.cs" />
     <Compile Include="com\esri\core\geometry\OperatorEqualsLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorFactory.cs" />
@@ -144,6 +149,10 @@
     <Compile Include="com\esri\core\geometry\OperatorGeneralize.cs" />
     <Compile Include="com\esri\core\geometry\OperatorGeneralizeCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorGeneralizeLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorInternalRelationUtils.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorIntersection.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorIntersectionCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorIntersectionLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorOffset.cs" />
     <Compile Include="com\esri\core\geometry\OperatorOffsetCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorOffsetLocal.cs" />
@@ -154,6 +163,9 @@
     <Compile Include="com\esri\core\geometry\OperatorSimplifyCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorSimplifyLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorSimplifyLocalHelper.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorSymmetricDifference.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorSymmetricDifferenceCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorSymmetricDifferenceLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorUnion.cs" />
     <Compile Include="com\esri\core\geometry\OperatorUnionCursor.cs" />
     <Compile Include="com\esri\core\geometry\OperatorUnionLocal.cs" />

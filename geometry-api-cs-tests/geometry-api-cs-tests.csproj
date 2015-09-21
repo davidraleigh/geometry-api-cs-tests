@@ -59,12 +59,15 @@
     <Compile Include="TestBuffer.cs" />
     <Compile Include="TestClip.cs" />
     <Compile Include="TestCut.cs" />
+    <Compile Include="TestDifference.cs" />
+    <Compile Include="TestDistance.cs" />
     <Compile Include="TestEditShape.cs" />
     <Compile Include="TestEnvelope2DIntersector.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TestEquals.cs" />
     <Compile Include="TestGeneralize.cs" />
+    <Compile Include="TestGeodetic.cs" />
     <Compile Include="TestInterpolateAttributes.cs" />
     <Compile Include="TestIntervalTree.cs" />
     <Compile Include="TestMathUtils.cs" />
