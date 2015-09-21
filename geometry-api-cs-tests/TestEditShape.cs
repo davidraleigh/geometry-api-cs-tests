@@ -11,13 +11,14 @@ namespace com.esri.core.geometry
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected void TearDown()
+		[SetUp]
+     protected void TearDown()
 		{
 			
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestEditShape_()
+		public static void TestEditShape()
 		{
 			{
 				// std::shared_ptr<Esri_runtimecore::Geometry::Polygon> poly_base_6

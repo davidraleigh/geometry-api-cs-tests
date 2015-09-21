@@ -11,13 +11,14 @@ namespace com.esri.core.geometry
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected void TearDown()
+		[SetUp]
+     protected void TearDown()
 		{
 			
 		}
 
 		[NUnit.Framework.Test]
-		public static void TestUnion_()
+		public static void TestUnion()
 		{
 			com.esri.core.geometry.Point pt = new com.esri.core.geometry.Point(10, 20);
 			com.esri.core.geometry.Point pt2 = new com.esri.core.geometry.Point();

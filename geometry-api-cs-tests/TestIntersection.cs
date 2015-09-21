@@ -27,7 +27,8 @@ namespace com.esri.core.geometry
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected void TearDown()
+		[SetUp]
+     protected void TearDown()
 		{
 			
 		}

@@ -11,7 +11,8 @@ namespace com.esri.core.geometry
 		}
 
 		/// <exception cref="System.Exception"/>
-		protected void TearDown()
+		[SetUp]
+     protected void TearDown()
 		{
 			
 		}
@@ -25,7 +26,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsFalse(pt.IsEmpty());
 			pt.ToString();
 		}
-
+//
 //		[NUnit.Framework.Test]
 //		public virtual void TestEnvelope2000()
 //		{
@@ -49,7 +50,7 @@ namespace com.esri.core.geometry
 //				}
 //				long endTime = Sharpen.Runtime.NanoTime();
 //			}
-//		}
+		}
 
 		[NUnit.Framework.Test]
 		public virtual void TestBasic()

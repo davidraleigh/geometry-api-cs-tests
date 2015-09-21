@@ -787,7 +787,7 @@ namespace org.json
 			}
 			if (index < this.Length())
 			{
-				this.myArrayList.Set(index, value);
+				this.myArrayList.InsertReplace(index, value);
 			}
 			else
 			{
