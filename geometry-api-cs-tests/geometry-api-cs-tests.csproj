@@ -70,6 +70,8 @@
     <Compile Include="TestGeneralize.cs" />
     <Compile Include="TestGeodetic.cs" />
     <Compile Include="TestInterpolateAttributes.cs" />
+    <Compile Include="TestIntersect2.cs" />
+    <Compile Include="TestIntersection.cs" />
     <Compile Include="TestIntervalTree.cs" />
     <Compile Include="TestMathUtils.cs" />
     <Compile Include="TestMultiPoint.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="TestQuadTree.cs" />
     <Compile Include="TestRasterizedGeometry2D.cs" />
     <Compile Include="TestSimplify.cs" />
+    <Compile Include="TestTouch.cs" />
     <Compile Include="TestTreap.cs" />
     <Compile Include="TestUnion.cs" />
     <Compile Include="TestWkid.cs" />
