@@ -1049,7 +1049,7 @@ namespace com.esri.core.geometry
 			catch (System.Exception e)
 			{
 				// exception thrown here!!!
-//				e.PrintStackTrace();
+				//e.PrintStackTrace();
 				noException = false;
 			}
 			NUnit.Framework.Assert.IsTrue(noException);
