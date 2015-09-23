@@ -983,34 +983,33 @@ namespace com.esri.core.geometry
 			pg.Add(pg2, false);
 		}
 
-//		[NUnit.Framework.Test]
-//		public virtual void TestCR177477getPathEnd()
-//		{
-//			com.esri.core.geometry.Polygon pg = new com.esri.core.geometry.Polygon();
-//			pg.StartPath(-130, 40);
-//			pg.LineTo(-70, 40);
-//			pg.LineTo(-70, 10);
-//			pg.LineTo(-130, 10);
-//			pg.StartPath(-60, 40);
-//			pg.LineTo(-50, 40);
-//			pg.LineTo(-50, 10);
-//			pg.LineTo(-60, 10);
-//			pg.StartPath(-40, 40);
-//			pg.LineTo(-30, 40);
-//			pg.LineTo(-30, 10);
-//			pg.LineTo(-40, 10);
-//			int pathCount = pg.GetPathCount();
-//			NUnit.Framework.Assert.IsTrue(pathCount == 3);
-//			// int startIndex = pg.getPathStart(pathCount - 1);
-//			// int endIndex = pg.getPathEnd(pathCount - 1);
-//			com.esri.core.geometry.Line line = new com.esri.core.geometry.Line();
-//			line.ToString();
-//			line.SetStart(new com.esri.core.geometry.Point(0, 0));
-//			line.SetEnd(new com.esri.core.geometry.Point(1, 0));
-//			line.ToString();
-//			double geoLength = com.esri.core.geometry.GeometryEngine.GeodesicDistanceOnWGS84(new com.esri.core.geometry.Point(0, 0), new com.esri.core.geometry.Point(1, 0));
-//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(geoLength - 111319) < 1);
-//		}
+		[NUnit.Framework.Test]
+		public virtual void TestCR177477getPathEnd() {
+			com.esri.core.geometry.Polygon pg = new com.esri.core.geometry.Polygon();
+			pg.StartPath(-130, 40);
+			pg.LineTo(-70, 40);
+			pg.LineTo(-70, 10);
+			pg.LineTo(-130, 10);
+			pg.StartPath(-60, 40);
+			pg.LineTo(-50, 40);
+			pg.LineTo(-50, 10);
+			pg.LineTo(-60, 10);
+			pg.StartPath(-40, 40);
+			pg.LineTo(-30, 40);
+			pg.LineTo(-30, 10);
+			pg.LineTo(-40, 10);
+			int pathCount = pg.GetPathCount();
+			NUnit.Framework.Assert.IsTrue(pathCount == 3);
+			// int startIndex = pg.getPathStart(pathCount - 1);
+			// int endIndex = pg.getPathEnd(pathCount - 1);
+			com.esri.core.geometry.Line line = new com.esri.core.geometry.Line();
+			line.ToString();
+			line.SetStart(new com.esri.core.geometry.Point(0, 0));
+			line.SetEnd(new com.esri.core.geometry.Point(1, 0));
+			line.ToString();
+			double geoLength = com.esri.core.geometry.GeometryEngine.GeodesicDistanceOnWGS84(new com.esri.core.geometry.Point(0, 0), new com.esri.core.geometry.Point(1, 0));
+			NUnit.Framework.Assert.IsTrue(System.Math.Abs(geoLength - 111319) < 1);
+		}
 
 		[NUnit.Framework.Test]
 		public virtual void TestBug1()
