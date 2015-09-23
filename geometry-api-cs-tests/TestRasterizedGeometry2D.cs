@@ -121,21 +121,21 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(RgHelper(rg, poly));
 			}
 			{
-				//com.esri.core.geometry.Polygon poly = new com.esri.core.geometry.Polygon();
-				//// create a star (non-simple)
-				//poly.StartPath(1, 0);
-				//poly.LineTo(5, 10);
-				//poly.LineTo(9, 0);
-				//poly.LineTo(0, 6);
-				//poly.LineTo(10, 6);
-				//com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
-				//poly = (com.esri.core.geometry.Polygon)com.esri.core.geometry.OperatorSimplify.Local().Execute(poly, sr, true, null);
-				//com.esri.core.geometry.OperatorContains.Local().AccelerateGeometry(poly, sr, com.esri.core.geometry.Geometry.GeometryAccelerationDegree.enumMedium);
-				//NUnit.Framework.Assert.IsFalse(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(5, 5.5), sr, null));
-				//NUnit.Framework.Assert.IsTrue(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(5, 8), sr, null));
-				//NUnit.Framework.Assert.IsTrue(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(1.63, 0.77), sr, null));
-				//NUnit.Framework.Assert.IsFalse(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(1, 3), sr, null));
-				//NUnit.Framework.Assert.IsFalse(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(1.6, 0.1), sr, null));
+				com.esri.core.geometry.Polygon poly = new com.esri.core.geometry.Polygon();
+				// create a star (non-simple)
+				poly.StartPath(1, 0);
+				poly.LineTo(5, 10);
+				poly.LineTo(9, 0);
+				poly.LineTo(0, 6);
+				poly.LineTo(10, 6);
+				com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
+				poly = (com.esri.core.geometry.Polygon)com.esri.core.geometry.OperatorSimplify.Local().Execute(poly, sr, true, null);
+				com.esri.core.geometry.OperatorContains.Local().AccelerateGeometry(poly, sr, com.esri.core.geometry.Geometry.GeometryAccelerationDegree.enumMedium);
+				NUnit.Framework.Assert.IsFalse(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(5, 5.5), sr, null));
+				NUnit.Framework.Assert.IsTrue(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(5, 8), sr, null));
+				NUnit.Framework.Assert.IsTrue(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(1.63, 0.77), sr, null));
+				NUnit.Framework.Assert.IsFalse(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(1, 3), sr, null));
+				NUnit.Framework.Assert.IsFalse(com.esri.core.geometry.OperatorContains.Local().Execute(poly, new com.esri.core.geometry.Point(1.6, 0.1), sr, null));
 			}
 		}
 		/*

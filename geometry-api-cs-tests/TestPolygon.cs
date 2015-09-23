@@ -983,34 +983,34 @@ namespace com.esri.core.geometry
 			pg.Add(pg2, false);
 		}
 
-//		[NUnit.Framework.Test]
-//		public virtual void TestCR177477getPathEnd()
-//		{
-//			com.esri.core.geometry.Polygon pg = new com.esri.core.geometry.Polygon();
-//			pg.StartPath(-130, 40);
-//			pg.LineTo(-70, 40);
-//			pg.LineTo(-70, 10);
-//			pg.LineTo(-130, 10);
-//			pg.StartPath(-60, 40);
-//			pg.LineTo(-50, 40);
-//			pg.LineTo(-50, 10);
-//			pg.LineTo(-60, 10);
-//			pg.StartPath(-40, 40);
-//			pg.LineTo(-30, 40);
-//			pg.LineTo(-30, 10);
-//			pg.LineTo(-40, 10);
-//			int pathCount = pg.GetPathCount();
-//			NUnit.Framework.Assert.IsTrue(pathCount == 3);
-//			// int startIndex = pg.getPathStart(pathCount - 1);
-//			// int endIndex = pg.getPathEnd(pathCount - 1);
-//			com.esri.core.geometry.Line line = new com.esri.core.geometry.Line();
-//			line.ToString();
-//			line.SetStart(new com.esri.core.geometry.Point(0, 0));
-//			line.SetEnd(new com.esri.core.geometry.Point(1, 0));
-//			line.ToString();
-//			double geoLength = com.esri.core.geometry.GeometryEngine.GeodesicDistanceOnWGS84(new com.esri.core.geometry.Point(0, 0), new com.esri.core.geometry.Point(1, 0));
-//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(geoLength - 111319) < 1);
-//		}
+		[NUnit.Framework.Test]
+		public virtual void TestCR177477getPathEnd()
+		{
+			com.esri.core.geometry.Polygon pg = new com.esri.core.geometry.Polygon();
+			pg.StartPath(-130, 40);
+			pg.LineTo(-70, 40);
+			pg.LineTo(-70, 10);
+			pg.LineTo(-130, 10);
+			pg.StartPath(-60, 40);
+			pg.LineTo(-50, 40);
+			pg.LineTo(-50, 10);
+			pg.LineTo(-60, 10);
+			pg.StartPath(-40, 40);
+			pg.LineTo(-30, 40);
+			pg.LineTo(-30, 10);
+			pg.LineTo(-40, 10);
+			int pathCount = pg.GetPathCount();
+			NUnit.Framework.Assert.IsTrue(pathCount == 3);
+			// int startIndex = pg.getPathStart(pathCount - 1);
+			// int endIndex = pg.getPathEnd(pathCount - 1);
+			com.esri.core.geometry.Line line = new com.esri.core.geometry.Line();
+			line.ToString();
+			line.SetStart(new com.esri.core.geometry.Point(0, 0));
+			line.SetEnd(new com.esri.core.geometry.Point(1, 0));
+			line.ToString();
+			double geoLength = com.esri.core.geometry.GeometryEngine.GeodesicDistanceOnWGS84(new com.esri.core.geometry.Point(0, 0), new com.esri.core.geometry.Point(1, 0));
+			NUnit.Framework.Assert.IsTrue(System.Math.Abs(geoLength - 111319) < 1);
+		}
 
 		[NUnit.Framework.Test]
 		public virtual void TestBug1()
@@ -1049,23 +1049,23 @@ namespace com.esri.core.geometry
 			catch (System.Exception e)
 			{
 				// exception thrown here!!!
-				//e.PrintStackTrace();
+//				e.PrintStackTrace();
 				noException = false;
 			}
 			NUnit.Framework.Assert.IsTrue(noException);
 		}
 
-//		// end of method
-//		[NUnit.Framework.Test]
-//		public virtual void TestBoundary()
-//		{
-//			com.esri.core.geometry.Geometry g = com.esri.core.geometry.OperatorImportFromWkt.Local().Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, "POLYGON((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))", null);
-//			com.esri.core.geometry.Geometry boundary = com.esri.core.geometry.OperatorBoundary.Local().Execute(g, null);
-//			com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)boundary;
-//			polyline.ReverseAllPaths();
-//			string s = com.esri.core.geometry.OperatorExportToWkt.Local().Execute(0, boundary, null);
-//			NUnit.Framework.Assert.IsTrue(s.Equals("MULTILINESTRING ((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))"));
-//		}
+		// end of method
+		[NUnit.Framework.Test]
+		public virtual void TestBoundary()
+		{
+			com.esri.core.geometry.Geometry g = com.esri.core.geometry.OperatorImportFromWkt.Local().Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, "POLYGON((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))", null);
+			com.esri.core.geometry.Geometry boundary = com.esri.core.geometry.OperatorBoundary.Local().Execute(g, null);
+			com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)boundary;
+			polyline.ReverseAllPaths();
+			string s = com.esri.core.geometry.OperatorExportToWkt.Local().Execute(0, boundary, null);
+			NUnit.Framework.Assert.IsTrue(s.Equals("MULTILINESTRING ((-10 -10, 10 -10, 10 10, -10 10, -10 -10), (-5 -5, -5 5, 5 5, 5 -5, -5 -5))"));
+		}
 
 		[NUnit.Framework.Test]
 		public virtual void TestReplaceNaNs()

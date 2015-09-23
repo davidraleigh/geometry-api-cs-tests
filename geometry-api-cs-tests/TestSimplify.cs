@@ -8,7 +8,7 @@ namespace com.esri.core.geometry
 
 		internal com.esri.core.geometry.OperatorSimplify simplifyOp = null;
 
-		//internal com.esri.core.geometry.OperatorSimplifyOGC simplifyOpOGC = null;
+		internal com.esri.core.geometry.OperatorSimplifyOGC simplifyOpOGC = null;
 
 		internal com.esri.core.geometry.SpatialReference sr102100 = null;
 
@@ -28,7 +28,7 @@ namespace com.esri.core.geometry
 			
 			factory = com.esri.core.geometry.OperatorFactoryLocal.GetInstance();
 			simplifyOp = (com.esri.core.geometry.OperatorSimplify)factory.GetOperator(com.esri.core.geometry.Operator.Type.Simplify);
-			//simplifyOpOGC = (com.esri.core.geometry.OperatorSimplifyOGC)factory.GetOperator(com.esri.core.geometry.Operator.Type.SimplifyOGC);
+			simplifyOpOGC = (com.esri.core.geometry.OperatorSimplifyOGC)factory.GetOperator(com.esri.core.geometry.Operator.Type.SimplifyOGC);
 			sr102100 = com.esri.core.geometry.SpatialReference.Create(102100);
 			sr3857 = com.esri.core.geometry.SpatialReference.Create(3857);
 			// PE_PCS_WGS_1984_WEB_MERCATOR_AUXSPHERE);
@@ -1153,117 +1153,117 @@ namespace com.esri.core.geometry
 		[NUnit.Framework.Test]
 		public virtual void TestisSimpleOGC()
 		{
-			//com.esri.core.geometry.Polyline poly = new com.esri.core.geometry.Polyline();
-			//poly.StartPath(0, 0);
-			//poly.LineTo(10, 0);
-			//bool result = simplifyOpOGC.IsSimpleOGC(poly, sr4326, true, null, null);
-			//NUnit.Framework.Assert.IsTrue(result);
-			//poly = new com.esri.core.geometry.Polyline();
-			//poly.StartPath(0, 0);
-			//poly.LineTo(10, 10);
-			//poly.LineTo(0, 10);
-			//poly.LineTo(10, 0);
-			//com.esri.core.geometry.NonSimpleResult nsr = new com.esri.core.geometry.NonSimpleResult();
-			//result = simplifyOpOGC.IsSimpleOGC(poly, sr4326, true, nsr, null);
-			//NUnit.Framework.Assert.IsTrue(!result);
-			//NUnit.Framework.Assert.IsTrue(nsr.m_reason == com.esri.core.geometry.NonSimpleResult.Reason.Cracking);
-			//com.esri.core.geometry.MultiPoint mp = new com.esri.core.geometry.MultiPoint();
-			//mp.Add(0, 0);
-			//mp.Add(10, 0);
-			//result = simplifyOpOGC.IsSimpleOGC(mp, sr4326, true, null, null);
-			//NUnit.Framework.Assert.IsTrue(result);
-			//mp = new com.esri.core.geometry.MultiPoint();
-			//mp.Add(10, 0);
-			//mp.Add(10, 0);
-			//nsr = new com.esri.core.geometry.NonSimpleResult();
-			//result = simplifyOpOGC.IsSimpleOGC(mp, sr4326, true, nsr, null);
-			//NUnit.Framework.Assert.IsTrue(!result);
-			//NUnit.Framework.Assert.IsTrue(nsr.m_reason == com.esri.core.geometry.NonSimpleResult.Reason.Clustering);
+			com.esri.core.geometry.Polyline poly = new com.esri.core.geometry.Polyline();
+			poly.StartPath(0, 0);
+			poly.LineTo(10, 0);
+			bool result = simplifyOpOGC.IsSimpleOGC(poly, sr4326, true, null, null);
+			NUnit.Framework.Assert.IsTrue(result);
+			poly = new com.esri.core.geometry.Polyline();
+			poly.StartPath(0, 0);
+			poly.LineTo(10, 10);
+			poly.LineTo(0, 10);
+			poly.LineTo(10, 0);
+			com.esri.core.geometry.NonSimpleResult nsr = new com.esri.core.geometry.NonSimpleResult();
+			result = simplifyOpOGC.IsSimpleOGC(poly, sr4326, true, nsr, null);
+			NUnit.Framework.Assert.IsTrue(!result);
+			NUnit.Framework.Assert.IsTrue(nsr.m_reason == com.esri.core.geometry.NonSimpleResult.Reason.Cracking);
+			com.esri.core.geometry.MultiPoint mp = new com.esri.core.geometry.MultiPoint();
+			mp.Add(0, 0);
+			mp.Add(10, 0);
+			result = simplifyOpOGC.IsSimpleOGC(mp, sr4326, true, null, null);
+			NUnit.Framework.Assert.IsTrue(result);
+			mp = new com.esri.core.geometry.MultiPoint();
+			mp.Add(10, 0);
+			mp.Add(10, 0);
+			nsr = new com.esri.core.geometry.NonSimpleResult();
+			result = simplifyOpOGC.IsSimpleOGC(mp, sr4326, true, nsr, null);
+			NUnit.Framework.Assert.IsTrue(!result);
+			NUnit.Framework.Assert.IsTrue(nsr.m_reason == com.esri.core.geometry.NonSimpleResult.Reason.Clustering);
 		}
 
 		/// <exception cref="System.IO.IOException"/>
 		[NUnit.Framework.Test]
 		public virtual void TestPolylineIsSimpleForOGC()
 		{
-			//com.esri.core.geometry.OperatorImportFromJson importerJson = (com.esri.core.geometry.OperatorImportFromJson)factory.GetOperator(com.esri.core.geometry.Operator.Type.ImportFromJson);
-			//com.esri.core.geometry.OperatorSimplify simplify = (com.esri.core.geometry.OperatorSimplify)factory.GetOperator(com.esri.core.geometry.Operator.Type.Simplify);
-			//org.codehaus.jackson.JsonFactory f = new org.codehaus.jackson.JsonFactory();
-			//{
-			//	string s = "{\"paths\":[[[0, 10], [8, 5], [5, 2], [6, 0]]]}";
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 10], [6,  0], [7, 5], [0, 3]]]}";
-			//	// self
-			//	// intersection
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(!res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 10], [6,  0], [0, 3], [0, 10]]]}";
-			//	// closed
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 10], [5, 5], [6,  0], [0, 3], [5, 5], [0, 9], [0, 10]]]}";
-			//	// closed
-			//	// with
-			//	// self
-			//	// tangent
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(!res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 10], [5, 2]], [[5, 2], [6,  0]]]}";
-			//	// two
-			//	// paths
-			//	// connected
-			//	// at
-			//	// a
-			//	// point
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 0], [3, 3], [5, 0], [0, 0]], [[0, 10], [3, 3], [10, 10], [0, 10]]]}";
-			//	// two
-			//	// closed
-			//	// rings
-			//	// touch
-			//	// at
-			//	// one
-			//	// point
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(!res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 0], [10, 10]], [[0, 10], [10, 0]]]}";
-			//	// two
-			//	// lines
-			//	// intersect
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(!res);
-			//}
-			//{
-			//	string s = "{\"paths\":[[[0, 0], [5, 5], [0, 10]], [[10, 10], [5, 5], [10, 0]]]}";
-			//	// two
-			//	// paths
-			//	// share
-			//	// mid
-			//	// point.
-			//	com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
-			//	bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
-			//	NUnit.Framework.Assert.IsTrue(!res);
-			//}
+			com.esri.core.geometry.OperatorImportFromJson importerJson = (com.esri.core.geometry.OperatorImportFromJson)factory.GetOperator(com.esri.core.geometry.Operator.Type.ImportFromJson);
+			com.esri.core.geometry.OperatorSimplify simplify = (com.esri.core.geometry.OperatorSimplify)factory.GetOperator(com.esri.core.geometry.Operator.Type.Simplify);
+			org.codehaus.jackson.JsonFactory f = new org.codehaus.jackson.JsonFactory();
+			{
+				string s = "{\"paths\":[[[0, 10], [8, 5], [5, 2], [6, 0]]]}";
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 10], [6,  0], [7, 5], [0, 3]]]}";
+				// self
+				// intersection
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(!res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 10], [6,  0], [0, 3], [0, 10]]]}";
+				// closed
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 10], [5, 5], [6,  0], [0, 3], [5, 5], [0, 9], [0, 10]]]}";
+				// closed
+				// with
+				// self
+				// tangent
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(!res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 10], [5, 2]], [[5, 2], [6,  0]]]}";
+				// two
+				// paths
+				// connected
+				// at
+				// a
+				// point
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 0], [3, 3], [5, 0], [0, 0]], [[0, 10], [3, 3], [10, 10], [0, 10]]]}";
+				// two
+				// closed
+				// rings
+				// touch
+				// at
+				// one
+				// point
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(!res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 0], [10, 10]], [[0, 10], [10, 0]]]}";
+				// two
+				// lines
+				// intersect
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(!res);
+			}
+			{
+				string s = "{\"paths\":[[[0, 0], [5, 5], [0, 10]], [[10, 10], [5, 5], [10, 0]]]}";
+				// two
+				// paths
+				// share
+				// mid
+				// point.
+				com.esri.core.geometry.Geometry g = importerJson.Execute(com.esri.core.geometry.Geometry.Type.Unknown, f.CreateJsonParser(s)).GetGeometry();
+				bool res = simplifyOpOGC.IsSimpleOGC(g, null, true, null, null);
+				NUnit.Framework.Assert.IsTrue(!res);
+			}
 		}
 
 		/// <exception cref="org.codehaus.jackson.JsonParseException"/>
@@ -1272,18 +1272,18 @@ namespace com.esri.core.geometry
 		public virtual void TestFillRule()
 		{
 			//self intersecting star shape
-			//com.esri.core.geometry.MapGeometry mg = com.esri.core.geometry.OperatorImportFromJson.Local().Execute(com.esri.core.geometry.Geometry.Type.Unknown, "{\"rings\":[[[0,0], [5,10], [10, 0], [0, 7], [10, 7], [0, 0]]]}");
-			//com.esri.core.geometry.Polygon poly = (com.esri.core.geometry.Polygon)mg.GetGeometry();
-			//NUnit.Framework.Assert.IsTrue(poly.GetFillRule() == com.esri.core.geometry.Polygon.FillRule.enumFillRuleOddEven);
-			//poly.SetFillRule(com.esri.core.geometry.Polygon.FillRule.enumFillRuleWinding);
-			//NUnit.Framework.Assert.IsTrue(poly.GetFillRule() == com.esri.core.geometry.Polygon.FillRule.enumFillRuleWinding);
-			//com.esri.core.geometry.Geometry simpleResult = com.esri.core.geometry.OperatorSimplify.Local().Execute(poly, null, true, null);
-			//NUnit.Framework.Assert.IsTrue(((com.esri.core.geometry.Polygon)simpleResult).GetFillRule() == com.esri.core.geometry.Polygon.FillRule.enumFillRuleOddEven);
-			////solid start without holes:
-			//com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.OperatorImportFromJson.Local().Execute(com.esri.core.geometry.Geometry.Type.Unknown, "{\"rings\":[[[0,0],[2.5925925925925926,5.185185185185185],[0,7],[3.5,7],[5,10],[6.5,7],[10,7],[7.407407407407407,5.185185185185185],[10,0],[5,3.5],[0,0]]]}"
-			//	);
-			//bool equals = com.esri.core.geometry.OperatorEquals.Local().Execute(mg1.GetGeometry(), simpleResult, null, null);
-			//NUnit.Framework.Assert.IsTrue(equals);
+			com.esri.core.geometry.MapGeometry mg = com.esri.core.geometry.OperatorImportFromJson.Local().Execute(com.esri.core.geometry.Geometry.Type.Unknown, "{\"rings\":[[[0,0], [5,10], [10, 0], [0, 7], [10, 7], [0, 0]]]}");
+			com.esri.core.geometry.Polygon poly = (com.esri.core.geometry.Polygon)mg.GetGeometry();
+			NUnit.Framework.Assert.IsTrue(poly.GetFillRule() == com.esri.core.geometry.Polygon.FillRule.enumFillRuleOddEven);
+			poly.SetFillRule(com.esri.core.geometry.Polygon.FillRule.enumFillRuleWinding);
+			NUnit.Framework.Assert.IsTrue(poly.GetFillRule() == com.esri.core.geometry.Polygon.FillRule.enumFillRuleWinding);
+			com.esri.core.geometry.Geometry simpleResult = com.esri.core.geometry.OperatorSimplify.Local().Execute(poly, null, true, null);
+			NUnit.Framework.Assert.IsTrue(((com.esri.core.geometry.Polygon)simpleResult).GetFillRule() == com.esri.core.geometry.Polygon.FillRule.enumFillRuleOddEven);
+			//solid start without holes:
+			com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.OperatorImportFromJson.Local().Execute(com.esri.core.geometry.Geometry.Type.Unknown, "{\"rings\":[[[0,0],[2.5925925925925926,5.185185185185185],[0,7],[3.5,7],[5,10],[6.5,7],[10,7],[7.407407407407407,5.185185185185185],[10,0],[5,3.5],[0,0]]]}"
+				);
+			bool equals = com.esri.core.geometry.OperatorEquals.Local().Execute(mg1.GetGeometry(), simpleResult, null, null);
+			NUnit.Framework.Assert.IsTrue(equals);
 		}
 	}
 }
