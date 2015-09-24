@@ -49,9 +49,6 @@
       <HintPath>packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sharpen">
-      <HintPath>packages\Sharpen.1.0.0.3\lib\Sharpen.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -275,11 +272,40 @@
     <Compile Include="com\esri\core\geometry\WktExportFlags.cs" />
     <Compile Include="com\esri\core\geometry\WktImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\WktParser.cs" />
+    <Compile Include="GeometryResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeometryResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="java\util\Arrays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GeometryResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeometryResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\gcs_id_to_tolerance.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\gcs_tolerances.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\intermediate_to_old_wkid.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\new_to_old_wkid.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\pcs_id_to_tolerance.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\pcs_tolerances.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
