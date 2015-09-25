@@ -56,7 +56,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Round) failure");
+					Fail("OffsetPolyline(Round) failure");
 				}
 				try
 				{
@@ -64,7 +64,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Miter) failure");
+					Fail("OffsetPolyline(Miter) failure");
 				}
 				try
 				{
@@ -72,7 +72,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Bevel) failure");
+					Fail("OffsetPolyline(Bevel) failure");
 				}
 				try
 				{
@@ -80,7 +80,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Square) failure");
+					Fail("OffsetPolyline(Square) failure");
 				}
 			}
 		}
@@ -110,7 +110,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Round) failure");
+					Fail("OffsetPolyline(Round) failure");
 				}
 				try
 				{
@@ -118,7 +118,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Miter) failure");
+					Fail("OffsetPolyline(Miter) failure");
 				}
 				try
 				{
@@ -126,7 +126,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Bevel) failure");
+					Fail("OffsetPolyline(Bevel) failure");
 				}
 				try
 				{
@@ -134,7 +134,7 @@ namespace com.esri.core.geometry
 				}
 				catch (System.Exception)
 				{
-					//Fail("OffsetPolyline(Square) failure");
+					Fail("OffsetPolyline(Square) failure");
 				}
 			}
 		}
