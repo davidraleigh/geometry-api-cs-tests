@@ -157,6 +157,9 @@
     <Compile Include="com\esri\core\geometry\OperatorDistanceLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorEquals.cs" />
     <Compile Include="com\esri\core\geometry\OperatorEqualsLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorExportToESRIShape.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorExportToESRIShapeCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorExportToESRIShapeLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToWkt.cs" />
     <Compile Include="com\esri\core\geometry\OperatorExportToWktLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorFactory.cs" />
