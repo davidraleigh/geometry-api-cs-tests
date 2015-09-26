@@ -175,6 +175,9 @@
     <Compile Include="com\esri\core\geometry\OperatorGeodeticDensifyLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorGeodeticLength.cs" />
     <Compile Include="com\esri\core\geometry\OperatorGeodeticLengthLocal.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorImportFromESRIShape.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorImportFromESRIShapeCursor.cs" />
+    <Compile Include="com\esri\core\geometry\OperatorImportFromESRIShapeLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWkt.cs" />
     <Compile Include="com\esri\core\geometry\OperatorImportFromWktLocal.cs" />
     <Compile Include="com\esri\core\geometry\OperatorInternalRelationUtils.cs" />
@@ -247,6 +250,7 @@
     <Compile Include="com\esri\core\geometry\ShapeImportFlags.cs" />
     <Compile Include="com\esri\core\geometry\ShapeModifiers.cs" />
     <Compile Include="com\esri\core\geometry\ShapeType.cs" />
+    <Compile Include="com\esri\core\geometry\SimpleByteBufferCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleGeometryCursor.cs" />
     <Compile Include="com\esri\core\geometry\SimpleRasterizer.cs" />
     <Compile Include="com\esri\core\geometry\Simplificator.cs" />

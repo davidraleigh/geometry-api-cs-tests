@@ -69,6 +69,7 @@
     <Compile Include="TestEquals.cs" />
     <Compile Include="TestGeneralize.cs" />
     <Compile Include="TestGeodetic.cs" />
+    <Compile Include="TestImportExport.cs" />
     <Compile Include="TestInterpolateAttributes.cs" />
     <Compile Include="TestIntersect2.cs" />
     <Compile Include="TestIntersection.cs" />
