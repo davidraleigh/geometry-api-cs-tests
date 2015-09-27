@@ -63,24 +63,24 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(geomr.GetType() == com.esri.core.geometry.Geometry.Type.Polygon);
 			com.esri.core.geometry.Polygon geom = (com.esri.core.geometry.Polygon)geomr;
 			NUnit.Framework.Assert.IsTrue(geom.GetPointCount() == 4);
-			//com.esri.core.geometry.Point[] points = com.esri.core.geometry.TestCommonMethods.PointsFromMultiPath(geom);
-			//// SPtrOfArrayOf(Point2D)
-			//// pts =
-			//// geom.get.getCoordinates2D();
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetX() - 855278.000000000) < 1e-7);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetY() - 3892060.0000000000) < 1e-7);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetX() - 855307.00000000093) < 1e-7);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetY() - 3892079.0000000000) < 1e-7);
-			geomr = operatorIntersection.Execute(poly1, poly2, inputSR, null);
-			NUnit.Framework.Assert.IsNotNull(geomr);
-			NUnit.Framework.Assert.IsTrue(geomr.GetType() == com.esri.core.geometry.Geometry.Type.Polygon);
-			com.esri.core.geometry.Polygon outputGeom = (com.esri.core.geometry.Polygon)geomr;
-			NUnit.Framework.Assert.IsTrue(outputGeom.GetPointCount() == 4);
-			//points = com.esri.core.geometry.TestCommonMethods.PointsFromMultiPath(outputGeom);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetX() - 855278.000000000) < 1e-7);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetY() - 3892060.0000000000) < 1e-7);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetX() - 855307.00000000093) < 1e-7);
-			//NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetY() - 3892079.0000000000) < 1e-7);
+//			com.esri.core.geometry.Point[] points = com.esri.core.geometry.TestCommonMethods.PointsFromMultiPath(geom);
+//			// SPtrOfArrayOf(Point2D)
+//			// pts =
+//			// geom.get.getCoordinates2D();
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetX() - 855278.000000000) < 1e-7);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetY() - 3892060.0000000000) < 1e-7);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetX() - 855307.00000000093) < 1e-7);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetY() - 3892079.0000000000) < 1e-7);
+//			geomr = operatorIntersection.Execute(poly1, poly2, inputSR, null);
+//			NUnit.Framework.Assert.IsNotNull(geomr);
+//			NUnit.Framework.Assert.IsTrue(geomr.GetType() == com.esri.core.geometry.Geometry.Type.Polygon);
+//			com.esri.core.geometry.Polygon outputGeom = (com.esri.core.geometry.Polygon)geomr;
+//			NUnit.Framework.Assert.IsTrue(outputGeom.GetPointCount() == 4);
+//			points = com.esri.core.geometry.TestCommonMethods.PointsFromMultiPath(outputGeom);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetX() - 855278.000000000) < 1e-7);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[0].GetY() - 3892060.0000000000) < 1e-7);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetX() - 855307.00000000093) < 1e-7);
+//			NUnit.Framework.Assert.IsTrue(System.Math.Abs(points[2].GetY() - 3892079.0000000000) < 1e-7);
 		}
 
 		[NUnit.Framework.Test]
@@ -898,36 +898,36 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(((com.esri.core.geometry.Polyline)res).GetPointCount() == 4);
 		}
 
-		[NUnit.Framework.Test]
-		public virtual void TestSharedEdgeIntersection_13()
-		{
-			//string s1 = "{\"rings\":[[[0.099604024000029767,0.2107958250000479],[0.14626826900007472,0.2107958250000479],[0.14626826900007472,0.18285316400005058],[0.099604024000029767,0.18285316400005058],[0.099604024000029767,0.2107958250000479]]]}";
-			//string s2 = "{\"paths\":[[[0.095692051000071388,0.15910190100004229],[0.10324853600002371,0.18285316400004228],[0.12359292700006108,0.18285316400004228],[0.12782611200003657,0.1705583920000322],[0.13537063000007138,0.18285316400004228]]]}";
-			//com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(s1).GetGeometry();
-			//com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)com.esri.core.geometry.TestCommonMethods.FromJson(s2).GetGeometry();
-			//com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
-			//com.esri.core.geometry.Geometry g = com.esri.core.geometry.OperatorIntersection.Local().Execute(polygon, polyline, sr, null);
-			//NUnit.Framework.Assert.IsTrue(!g.IsEmpty());
-		}
-
-		[NUnit.Framework.Test]
-		public virtual void TestIntersectionIssue2()
-		{
-			//string s1 = "{\"rings\":[[[-97.174860352323378,48.717174479818425],[-97.020624513410553,58.210155436624177],[-94.087641114245969,58.210155436624177],[-94.087641114245969,48.639781902013226],[-97.174860352323378,48.717174479818425]]]}";
-			//string s2 = "{\"rings\":[[[-94.08764111399995,52.68342763000004],[-94.08764111399995,56.835188018000053],[-90.285921520999977,62.345706350000057],[-94.08764111399995,52.68342763000004]]]}";
-			//com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(s1).GetGeometry();
-			//com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(s2).GetGeometry();
-			//com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
-			//com.esri.core.geometry.GeometryCursor res = com.esri.core.geometry.OperatorIntersection.Local().Execute(new com.esri.core.geometry.SimpleGeometryCursor(polygon1), new com.esri.core.geometry.SimpleGeometryCursor(polygon2), sr, null, 2);
-			//com.esri.core.geometry.Geometry g = res.Next();
-			//NUnit.Framework.Assert.IsTrue(g != null);
-			//NUnit.Framework.Assert.IsTrue(!g.IsEmpty());
-			//com.esri.core.geometry.Geometry g2 = res.Next();
-			//NUnit.Framework.Assert.IsTrue(g2 == null);
-			//string ss = "{\"paths\":[[[-94.08764111412296,52.68342763000004],[-94.08764111410767,56.83518801800005]]]}";
-			//com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)com.esri.core.geometry.TestCommonMethods.FromJson(ss).GetGeometry();
-			//bool eq = com.esri.core.geometry.OperatorEquals.Local().Execute(g, polyline, sr, null);
-			//NUnit.Framework.Assert.IsTrue(eq);
-		}
+//		[NUnit.Framework.Test]
+//		public virtual void TestSharedEdgeIntersection_13()
+//		{
+//			string s1 = "{\"rings\":[[[0.099604024000029767,0.2107958250000479],[0.14626826900007472,0.2107958250000479],[0.14626826900007472,0.18285316400005058],[0.099604024000029767,0.18285316400005058],[0.099604024000029767,0.2107958250000479]]]}";
+//			string s2 = "{\"paths\":[[[0.095692051000071388,0.15910190100004229],[0.10324853600002371,0.18285316400004228],[0.12359292700006108,0.18285316400004228],[0.12782611200003657,0.1705583920000322],[0.13537063000007138,0.18285316400004228]]]}";
+//			com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(s1).GetGeometry();
+//			com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)com.esri.core.geometry.TestCommonMethods.FromJson(s2).GetGeometry();
+//			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
+//			com.esri.core.geometry.Geometry g = com.esri.core.geometry.OperatorIntersection.Local().Execute(polygon, polyline, sr, null);
+//			NUnit.Framework.Assert.IsTrue(!g.IsEmpty());
+//		}
+//
+//		[NUnit.Framework.Test]
+//		public virtual void TestIntersectionIssue2()
+//		{
+//			string s1 = "{\"rings\":[[[-97.174860352323378,48.717174479818425],[-97.020624513410553,58.210155436624177],[-94.087641114245969,58.210155436624177],[-94.087641114245969,48.639781902013226],[-97.174860352323378,48.717174479818425]]]}";
+//			string s2 = "{\"rings\":[[[-94.08764111399995,52.68342763000004],[-94.08764111399995,56.835188018000053],[-90.285921520999977,62.345706350000057],[-94.08764111399995,52.68342763000004]]]}";
+//			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(s1).GetGeometry();
+//			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(s2).GetGeometry();
+//			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
+//			com.esri.core.geometry.GeometryCursor res = com.esri.core.geometry.OperatorIntersection.Local().Execute(new com.esri.core.geometry.SimpleGeometryCursor(polygon1), new com.esri.core.geometry.SimpleGeometryCursor(polygon2), sr, null, 2);
+//			com.esri.core.geometry.Geometry g = res.Next();
+//			NUnit.Framework.Assert.IsTrue(g != null);
+//			NUnit.Framework.Assert.IsTrue(!g.IsEmpty());
+//			com.esri.core.geometry.Geometry g2 = res.Next();
+//			NUnit.Framework.Assert.IsTrue(g2 == null);
+//			string ss = "{\"paths\":[[[-94.08764111412296,52.68342763000004],[-94.08764111410767,56.83518801800005]]]}";
+//			com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)com.esri.core.geometry.TestCommonMethods.FromJson(ss).GetGeometry();
+//			bool eq = com.esri.core.geometry.OperatorEquals.Local().Execute(g, polyline, sr, null);
+//			NUnit.Framework.Assert.IsTrue(eq);
+//		}
 	}
 }

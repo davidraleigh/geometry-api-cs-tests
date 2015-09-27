@@ -18,14 +18,15 @@ namespace com.esri.core.geometry
 		}
 
 		[NUnit.Framework.Test]
-		public virtual void TestBufferPolytonWKT() {
-			System.String wkt = "MULTIPOLYGON (((-98.42049 46.08456, -98.42052 46.08682, -98.40509 46.08681, -98.40511 46.08456, -98.42049 46.08456)))";
-			SpatialReference sr = SpatialReference.Create(4326);
-			com.esri.core.geometry.Geometry geom = OperatorImportFromWkt.Local().Execute(0, Geometry.Type.Unknown, wkt, null);
-			Geometry buffered = OperatorBuffer.Local().Execute(geom, sr, 2.0, null);
-			System.String exportedGeom = OperatorExportToWkt.Local().Execute(0, buffered, null);
+		public virtual void TestBufferPolytonWKT()
+		{
+			string wkt = "MULTIPOLYGON (((-98.42049 46.08456, -98.42052 46.08682, -98.40509 46.08681, -98.40511 46.08456, -98.42049 46.08456)))";
+			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
+			com.esri.core.geometry.Geometry geom = com.esri.core.geometry.OperatorImportFromWkt.Local().Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, wkt, null);
+			com.esri.core.geometry.Geometry buffered = com.esri.core.geometry.OperatorBuffer.Local().Execute(geom, sr, 2.0, null);
+			string exportedGeom = com.esri.core.geometry.OperatorExportToWkt.Local().Execute(0, buffered, null);
 			int position = exportedGeom.IndexOf('(');
-			Assert.AreEqual("MULTIPOLYGON", exportedGeom.Substring(0, position).Trim());
+			NUnit.Framework.Assert.AreEqual("MULTIPOLYGON", exportedGeom.Substring(0, position - 1 - 0));
 		}
 
 		[NUnit.Framework.Test]
