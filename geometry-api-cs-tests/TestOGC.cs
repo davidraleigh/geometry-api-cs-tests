@@ -87,7 +87,7 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(gc2.GeometryN(3).GeometryType().Equals("MultiPolygon"));
 			NUnit.Framework.Assert.IsTrue(gc2.GeometryN(4).GeometryType().Equals("MultiLineString"));
 			NUnit.Framework.Assert.IsTrue(gc2.GeometryN(5).GeometryType().Equals("MultiPoint"));
-			java.nio.ByteBuffer wkbBuffer = g.AsBinary();
+			System.IO.MemoryStream wkbBuffer = g.AsBinary();
 			g = com.esri.core.geometry.ogc.OGCGeometry.FromBinary(wkbBuffer);
 			NUnit.Framework.Assert.IsTrue(g.GeometryType().Equals("GeometryCollection"));
 			gc = (com.esri.core.geometry.ogc.OGCConcreteGeometryCollection)g;

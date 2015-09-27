@@ -33,11 +33,11 @@ namespace com.esri.core.geometry
 				com.esri.core.geometry.MapGeometry mapGeom = com.esri.core.geometry.GeometryEngine.JsonToGeometry(parser);
 				com.esri.core.geometry.Geometry geom = mapGeom.GetGeometry();
 				com.esri.core.geometry.OperatorExportToWkb operatorExport = (com.esri.core.geometry.OperatorExportToWkb)com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.ExportToWkb);
-				java.nio.ByteBuffer byteBuffer = operatorExport.Execute(0, geom, null);
+				System.IO.MemoryStream byteBuffer = operatorExport.Execute(0, geom, null);
 				byte[] wkb = ((byte[])byteBuffer.Array());
 				// WKB -> GEOM -> JSON
 				com.esri.core.geometry.OperatorImportFromWkb operatorImport = (com.esri.core.geometry.OperatorImportFromWkb)com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.ImportFromWkb);
-				geom = operatorImport.Execute(0, com.esri.core.geometry.Geometry.Type.Polygon, java.nio.ByteBuffer.Wrap(wkb), null);
+				geom = operatorImport.Execute(0, com.esri.core.geometry.Geometry.Type.Polygon, System.IO.MemoryStream.Wrap(wkb), null);
 				// geom = operatorImport.execute(0, Geometry.Type.Polygon,
 				// byteBuffer);
 				string outputPolygon1 = com.esri.core.geometry.GeometryEngine.GeometryToJson(-1, geom);
@@ -68,7 +68,7 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(102100);
 			geom = operatorSimplify.Execute(geom, sr, true, null);
 			com.esri.core.geometry.OperatorExportToWkb operatorExport = (com.esri.core.geometry.OperatorExportToWkb)com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.ExportToWkb);
-			java.nio.ByteBuffer byteBuffer = operatorExport.Execute(0, geom, null);
+			System.IO.MemoryStream byteBuffer = operatorExport.Execute(0, geom, null);
 			byte[] wkb = ((byte[])byteBuffer.Array());
 			// // checking WKB correctness
 			// WKBReader jtsReader = new WKBReader();
@@ -76,7 +76,7 @@ namespace com.esri.core.geometry
 			// System.out.println("jtsGeom = " + jtsGeom);
 			// WKB -> GEOM -> JSON
 			com.esri.core.geometry.OperatorImportFromWkb operatorImport = (com.esri.core.geometry.OperatorImportFromWkb)com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.ImportFromWkb);
-			geom = operatorImport.Execute(0, com.esri.core.geometry.Geometry.Type.Polygon, java.nio.ByteBuffer.Wrap(wkb), null);
+			geom = operatorImport.Execute(0, com.esri.core.geometry.Geometry.Type.Polygon, System.IO.MemoryStream.Wrap(wkb), null);
 			NUnit.Framework.Assert.IsTrue(!geom.IsEmpty());
 		}
 		// geom = operatorImport.execute(0, Geometry.Type.Polygon, byteBuffer);

@@ -35,7 +35,7 @@ namespace com.esri.core.geometry
 					com.esri.core.geometry.Geometry geomBorg = null;
 					if (rsWkbGeom != null)
 					{
-						geomBorg = operatorImport.Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, java.nio.ByteBuffer.Wrap(rsWkbGeom), null);
+						geomBorg = operatorImport.Execute(0, com.esri.core.geometry.Geometry.Type.Unknown, System.IO.MemoryStream.Wrap(rsWkbGeom), null);
 					}
 				}
 				ps.Close();
