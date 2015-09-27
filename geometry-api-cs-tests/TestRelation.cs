@@ -225,7 +225,7 @@ namespace com.esri.core.geometry
 			{
 				com.esri.core.geometry.OperatorContains op = (com.esri.core.geometry.OperatorContains)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Contains));
 				string str = "{\"rings\":[[[406944.399999999,287461.450000001],[406947.750000011,287462.299999997],[406946.44999999,287467.450000001],[406943.050000005,287466.550000005],[406927.799999992,287456.849999994],[406926.949999996,287456.599999995],[406924.800000005,287455.999999998],[406924.300000007,287455.849999999],[406924.200000008,287456.099999997],[406923.450000011,287458.449999987],[406922.999999987,287459.800000008],[406922.29999999,287462.099999998],[406921.949999991,287463.449999992],[406921.449999993,287465.050000011],[406920.749999996,287466.700000004],[406919.800000001,287468.599999996],[406919.050000004,287469.99999999],[406917.800000009,287471.800000008],[406916.04999999,287473.550000001],[406915.449999993,287473.999999999],[406913.700000001,287475.449999993],[406913.300000002,287475.899999991],[406912.050000008,287477.250000011],[406913.450000002,287478.150000007],[406915.199999994,287478.650000005],[406915.999999991,287478.800000005],[406918.300000007,287479.200000003],[406920.649999997,287479.450000002],[406923.100000013,287479.550000001],[406925.750000001,287479.450000002],[406928.39999999,287479.150000003],[406929.80000001,287478.950000004],[406932.449999998,287478.350000006],[406935.099999987,287477.60000001],[406938.699999998,287476.349999989],[406939.649999994,287473.949999999],[406939.799999993,287473.949999999],[406941.249999987,287473.75],[406942.700000007,287473.250000002],[406943.100000005,287473.100000003],[406943.950000001,287472.750000004],[406944.799999998,287472.300000006],[406944.999999997,287472.200000007],[406946.099999992,287471.200000011],[406946.299999991,287470.950000012],[406948.00000001,287468.599999996],[406948.10000001,287468.399999997],[406950.100000001,287465.050000011],[406951.949999993,287461.450000001],[406952.049999993,287461.300000001],[406952.69999999,287459.900000007],[406953.249999987,287458.549999987],[406953.349999987,287458.299999988],[406953.650000012,287457.299999992],[406953.900000011,287456.349999996],[406954.00000001,287455.300000001],[406954.00000001,287454.750000003],[406953.850000011,287453.750000008],[406953.550000012,287452.900000011],[406953.299999987,287452.299999988],[406954.500000008,287450.299999996],[406954.00000001,287449.000000002],[406953.399999987,287447.950000006],[406953.199999988,287447.550000008],[406952.69999999,287446.850000011],[406952.149999992,287446.099999988],[406951.499999995,287445.499999991],[406951.149999996,287445.249999992],[406950.449999999,287444.849999994],[406949.600000003,287444.599999995],[406949.350000004,287444.549999995],[406948.250000009,287444.499999995],[406947.149999987,287444.699999994],[406946.849999989,287444.749999994],[406945.899999993,287444.949999993],[406944.999999997,287445.349999991],[406944.499999999,287445.64999999],[406943.650000003,287446.349999987],[406942.900000006,287447.10000001],[406942.500000008,287447.800000007],[406942.00000001,287448.700000003],[406941.600000011,287449.599999999],[406941.350000013,287450.849999994],[406941.350000013,287451.84999999],[406941.450000012,287452.850000012],[406941.750000011,287453.850000007],[406941.800000011,287454.000000007],[406942.150000009,287454.850000003],[406942.650000007,287455.6],[406943.150000005,287456.299999997],[406944.499999999,287457.299999992],[406944.899999997,287457.599999991],[406945.299999995,287457.949999989],[406944.399999999,287461.450000001],[406941.750000011,287461.999999998],[406944.399999999,287461.450000001]],[[406944.399999999,287461.450000001],[406947.750000011,287462.299999997],[406946.44999999,287467.450000001],[406943.050000005,287466.550000005],[406927.799999992,287456.849999994],[406944.399999999,287461.450000001]]]}";
-				com.esri.core.geometry.MapGeometry mg = com.esri.core.geometry.TestCommonMethods.FromJson(str);
+				com.esri.core.geometry.MapGeometry mg = //com.esri.core.geometry.TestCommonMethods.FromJson(str);
 				bool res = op.Execute((mg.GetGeometry()), (mg.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 			}
@@ -237,9 +237,9 @@ namespace com.esri.core.geometry
 			{
 				com.esri.core.geometry.OperatorWithin op = (com.esri.core.geometry.OperatorWithin)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Within));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0],[0,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"x\":100,\"y\":100}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -249,9 +249,9 @@ namespace com.esri.core.geometry
 				// polygon
 				com.esri.core.geometry.OperatorWithin op = (com.esri.core.geometry.OperatorWithin)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Within));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[100,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"rings\":[[[10,10],[10,100],[100,100],[100,10]]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -261,9 +261,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorWithin op = (com.esri.core.geometry.OperatorWithin)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Within));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -273,9 +273,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorWithin op = (com.esri.core.geometry.OperatorWithin)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Within));
 				string str1 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -285,9 +285,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorWithin op = (com.esri.core.geometry.OperatorWithin)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Within));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200], [1, 1]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -301,9 +301,9 @@ namespace com.esri.core.geometry
 			{
 				com.esri.core.geometry.OperatorContains op = (com.esri.core.geometry.OperatorContains)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Contains));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0],[0,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"x\":100,\"y\":100}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -313,9 +313,9 @@ namespace com.esri.core.geometry
 				// polygon
 				com.esri.core.geometry.OperatorContains op = (com.esri.core.geometry.OperatorContains)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Contains));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"rings\":[[[10,10],[10,100],[100,100],[10,10]]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -325,9 +325,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorContains op = (com.esri.core.geometry.OperatorContains)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Contains));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -337,9 +337,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorContains op = (com.esri.core.geometry.OperatorContains)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Contains));
 				string str1 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -349,9 +349,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorContains op = (com.esri.core.geometry.OperatorContains)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Contains));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200], [1, 1]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -376,9 +376,9 @@ namespace com.esri.core.geometry
 				// polygon
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0],[0,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"x\":100,\"y\":100}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -388,8 +388,8 @@ namespace com.esri.core.geometry
 				// polygon
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(300, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -402,8 +402,8 @@ namespace com.esri.core.geometry
 				// polygon
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(30, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -416,8 +416,8 @@ namespace com.esri.core.geometry
 				// polygon
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"rings\":[[[0,0],[0,200],[200,200],[200,0],[0,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(0, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -430,8 +430,8 @@ namespace com.esri.core.geometry
 				// polyline
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"paths\":[[[0,0],[100,0],[200,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(0, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -444,8 +444,8 @@ namespace com.esri.core.geometry
 				// polyline
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"paths\":[[[0,0],[100,0],[200,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(10, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -458,8 +458,8 @@ namespace com.esri.core.geometry
 				// polyline
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"paths\":[[[0,0],[100,0],[200,0]]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(200, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -472,8 +472,8 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200],[200,0]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				com.esri.core.geometry.Transformation2D trans = new com.esri.core.geometry.Transformation2D();
 				trans.SetShift(0, 0);
 				mg2.GetGeometry().ApplyTransformation(trans);
@@ -486,9 +486,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(!res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -498,9 +498,9 @@ namespace com.esri.core.geometry
 				// Multi_point
 				com.esri.core.geometry.OperatorOverlaps op = (com.esri.core.geometry.OperatorOverlaps)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Overlaps));
 				string str1 = "{\"points\":[[0,0],[0,200],[200,200]]}";
-				com.esri.core.geometry.MapGeometry mg1 = com.esri.core.geometry.TestCommonMethods.FromJson(str1);
+				com.esri.core.geometry.MapGeometry mg1 = //com.esri.core.geometry.TestCommonMethods.FromJson(str1);
 				string str2 = "{\"points\":[[0,0],[0,200], [0,2]]}";
-				com.esri.core.geometry.MapGeometry mg2 = com.esri.core.geometry.TestCommonMethods.FromJson(str2);
+				com.esri.core.geometry.MapGeometry mg2 = //com.esri.core.geometry.TestCommonMethods.FromJson(str2);
 				bool res = op.Execute((mg2.GetGeometry()), (mg1.GetGeometry()), null, null);
 				NUnit.Framework.Assert.IsTrue(res);
 				res = op.Execute((mg1.GetGeometry()), (mg2.GetGeometry()), null, null);
@@ -518,8 +518,8 @@ namespace com.esri.core.geometry
 			// number of vertices
 			string str1 = "{\"rings\":[[[0,0],[0,5],[0,7],[0,10],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"rings\":[[[0,10],[10,10],[10,0],[0,0],[0,10]],[[9,1],[9,6],[9,9],[1,9],[1,1],[1,1],[9,1]]]}";
-			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
-			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
+			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
+			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
 			// wiggleGeometry(polygon1, tolerance, 1982);
 			// wiggleGeometry(polygon2, tolerance, 511);
 			equals.AccelerateGeometry(polygon1, sr, com.esri.core.geometry.Geometry.GeometryAccelerationDegree.enumHot);
@@ -532,8 +532,8 @@ namespace com.esri.core.geometry
 			// a hole.
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[0,10],[10,10],[5,10],[10,10],[10,0],[0,0],[0,10]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
-			polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
+			polygon1 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
+			polygon2 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
 			res = equals.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = equals.Execute(polygon2, polygon1, sr, null);
@@ -541,8 +541,8 @@ namespace com.esri.core.geometry
 			// The rings are equal but rotated
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"rings\":[[[0,10],[10,10],[10,0],[0,0],[0,10]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
-			polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
+			polygon1 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
+			polygon2 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
 			res = equals.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = equals.Execute(polygon2, polygon1, sr, null);
@@ -550,8 +550,8 @@ namespace com.esri.core.geometry
 			// The rings are equal but opposite orientation
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"rings\":[[[0,0],[10,0],[10,10],[0,10],[0,0]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
-			polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
+			polygon1 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
+			polygon2 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
 			res = equals.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = equals.Execute(polygon2, polygon1, sr, null);
@@ -559,8 +559,8 @@ namespace com.esri.core.geometry
 			// The rings are equal but first polygon has two rings stacked
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[0,10],[10,10],[10,0],[0,0],[0,10]]]}";
 			str2 = "{\"rings\":[[[0,10],[10,10],[10,0],[0,0],[0,10]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
-			polygon2 = (com.esri.core.geometry.Polygon)com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
+			polygon1 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry();
+			polygon2 = (com.esri.core.geometry.Polygon)//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry();
 			res = equals.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = equals.Execute(polygon2, polygon1, sr, null);
@@ -691,8 +691,8 @@ namespace com.esri.core.geometry
 			// number of vertices
 			string str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"rings\":[[[0,10],[10,10],[10,0],[0,0],[0,10]],[[9,1],[9,6],[9,9],[1,9],[1,1],[1,1],[9,1]]]}";
-			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			bool res = disjoint.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = disjoint.Execute(polygon2, polygon1, sr, null);
@@ -700,8 +700,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 touch at a point
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[10,10],[10,15],[15,15],[15,10],[10,10]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = disjoint.Execute(polygon1, polygon2, sr, null);
@@ -711,8 +711,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 touch along the boundary
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[10,0],[10,10],[15,10],[15,0],[10,0]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = disjoint.Execute(polygon1, polygon2, sr, null);
@@ -722,8 +722,8 @@ namespace com.esri.core.geometry
 			// Polygon2 is inside of the hole of polygon1
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[8,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = disjoint.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = disjoint.Execute(polygon2, polygon1, sr, null);
@@ -731,8 +731,8 @@ namespace com.esri.core.geometry
 			// Polygon2 is inside of the hole of polygon1
 			str1 = "{\"rings\":[[[0,0],[0,5],[5,5],[5,0]],[[10,0],[10,10],[20,10],[20,0]]]}";
 			str2 = "{\"rings\":[[[0,-10],[0,-5],[5,-5],[5,-10]],[[11,1],[11,9],[19,9],[19,1]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = disjoint.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = disjoint.Execute(polygon2, polygon1, sr, null);
@@ -752,8 +752,8 @@ namespace com.esri.core.geometry
 			// Polygon1 contains polygon2, but polygon2 is counterclockwise.
 			str1 = "{\"rings\":[[[0,0],[10,0],[10,10],[0,10],[0,0]],[[11,0],[11,10],[21,10],[21,0],[11,0]]]}";
 			str2 = "{\"rings\":[[[2,2],[8,2],[8,8],[2,8],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = disjoint.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = disjoint.Execute(polygon2, polygon1, sr, null);
@@ -766,8 +766,8 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[0,20],[0,30],[10,30],[10,20],[0,20]],[[20,20],[20,30],[30,30],[30,20],[20,20]],[[20,0],[20,10],[30,10],[30,0],[20,0]]]}";
 			str2 = "{\"rings\":[[[14,14],[14,16],[16,16],[16,14],[14,14]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = disjoint.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = disjoint.Execute(polygon2, polygon1, sr, null);
@@ -789,8 +789,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 touch at a point
 			string str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"paths\":[[[10,10],[10,15],[15,15],[15,10],[10,10]]]}";
-			com.esri.core.geometry.Polyline polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polyline polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polyline1, tolerance, 1982);
 			WiggleGeometry(polyline2, tolerance, 511);
 			bool res = disjoint.Execute(polyline1, polyline2, sr, null);
@@ -800,8 +800,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 touch along the boundary
 			str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[10,0],[10,10],[15,10],[15,0],[10,0]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polyline1, tolerance, 1982);
 			WiggleGeometry(polyline2, tolerance, 511);
 			res = disjoint.Execute(polyline1, polyline2, sr, null);
@@ -811,8 +811,8 @@ namespace com.esri.core.geometry
 			// Polyline2 does not intersect with Polyline1
 			str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,8],[8,8],[8,2],[2,2]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = disjoint.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = disjoint.Execute(polyline2, polyline1, sr, null);
@@ -1118,8 +1118,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 touch at a point
 			string str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"rings\":[[[10,10],[10,15],[15,15],[15,10],[10,10]]]}";
-			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			bool res = touches.Execute(polygon1, polygon2, sr, null);
@@ -1129,8 +1129,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 touch along the boundary
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[10,0],[10,10],[15,10],[15,0],[10,0]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = touches.Execute(polygon1, polygon2, sr, null);
@@ -1141,8 +1141,8 @@ namespace com.esri.core.geometry
 			// Polygon2
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = touches.Execute(polygon1, polygon2, sr, null);
@@ -1152,8 +1152,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 do not touch
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[5,5],[5,15],[15,15],[15,5],[5,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = touches.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = touches.Execute(polygon2, polygon1, sr, null);
@@ -1181,8 +1181,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polyline2 touch at a point
 			string str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"paths\":[[[10,10],[10,15],[15,15],[15,10]]]}";
-			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polyline2, tolerance, 511);
 			bool res = touches.Execute(polygon1, polyline2, sr, null);
@@ -1192,8 +1192,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polyline2 overlap along the boundary
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[10,0],[10,10],[15,10],[15,0]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polyline2, tolerance, 511);
 			res = touches.Execute(polygon1, polyline2, sr, null);
@@ -1202,8 +1202,8 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polyline2, tolerance, 511);
 			res = touches.Execute(polygon1, polyline2, sr, null);
@@ -1212,8 +1212,8 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[10,10],[10,0],[0,0],[0,10],[10,10]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polyline2, tolerance, 511);
 			res = touches.Execute(polygon1, polyline2, sr, null);
@@ -1231,8 +1231,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 touch at a point
 			string str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"paths\":[[[10,10],[10,15],[15,15],[15,10]]]}";
-			com.esri.core.geometry.Polyline polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polyline polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			bool res = touches.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = touches.Execute(polyline2, polyline1, sr, null);
@@ -1240,8 +1240,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 overlap along the boundary
 			str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[10,0],[10,10],[15,10],[15,0],[10,0]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = touches.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = touches.Execute(polyline2, polyline1, sr, null);
@@ -1249,8 +1249,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 intersect at interiors
 			str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = touches.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = touches.Execute(polyline2, polyline1, sr, null);
@@ -1259,8 +1259,8 @@ namespace com.esri.core.geometry
 			// interior of Polyline2 (but Polyline1 is closed)
 			str1 = "{\"paths\":[[[10,10],[10,0],[0,0],[0,10],[10,10]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = touches.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = touches.Execute(polyline2, polyline1, sr, null);
@@ -1270,16 +1270,16 @@ namespace com.esri.core.geometry
 			// closed)
 			str1 = "{\"paths\":[[[10,10],[10,0],[0,0],[0,10]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = touches.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = touches.Execute(polyline2, polyline1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"paths\":[[[10,10],[10,0],[0,0],[0,10]],[[1,1],[9,1],[9,9],[1,9],[6, 9]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = touches.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = touches.Execute(polyline2, polyline1, sr, null);
@@ -1446,8 +1446,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 touch at a point
 			string str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"rings\":[[[10,10],[10,15],[15,15],[15,10],[10,10]]]}";
-			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			bool res = overlaps.Execute(polygon1, polygon2, sr, null);
@@ -1457,8 +1457,8 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 touch along the boundary
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[10,0],[10,10],[15,10],[15,0],[10,0]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = overlaps.Execute(polygon1, polygon2, sr, null);
@@ -1469,8 +1469,8 @@ namespace com.esri.core.geometry
 			// Polygon2
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = overlaps.Execute(polygon1, polygon2, sr, null);
@@ -1480,16 +1480,16 @@ namespace com.esri.core.geometry
 			// Polygon1 and Polygon2 overlap at the upper right corner
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[5,5],[5,15],[15,15],[15,5],[5,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = overlaps.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = overlaps.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[4,4],[6,4],[6,6],[4,6],[4,4],[4,4]]]}";
 			str2 = "{\"rings\":[[[1,1],[1,9],[9,9],[9,1],[1,1]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = overlaps.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = overlaps.Execute(polygon2, polygon1, sr, null);
@@ -1676,8 +1676,8 @@ namespace com.esri.core.geometry
 			// Polygon1 is within Polygon2
 			string str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"rings\":[[[-1,-1],[-1,11],[11,11],[11,-1],[-1,-1]]]}";
-			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polygon polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polygon polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			bool res = within.Execute(polygon1, polygon2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = within.Execute(polygon2, polygon1, sr, null);
@@ -1685,8 +1685,8 @@ namespace com.esri.core.geometry
 			// Polygon1 is within Polygon2, and the boundaries intersect
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[4,4],[6,4],[6,6],[4,6],[4,4],[4,4]]]}";
 			str2 = "{\"rings\":[[[1,1],[1,9],[9,9],[9,1],[1,1]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = within.Execute(polygon2, polygon1, sr, null);
@@ -1694,8 +1694,8 @@ namespace com.esri.core.geometry
 			// Polygon1 is within Polygon2, and the boundaries intersect
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[-1,0],[-1,11],[11,11],[11,0],[-1,0]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			WiggleGeometry(polygon1, tolerance, 1982);
 			WiggleGeometry(polygon2, tolerance, 511);
 			res = within.Execute(polygon1, polygon2, sr, null);
@@ -1703,59 +1703,59 @@ namespace com.esri.core.geometry
 			// Polygon2 is inside of the hole of polygon1
 			str1 = "{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[8,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[10,0],[10,10],[0,10]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[8,2],[2,2],[8,2],[8,8],[2,8],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0]],[[12,8],[12,10],[18,10],[18,8],[12,8]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,8],[8,8],[8,2]],[[12,2],[12,4],[18,4],[18,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[4,4],[6,4],[6,6],[4,6],[4,4]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[8,2],[2,2],[2,8],[8,8],[8,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			// Same as above, but winding fill rule
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[4,4],[6,4],[6,6],[4,6],[4,4]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[8,2],[2,2],[2,8],[8,8],[8,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			polygon1.SetFillRule(com.esri.core.geometry.Polygon.FillRule.enumFillRuleWinding);
 			polygon2.SetFillRule(com.esri.core.geometry.Polygon.FillRule.enumFillRuleWinding);
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[11,11],[11,20],[20,20],[20,11],[11,11]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[15,15],[8,8],[8,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[10,10],[10,20],[20,20],[20,10],[10,10]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[15,15],[8,8],[8,2],[2,2]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"rings\":[[[9.9999999925,4],[9.9999999925,6],[10.0000000075,6],[10.0000000075,4],[9.9999999925,4]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = com.esri.core.geometry.OperatorOverlaps.Local().Execute(polygon1, polygon2, sr, null);
@@ -1764,50 +1764,50 @@ namespace com.esri.core.geometry
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[10,10],[10,20],[20,20],[20,10],[10,10]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,8],[8,8],[15,15],[8,8],[8,2],[2,2]],[[15,5],[15,5],[15,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,2],[2,2]],[[3,3],[3,3],[3,3]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"rings\":[[[2,2],[2,2],[2,2],[2,2]],[[3,3],[3,3],[3,3],[3,3]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polygon2 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polygon2 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polygon2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,2]],[[3,3],[3,3]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[10,10],[10,20],[20,20],[20,10],[10,10]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,8]],[[15,5],[15,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[10,10],[10,20],[20,20],[20,10],[10,10]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,8]],[[15,5],[15,5],[15,5],[15,5]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[10,10],[10,20],[20,20],[20,10],[10,10]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,2]],[[15,5],[15,6]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"rings\":[[[0,0],[0,10],[10,10],[10,0],[0,0]],[[10,10],[10,20],[20,20],[20,10],[10,10]]]}";
 			str2 = "{\"paths\":[[[2,2],[2,2],[2,2],[2,2]],[[15,5],[15,6]]]}";
-			polygon1 = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polygon1 = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = within.Execute(polyline2, polygon1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 		}
@@ -1977,8 +1977,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 touch at a point
 			string str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			string str2 = "{\"paths\":[[[10,10],[10,15],[15,15],[15,10]]]}";
-			com.esri.core.geometry.Polyline polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			com.esri.core.geometry.Polyline polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			com.esri.core.geometry.Polyline polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			bool res = crosses.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = crosses.Execute(polyline2, polyline1, sr, null);
@@ -1986,8 +1986,8 @@ namespace com.esri.core.geometry
 			// Polyline1 and Polyline2 intersect at interiors
 			str1 = "{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = crosses.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = crosses.Execute(polyline2, polyline1, sr, null);
@@ -1996,8 +1996,8 @@ namespace com.esri.core.geometry
 			// interior of Polyline2 (but Polyline1 is closed)
 			str1 = "{\"paths\":[[[10,10],[10,0],[0,0],[0,10],[10,10]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = crosses.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = crosses.Execute(polyline2, polyline1, sr, null);
@@ -2007,16 +2007,16 @@ namespace com.esri.core.geometry
 			// closed)
 			str1 = "{\"paths\":[[[10,10],[10,0],[0,0],[0,10]],[[1,1],[9,1],[9,9],[1,9],[1,1],[1,1]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = crosses.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			res = crosses.Execute(polyline2, polyline1, sr, null);
 			NUnit.Framework.Assert.IsTrue(!res);
 			str1 = "{\"paths\":[[[10,11],[10,0],[0,0],[0,10]],[[1,1],[9,1],[9,9],[1,9],[6, 9]]]}";
 			str2 = "{\"paths\":[[[15,5],[5,15],[15,15],[15,5]]]}";
-			polyline1 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
-			polyline2 = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
+			polyline1 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str1).GetGeometry());
+			polyline2 = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson(str2).GetGeometry());
 			res = crosses.Execute(polyline1, polyline2, sr, null);
 			NUnit.Framework.Assert.IsTrue(res);
 			res = crosses.Execute(polyline2, polyline1, sr, null);
@@ -2048,9 +2048,9 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.OperatorDensifyByLength densify = (com.esri.core.geometry.OperatorDensifyByLength)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.DensifyByLength));
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(envelope, densified, sr, null));
@@ -2066,9 +2066,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2088,9 +2088,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2111,9 +2111,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":15,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":15,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2136,9 +2136,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":15,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":15,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2159,9 +2159,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(contains.Execute(densified, envelope, sr, null));
@@ -2178,9 +2178,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2201,9 +2201,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2224,9 +2224,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2248,9 +2248,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":1,\"ymin\":1,\"xmax\":1,\"ymax\":1}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":1,\"ymin\":1,\"xmax\":1,\"ymax\":1}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2270,9 +2270,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-1,\"ymin\":-1,\"xmax\":-1,\"ymax\":-1}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-1,\"ymin\":-1,\"xmax\":-1,\"ymax\":-1}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2292,9 +2292,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":1,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":1,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2320,9 +2320,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":1,\"xmax\":1,\"ymax\":1}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":1,\"xmax\":1,\"ymax\":1}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2348,9 +2348,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":6,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":6,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2372,9 +2372,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":6,\"ymin\":5,\"xmax\":7,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":6,\"ymin\":5,\"xmax\":7,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2393,9 +2393,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polygon polygon = (com.esri.core.geometry.Polygon)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"rings\":[[[0,0],[0,5],[0,10],[10,0],[0,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polygon densified = (com.esri.core.geometry.Polygon)(densify.Execute(polygon, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":4,\"ymin\":5,\"xmax\":7,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":4,\"ymin\":5,\"xmax\":7,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2428,9 +2428,9 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.OperatorDensifyByLength densify = (com.esri.core.geometry.OperatorDensifyByLength)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.DensifyByLength));
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2447,9 +2447,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[-10,0],[0,10]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[-10,0],[0,10]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2461,9 +2461,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[-11,0],[1,12]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[-11,0],[1,12]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2475,9 +2475,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[6,6]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[6,6]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2491,9 +2491,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[10,10]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[10,10]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2504,9 +2504,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[-5,5],[15,5]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[-5,5],[15,5]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2518,9 +2518,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(densified, envelope, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[5,15]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[5,15]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2540,9 +2540,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,11],[5,15]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,11],[5,15]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2557,9 +2557,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2577,9 +2577,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":-5,\"xmax\":0,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":-5,\"xmax\":0,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2590,9 +2590,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 511);
 				WiggleGeometry(envelope, 0.00000001, 1982);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2611,9 +2611,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[0,0],[0,5],[0,10],[10,10],[10,0]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":5,\"xmax\":0,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":5,\"xmax\":0,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2631,9 +2631,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[2,-2],[2,2]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[2,-2],[2,2]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2648,9 +2648,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[2,0],[2,2]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[2,0],[2,2]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2665,9 +2665,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[2,0],[2,2]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[2,0],[2,2]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":2,\"ymin\":0,\"xmax\":2,\"ymax\":3}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":2,\"ymin\":0,\"xmax\":2,\"ymax\":3}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2683,9 +2683,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[6,6]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[6,6]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, densified, sr, null));
@@ -2699,9 +2699,9 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, densified, sr, null));
 			}
 			{
-				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[5,10]]]}").GetGeometry());
+				com.esri.core.geometry.Polyline polyline = (com.esri.core.geometry.Polyline)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"paths\":[[[5,5],[5,10]]]}").GetGeometry());
 				com.esri.core.geometry.Polyline densified = (com.esri.core.geometry.Polyline)(densify.Execute(polyline, 1.0, null));
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":5,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":5,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(densified, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(envelope, densified, sr, null));
@@ -2729,8 +2729,8 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.OperatorDensifyByLength densify = (com.esri.core.geometry.OperatorDensifyByLength)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.DensifyByLength));
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[10,0]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[10,0]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2745,8 +2745,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[5,5]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[5,5]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2765,8 +2765,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[5,5],[15,15]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[5,5],[15,15]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2784,8 +2784,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[15,15]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[15,15]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2801,8 +2801,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2816,8 +2816,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[10,0]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[0,10],[10,10],[10,0]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2841,8 +2841,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[1,10],[10,10],[10,0]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,0],[1,10],[10,10],[10,0]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2866,8 +2866,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,10],[10,10]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,10],[10,10]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2895,8 +2895,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[1,10],[9,10]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[1,10],[9,10]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2923,8 +2923,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2938,8 +2938,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":10,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2953,8 +2953,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":11,\"ymax\":11}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,11],[11,11],[15,15]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":11,\"ymax\":11}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, multi_point, sr, null));
@@ -2969,8 +2969,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, multi_point, sr, null));
 			}
 			{
-				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,-1]]}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":-1,\"xmax\":0,\"ymax\":-1}").GetGeometry());
+				com.esri.core.geometry.MultiPoint multi_point = (com.esri.core.geometry.MultiPoint)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"points\":[[0,-1],[0,-1]]}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":-1,\"xmax\":0,\"ymax\":-1}").GetGeometry());
 				WiggleGeometry(multi_point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(envelope, multi_point, sr, null));
@@ -2998,8 +2998,8 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.OperatorTouches touches = (com.esri.core.geometry.OperatorTouches)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Touches));
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":5,\"y\":6}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":5,\"y\":6}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, point, sr, null));
@@ -3011,8 +3011,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, point, sr, null));
 			}
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, point, sr, null));
@@ -3024,8 +3024,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, point, sr, null));
 			}
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":11}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":11}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, point, sr, null));
@@ -3037,8 +3037,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, point, sr, null));
 			}
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, point, sr, null));
@@ -3050,8 +3050,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, point, sr, null));
 			}
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":5,\"y\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":5,\"y\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, point, sr, null));
@@ -3063,8 +3063,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, point, sr, null));
 			}
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":11,\"y\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":11,\"y\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(envelope, point, sr, null));
@@ -3076,8 +3076,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(envelope, point, sr, null));
 			}
 			{
-				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Point point = (com.esri.core.geometry.Point)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"x\":0,\"y\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope envelope = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(point, 0.00000001, 1982);
 				WiggleGeometry(envelope, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(envelope, point, sr, null));
@@ -3102,8 +3102,8 @@ namespace com.esri.core.geometry
 			com.esri.core.geometry.OperatorTouches touches = (com.esri.core.geometry.OperatorTouches)(com.esri.core.geometry.OperatorFactoryLocal.GetInstance().GetOperator(com.esri.core.geometry.Operator.Type.Touches));
 			com.esri.core.geometry.SpatialReference sr = com.esri.core.geometry.SpatialReference.Create(4326);
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(env1, env2, sr, null));
@@ -3118,8 +3118,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3133,8 +3133,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":15,\"ymax\":15}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":15,\"ymax\":15}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3148,8 +3148,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3163,8 +3163,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3178,8 +3178,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":20}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":10,\"xmax\":10,\"ymax\":20}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3193,8 +3193,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3208,8 +3208,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3223,8 +3223,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":5,\"xmax\":0,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":5,\"xmax\":0,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3238,8 +3238,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":5,\"xmax\":5,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":5,\"xmax\":5,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3253,8 +3253,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":3,\"ymin\":5,\"xmax\":5,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":3,\"ymin\":5,\"xmax\":5,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3268,8 +3268,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":3,\"ymin\":5,\"xmax\":10,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":3,\"ymin\":5,\"xmax\":10,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3283,8 +3283,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3298,8 +3298,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(env1, env2, sr, null));
@@ -3313,8 +3313,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3328,8 +3328,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":15,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3343,8 +3343,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":-5,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3358,8 +3358,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":-5,\"xmax\":5,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":-5,\"xmax\":5,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3373,8 +3373,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":10,\"ymin\":0,\"xmax\":20,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3388,24 +3388,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":5}").GetGeometry());
-				WiggleGeometry(env1, 0.00000001, 1982);
-				WiggleGeometry(env2, 0.00000001, 511);
-				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
-				NUnit.Framework.Assert.IsTrue(!contains.Execute(env1, env2, sr, null));
-				NUnit.Framework.Assert.IsTrue(!contains.Execute(env2, env1, sr, null));
-				NUnit.Framework.Assert.IsTrue(!disjoint.Execute(env1, env2, sr, null));
-				NUnit.Framework.Assert.IsTrue(touches.Execute(env1, env2, sr, null));
-				NUnit.Framework.Assert.IsTrue(touches.Execute(env2, env1, sr, null));
-				NUnit.Framework.Assert.IsTrue(!overlaps.Execute(env1, env2, sr, null));
-				NUnit.Framework.Assert.IsTrue(!overlaps.Execute(env2, env1, sr, null));
-				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env1, env2, sr, null));
-				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
-			}
-			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":5}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3420,8 +3404,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3436,8 +3420,24 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":5,\"ymax\":5}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
+				WiggleGeometry(env1, 0.00000001, 1982);
+				WiggleGeometry(env2, 0.00000001, 511);
+				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
+				NUnit.Framework.Assert.IsTrue(!contains.Execute(env1, env2, sr, null));
+				NUnit.Framework.Assert.IsTrue(!contains.Execute(env2, env1, sr, null));
+				NUnit.Framework.Assert.IsTrue(!disjoint.Execute(env1, env2, sr, null));
+				NUnit.Framework.Assert.IsTrue(touches.Execute(env1, env2, sr, null));
+				NUnit.Framework.Assert.IsTrue(touches.Execute(env2, env1, sr, null));
+				NUnit.Framework.Assert.IsTrue(!overlaps.Execute(env1, env2, sr, null));
+				NUnit.Framework.Assert.IsTrue(!overlaps.Execute(env2, env1, sr, null));
+				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env1, env2, sr, null));
+				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
+			}
+			{
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":5,\"xmax\":5,\"ymax\":5}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":10}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3452,8 +3452,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":0,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3468,8 +3468,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":0,\"ymin\":0,\"xmax\":10,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(!equals.Execute(env1, env2, sr, null));
@@ -3484,8 +3484,8 @@ namespace com.esri.core.geometry
 				NUnit.Framework.Assert.IsTrue(!crosses.Execute(env2, env1, sr, null));
 			}
 			{
-				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
-				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env1 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
+				com.esri.core.geometry.Envelope env2 = (com.esri.core.geometry.Envelope)(//com.esri.core.geometry.TestCommonMethods.FromJson("{\"xmin\":5,\"ymin\":0,\"xmax\":5,\"ymax\":0}").GetGeometry());
 				WiggleGeometry(env1, 0.00000001, 1982);
 				WiggleGeometry(env2, 0.00000001, 511);
 				NUnit.Framework.Assert.IsTrue(equals.Execute(env1, env2, sr, null));
