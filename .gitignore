@@ -1,3 +1,11 @@
+cleanGeometry.py
+cleanJackson.py
+generateCSharp.py
+generateCSharp.sh
+sortOptions.py
+test-options
+sharpen-all-options
+
 javaConversions/
 
 ## Ignore Visual Studio temporary files, build results, and
