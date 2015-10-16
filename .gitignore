@@ -221,3 +221,5 @@ esri-geometry-api-1.2.1.jar
 *.orig
 
 com/esri/core/geometry/GeometryEngine.cs.orig
+
+*.metaproj
