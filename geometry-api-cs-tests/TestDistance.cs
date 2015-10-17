@@ -139,20 +139,20 @@ namespace com.esri.core.geometry
 
 		/// <exception cref="org.codehaus.jackson.JsonParseException"/>
 		/// <exception cref="System.IO.IOException"/>
-////		[NUnit.Framework.Test]
-////		public static void TestDistanceWithNullSpatialReference()
-////		{
-////			// There was a bug that distance op did not work with null Spatial
-////			// Reference.
-////			string str1 = "{\"paths\":[[[-117.138791850991,34.017492675023],[-117.138762336971,34.0174925550462]]]}";
-////			string str2 = "{\"paths\":[[[-117.138867827972,34.0174854109623],[-117.138850197027,34.0174929160126],[-117.138791850991,34.017492675023]]]}";
-////			org.codehaus.jackson.JsonFactory jsonFactory = new org.codehaus.jackson.JsonFactory();
-////			org.codehaus.jackson.JsonParser jsonParser1 = jsonFactory.CreateJsonParser(str1);
-////			org.codehaus.jackson.JsonParser jsonParser2 = jsonFactory.CreateJsonParser(str2);
-////			com.esri.core.geometry.MapGeometry geom1 = com.esri.core.geometry.GeometryEngine.JsonToGeometry(jsonParser1);
-////			com.esri.core.geometry.MapGeometry geom2 = com.esri.core.geometry.GeometryEngine.JsonToGeometry(jsonParser2);
-////			double distance = com.esri.core.geometry.GeometryEngine.Distance(geom1.GetGeometry(), geom2.GetGeometry(), null);
-////			NUnit.Framework.Assert.IsTrue(distance == 0);
-////		}
+//		[NUnit.Framework.Test]
+//		public static void TestDistanceWithNullSpatialReference()
+//		{
+//			// There was a bug that distance op did not work with null Spatial
+//			// Reference.
+//			string str1 = "{\"paths\":[[[-117.138791850991,34.017492675023],[-117.138762336971,34.0174925550462]]]}";
+//			string str2 = "{\"paths\":[[[-117.138867827972,34.0174854109623],[-117.138850197027,34.0174929160126],[-117.138791850991,34.017492675023]]]}";
+//			org.codehaus.jackson.JsonFactory jsonFactory = new org.codehaus.jackson.JsonFactory();
+//			org.codehaus.jackson.JsonParser jsonParser1 = jsonFactory.CreateJsonParser(str1);
+//			org.codehaus.jackson.JsonParser jsonParser2 = jsonFactory.CreateJsonParser(str2);
+//			com.esri.core.geometry.MapGeometry geom1 = com.esri.core.geometry.GeometryEngine.JsonToGeometry(jsonParser1);
+//			com.esri.core.geometry.MapGeometry geom2 = com.esri.core.geometry.GeometryEngine.JsonToGeometry(jsonParser2);
+//			double distance = com.esri.core.geometry.GeometryEngine.Distance(geom1.GetGeometry(), geom2.GetGeometry(), null);
+//			NUnit.Framework.Assert.IsTrue(distance == 0);
+//		}
 	}
 }
