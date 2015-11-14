@@ -101,6 +101,7 @@
     <Compile Include="TestQuadTree.cs" />
     <Compile Include="TestRasterizedGeometry2D.cs" />
     <Compile Include="TestSimplify.cs" />
+    <Compile Include="TestSpatialReference.cs" />
     <Compile Include="TestTouch.cs" />
     <Compile Include="TestTreap.cs" />
     <Compile Include="TestUnion.cs" />
